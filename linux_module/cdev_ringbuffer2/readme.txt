@@ -1,0 +1,1 @@
+a virtual cdev implement a ring log buffer.
