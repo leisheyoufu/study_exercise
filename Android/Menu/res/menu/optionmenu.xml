@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/item01" android:icon="@android:drawable/ic_menu_add" android:title="添加"></item>
+	<item android:id="@+id/item02" android:icon="@android:drawable/ic_menu_edit" android:title="编辑"></item>
+	<item android:id="@+id/item04" android:icon="@android:drawable/ic_menu_info_details" android:title="详细"></item>
+	<item android:id="@+id/item05" android:icon="@android:drawable/ic_menu_delete" android:title="删除"></item>
+	<item android:id="@+id/item06" android:icon="@android:drawable/ic_menu_help" android:title="帮助"></item>
+</menu>

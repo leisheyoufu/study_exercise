@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="menu_delete">删除当前</string>
+	<string name="menu_insert">新建</string>
+	<string name="menu_revert">Revert</string>
+	<string name="menu_discard">不保存</string>
+
+	<string name="resolve_edit">编辑</string>
+	<string name="resolve_title">编辑</string>
+
+	<string name="title_create">新建</string>
+	<string name="title_edit">编辑</string>
+	<string name="title_diares_list">学生资料</string>
+	<string name="title_diary">学生</string>
+	<string name="title_edit_title">学生姓名:</string>
+	<string name="title">标题:</string>
+	<string name="body">内容:</string>
+	<string name="confirm">确定</string>
+
+	<string name="app_name">学生信息</string>
+
+	<string name="button_ok">OK</string>
+
+	<string name="error_title">Error</string>
+	<string name="error_message">Error loading note</string>
+</resources>

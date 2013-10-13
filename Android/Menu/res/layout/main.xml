@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linear_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/imageView"
+          
+        android:layout_width="400dip"
+        android:layout_height="400dip"
+         android:layout_gravity="bottom|right"
+        android:src="@drawable/background" 
+        android:scaleType="matrix"/>
+  
+
+      <Button    
+        android:id="@+id/button1"     
+        android:layout_width="100dip"     
+        android:layout_height="50dip" 
+        android:layout_gravity="bottom|right"
+        android:text="显示" />
+   
+    <Button    
+        android:id="@+id/button2"     
+        android:layout_width="100dip"     
+        android:layout_height="50dip"  
+         android:layout_gravity="bottom|right"   
+         
+        android:text="隐藏" />  
+
+</LinearLayout>
