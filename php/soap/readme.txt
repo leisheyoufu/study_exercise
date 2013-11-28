@@ -1,0 +1,1 @@
+http://localhost/test/cltest/soap/soap_client.php
