@@ -1,0 +1,13 @@
+
+USER=" 'id -un' "  
+
+LOGNAME=$USER  
+
+PS1='[\u@\h \W]#'  
+
+PATH=$PATH  
+
+HOSTNAME='/bin/hostname'  
+
+export USER LOGNAME PS1 PATH 
+
