@@ -11,17 +11,6 @@ import shutil
 import time,  datetime
 import glob
 
-"""
- statinfo1 = os.stat("includes/modules/pages/info_check/header_php.php")
-    statinfo2 = os.stat("includes/modules/pages/checkout_complete_payment/header_php.php")    
-    x = time.localtime(statinfo1.st_mtime)
-    x = time.strftime('%Y-%m-%d %H:%M:%S',x)
-    print x
-    print time.localtime(statinfo2.st_mtime)
-   # shutil.copytree("includes","includes_backup")
-"""
-
-
 class FilePath(object):
     def __init__(self,parent,filename):
         self.parent = parent
@@ -70,7 +59,7 @@ def query_file_list(dir):
 
 
 def main(argv):
-    mpath_list =  init_mfile_path("D:/WorkSpace/git-vela","includes","2013-09-30 00:00:00")   
+    mpath_list =  init_mfile_path("D:/WorkSpace/test","includes","2013-09-30 00:00:00")   
     cp_mfile(mpath_list,"d:/backup")
 if __name__=="__main__":
     main(sys.argv)
