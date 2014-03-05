@@ -168,8 +168,8 @@ void generate_modify_buf(char *buf,off_t len,struct chunk_modify_descriptor *chu
     struct hash_tag *h_tag;
     struct chunk_buffer_list *curr_chunk,*next_chunk;
     int match;
-    cur = 0;
-    while(cur < len && cur<chunk_desc->total) {
+    cur = 0;  // cur is the new file
+    while(cur < len ) {
         if(chunk_modify_desc->chunk_list == NULL) {
             chunk_modify_desc->chunk_list = (struct chunk_buffer_list *)malloc(sizeof(struct chunk_buffer_list));
             if(chunk_modify_desc->chunk_list == NULL) {
@@ -183,7 +183,6 @@ void generate_modify_buf(char *buf,off_t len,struct chunk_modify_descriptor *chu
         }
         match = 0;
         block_len = MIN(len-cur,CHUNK_SIZE);
-        block_len = MIN(chunk_desc->total-cur,block_len);
         adler_sum = adler32(buf+cur,block_len);
         if( (h_tag = search_hash_table(adler_sum)) != NULL) {
             MD5(buf+cur,block_len,md5_sum);
@@ -200,25 +199,13 @@ void generate_modify_buf(char *buf,off_t len,struct chunk_modify_descriptor *chu
             }
         }
         if(!match) {
-           // strncpy(next_chunk->buf,buf+cur,1);
-            strncpy(next_chunk->buf,chunk_desc->buf+cur,1);
+            strncpy(next_chunk->buf,buf+cur,1);
+           // strncpy(next_chunk->buf,chunk_desc->buf+cur,1);
             next_chunk->size = 1;
             next_chunk->buf[1] = '\0';
             cur++;
             chunk_modify_desc->modify = 1;
         }
-        curr_chunk->next = next_chunk;
-        curr_chunk = next_chunk;
-    }
-    while(cur <chunk_desc->total) {
-        block_len = MIN(chunk_desc->total-cur,CHUNK_SIZE);
-        printf("block len = %d\n",block_len);
-        next_chunk = (struct chunk_buffer_list *)malloc(sizeof(struct chunk_buffer_list));
-        strncpy(next_chunk->buf,chunk_desc->buf+cur,block_len);
-        next_chunk->buf[block_len] = '\0';
-        next_chunk->size = block_len;
-        cur+=block_len;
-        chunk_modify_desc->modify = 1;
         curr_chunk->next = next_chunk;
         curr_chunk = next_chunk;
     }
@@ -228,7 +215,7 @@ void sync_file(char *filename,struct chunk_modify_descriptor *chunk_modify_desc)
 {
     int fd;
     struct chunk_buffer_list *curr_chunk;
-    fd = open(filename,O_RDWR|O_CREAT);
+    fd = open(filename,O_RDWR|O_CREAT|O_TRUNC);
     if(fd == -1) {
         CL_ERR_PRINT("failed to open fd\n");
         return ;
@@ -306,13 +293,17 @@ void print_hash_stat()
 
 void print_chunk_modify(struct chunk_modify_descriptor *chunk_modify_desc)
 {
+    off_t size;
     struct chunk_buffer_list *curr_chunk;
     curr_chunk = chunk_modify_desc->chunk_list;
+    size = 0;
     while(curr_chunk != NULL && curr_chunk->buf !=NULL) {
-        printf("size = %d\n",curr_chunk->size);
+            size+=curr_chunk->size;
+      //  printf("size = %d\n",curr_chunk->size);
         printf("%s",curr_chunk->buf);
         curr_chunk = curr_chunk->next;
     }
+    printf("total size = %d\n",size);
 }
 
 

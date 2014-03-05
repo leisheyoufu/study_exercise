@@ -13,8 +13,8 @@ int main( int argc, char **argv )
         CL_INFO_PRINT("at least two argument!\n");
     }
     /* ************
-    filename1  dest
-    filename2  wait sync
+    filename1  wait sync
+    filename2  dest
     **************/
     char *filename1,*filename2;
     int fd1,fd2;
@@ -37,8 +37,8 @@ int main( int argc, char **argv )
     init_chunk_modify_descriptor(&chunk_modify_desc);
     generate_modify_descriptor(filename2,&chunk_modify_desc,chunk_desc);
     // print_hash_stat();
-    //  print_chunk_modify(&chunk_modify_desc);
-    sync_file(filename2,&chunk_modify_desc);
+     // print_chunk_modify(&chunk_modify_desc);
+    sync_file(filename1,&chunk_modify_desc);
     cleanup_modify_list(&chunk_modify_desc);
     cleanup_hash_list();
 
