@@ -1,0 +1,39 @@
+A secret service developed a new kind of explosive that attain its volatile property only when a speci?c
+association of products occurs. Each product is a mix of two di?erent simple compounds, to which we
+call a binding pair. If N > 2, then mixing N di?erent binding pairs containing N simple compounds
+creates a powerful explosive. For example, the binding pairs A+B, B+C, A+C (three pairs, three
+compounds) result in an explosive, while A+B, B+C, A+D (three pairs, four compounds) does not.
+You are not a secret agent but only a guy in a delivery agency with one dangerous problem: receive
+binding pairs in sequential order and place them in a cargo ship. However, you must avoid placing in
+the same room an explosive association. So, after placing a set of pairs, if you receive one pair that
+might produce an explosion with some of the pairs already in stock, you must refuse it, otherwise, you
+must accept it.
+An example. Lets assume you receive the following sequence: A+B, G+B, D+F, A+E, E+G,
+F+H. You would accept the ?rst four pairs but then refuse E+G since it would be possible to make the
+following explosive with the previous pairs: A+B, G+B, A+E, E+G (4 pairs with 4 simple compounds).
+Finally, you would accept the last pair, F+H.
+Compute the number of refusals given a sequence of binding pairs.
+Input
+The input will contain several test cases, each of them as described below. Consecutive
+test cases are separated by a single blank line.
+Instead of letters we will use integers to represent compounds. The input contains several lines.
+Each line (except the last) consists of two integers (each integer lies between 0 and 105
+) separated by
+a single space, representing a binding pair.
+Each test case ends in a line with the number ¡®-1¡¯. You may assume that no repeated binding pairs
+appears in the input.
+Output
+For each test case, the output must follow the description below.
+A single line with the number of refusals.
+Sample Input
+1 2
+3 4
+3 5
+3 1
+2 3
+4 1
+2 6
+6 5
+-1
+Sample Output
+3
