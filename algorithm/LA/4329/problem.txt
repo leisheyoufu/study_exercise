@@ -1,0 +1,19 @@
+N (3$ \le$N$ \le$20000) ping pong players live along a west-east street(consider the street as a line segment). Each player has a unique skill rank. To improve their skill rank, they often compete with each other. If two players want to compete, they must choose a referee among other ping pong players and hold the game in the referee's house. For some reason, the contestants can't choose a referee whose skill rank is higher or lower than both of theirs. The contestants have to walk to the referee's house, and because they are lazy, they want to make their total walking distance no more than the distance between their houses. Of course all players live in different houses and the position of their houses are all different. If the referee or any of the two contestants is different, we call two games different. Now is the problem: how many different games can be held in this ping pong street?
+
+Input 
+
+The first line of the input contains an integer T (1$ \le$T$ \le$20) , indicating the number of test cases, followed by T lines each of which describes a test case.
+
+Every test case consists of N + 1 integers. The first integer is N , the number of players. Then N distinct integers a1, a2...aN follow, indicating the skill rank of each player, in the order of west to east ( 1$ \le$ai$ \le$100000 , i = 1...N ).
+
+Output 
+
+For each test case, output a single line contains an integer, the total number of different games.
+
+Sample Input 
+
+1
+3 1 2 3
+Sample Output 
+
+1
