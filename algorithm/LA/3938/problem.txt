@@ -1,0 +1,25 @@
+After doing Ray a great favor to collect sticks for Ray, Poor Neal becomes very hungry. In return for Neal's help, Ray makes a great dinner for Neal. When it is time for dinner, Ray arranges all the dishes he makes in a single line (actually this line is very long ... , the dishes are represented by 1, 2, 3 ... ). ``You make me work hard and don't pay me! You refuse to teach me Latin Dance! Now it is time for you to serve me", Neal says to himself.
+
+Every dish has its own value represented by an integer whose absolute value is less than 1,000,000,000. Before having dinner, Neal is wondering about the total value of the dishes he will eat. So he raises many questions about the values of dishes he would have.
+
+For each question Neal asks, he will first write down an interval [a, b] (inclusive) to represent all the dishes a, a + 1,..., b , where a and b are positive integers, and then asks Ray which sequence of consecutive dishes in the interval has the most total value. Now Ray needs your help.
+
+Input 
+
+The input file contains multiple test cases. For each test case, there are two integers n and m in the first line (n, m < 500000) . n is the number of dishes and m is the number of questions Neal asks.
+
+Then n numbers come in the second line, which are the values of the dishes from left to right. Next m lines are the questions and each line contains two numbers a , b as described above. Proceed to the end of the input file.
+
+Output 
+
+For each test case, output m lines. Each line contains two numbers, indicating the beginning position and end position of the sequence. If there are multiple solutions, output the one with the smallest beginning position. If there are still multiple solutions then, just output the one with the smallest end position. Please output the result as in the Sample Output.
+
+Sample Input 
+
+3 1 
+1 2 3 
+1 1
+Sample Output 
+
+Case 1: 
+1 1
