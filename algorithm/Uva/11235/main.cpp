@@ -43,8 +43,8 @@ int main()
     int s,e;
     //freopen("test.txt","r",stdin);
 	
-	while( ~scanf("%d",&n)&&n){
-		scanf("%d %d",&q,&seq[1]) ;	
+	while( scanf("%d %d",&n,&q) == 2){
+		scanf("%d",&seq[1]) ;	
 		count = 1;
 		l[count] =1;
 		m[1]=1;

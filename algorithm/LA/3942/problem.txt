@@ -1,0 +1,33 @@
+Neal is very curious about combinatorial problems, and now here comes a problem about words. Knowing that Ray has a photographic memory and this may not trouble him, Neal gives it to Jiejie.
+
+Since Jiejie can't remember numbers clearly, he just uses sticks to help himself. Allowing for Jiejie's only 20071027 sticks, he can only record the remainders of the numbers divided by total amount of sticks.
+
+The problem is as follows: a word needs to be divided into small pieces in such a way that each piece is from some given set of words. Given a word and the set of words, Jiejie should calculate the number of ways the given word can be divided, using the words in the set.
+
+Input 
+
+The input file contains multiple test cases. For each test case: the first line contains the given word whose length is no more than 300 000.
+
+The second line contains an integer S , 1$ \le$S$ \le$4000 .
+
+Each of the following S lines contains one word from the set. Each word will be at most 100 characters long. There will be no two identical words and all letters in the words will be lowercase.
+
+There is a blank line between consecutive test cases.
+
+You should proceed to the end of file.
+
+Output 
+
+For each test case, output the number, as described above, from the task description modulo 20071027.
+
+Sample Input 
+
+abcd 
+4 
+a 
+b 
+cd 
+ab
+Sample Output 
+
+Case 1: 2
