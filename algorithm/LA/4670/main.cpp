@@ -84,7 +84,7 @@ struct AhoCorsickAutomata {
             if(u) {
                 f[u]=0;
                 q.push(u);
-                last[u] =0l;
+                last[u] =0;
             }
         }
         while(!q.empty()) {
