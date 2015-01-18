@@ -1,0 +1,27 @@
+Archaeologists have discovered a new set of hidden caves in one of the Egyptian pyramids. The decryption of ancient hieroglyphs on the walls nearby showed that the caves structure is as follows. There are n caves in a pyramid, connected by narrow passages, one of the caves is connected by a passage to the outer world. The system of the passages is organized in such a way, that there is exactly one way to get from outside to each cave along passages. All caves are located in the basement of the pyramid, so we can consider them being located in the same plane. Passages do not intersect. Each cave has its walls colored in one of several various colors.
+
+The scientists have decided to create a more detailed description of the caves, so they decided to use an exploring robot. The robot they are planning to use has two types of memory - the output tape, which is used for writing down the description of the caves, and the operating memory organized as a stack.
+
+The robot first enters the cave connected to the outer world along the passage. When it travels along any passage for the first time, it puts its description on the top of its stack. When the robot enters any cave, it prints the color of its walls to its output tape. After that it chooses the leftmost passage among those that it has not yet travelled and goes along it. If there is no such passage, the robot takes the passage description from the top of its stack and travels along it in the reverse direction. The robot's task is over when it returns to the outside of the pyramid. It is easy to see that during its trip the robot visits each cave at least once and travels along each passage exactly once in each direction.
+
+The scientists have sent the robot to its mission. After it returned they started to study the output tape. What a great disappointment they have had after they have understood that the output tape does not describe the cave system uniquely. Now they have a new problem - they want to know how many different cave systems could have produced the output tape they have. Help them to find that out.
+
+Since the requested number can be quite large, you should output it modulo 1 000 000 000. Please note, that the absolute locations of the caves are not important, but their relative locations are important, so the caves (c) and (d) on the picture below are considered different.
+
+\epsfbox{p3516.eps}
+Input 
+
+The input file contains several test cases, and each of them consists of a single line with the output tape that the archaeologists have. The output tape is the sequence of colors of caves in order the robot visited them. The colors are denoted by capital letters of the English alphabet. The length of the tape does not exceed 300 characters.
+
+Output 
+
+For each input case, write to the output a single line containing one integer number - the number of different cave systems (modulo 1 000 000 000) that could produce the output tape.
+
+Sample Input 
+
+ABABABA 
+AB
+Sample Output 
+
+5 
+0
