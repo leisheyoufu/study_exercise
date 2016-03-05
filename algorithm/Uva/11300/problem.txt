@@ -1,0 +1,26 @@
+A Communist regime is trying to redistribute wealth in a village. They have have decided to sit everyone
+around a circular table. First, everyone has converted all of their properties to coins of equal value,
+such that the total number of coins is divisible by the number of people in the village. Finally, each
+person gives a number of coins to the person on his right and a number coins to the person on his left,
+such that in the end, everyone has the same number of coins. Given the number of coins of each person,
+compute the minimum number of coins that must be transferred using this method so that everyone
+has the same number of coins.
+Input
+There is a number of inputs. Each input begins with n (n < 1000001), the number of people in the
+village. n lines follow, giving the number of coins of each person in the village, in counterclockwise
+order around the table. The total number of coins will ?t inside an unsigned 64 bit integer.
+Output
+For each input, output the minimum number of coins that must be transferred on a single line.
+Sample Input
+3
+100
+100
+100
+4
+1
+2
+5
+4
+Sample Output
+0
+4
