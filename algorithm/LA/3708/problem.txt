@@ -1,0 +1,34 @@
+Programming contests became so popular in the year 2397 that the governor of New Earck ¡ª the
+largest human-inhabited planet of the galaxy ¡ª opened a special Alley of Contestant Memories (ACM)
+at the local graveyard. The ACM encircles a green park, and holds the holographic statues of famous
+contestants placed equidistantly along the park perimeter. The alley has to be renewed from time to
+time when a new group of memorials arrives.
+When new memorials are added, the exact place for each can be selected arbitrarily along the ACM,
+but the equidistant disposition must be maintained by moving some of the old statues along the alley.
+Surprisingly, humans are still quite superstitious in 24th century: the graveyard keepers believe
+the holograms are holding dead people souls, and thus always try to renew the ACM with minimal
+possible movements of existing statues (besides, the holographic equipment is very heavy). Statues are
+moved along the park perimeter. Your work is to ?nd a renewal plan which minimizes the sum of travel
+distances of all statues. Installation of a new hologram adds no distance penalty, so choose the places
+for newcomers wisely!
+Input
+The input ?le contains several test cases, each of them consists of a a line that contains two integer
+numbers: n ¡ª the number of holographic statues initially located at the ACM, and m ¡ª the number
+of statues to be added (2 ¡Ü n ¡Ü 1000, 1 ¡Ü m ¡Ü 1000). The length of the alley along the park perimeter
+is exactly 10 000 feet.
+Output
+For each test case, write to the output a line with a single real number ¡ª the minimal sum of travel
+distances of all statues (in feet). The answer must be precise to at least 4 digits after decimal point.
+Note:
+Pictures show the ?rst three examples. Marked circles denote original statues, empty circles denote
+new equidistant places, arrows denote movement plans for existing statues.
+Sample Input
+2 1
+2 3
+3 1
+10 10
+Sample Output
+1666.6667
+1000.0
+1666.6667
+0.0
