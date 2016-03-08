@@ -1,0 +1,35 @@
+Piotr likes playing with ants. He has n of them on a horizontal pole L cm long. Each ant is facing
+either left or right and walks at a constant speed of 1 cm/s. When two ants bump into each other, they
+both turn around (instantaneously) and start walking in opposite directions. Piotr knows where each
+of the ants starts and which direction it is facing and wants to calculate where the ants will end up T
+seconds from now.
+Input
+The ?rst line of input gives the number of cases, N. N test cases follow. Each one starts with a line
+containing 3 integers: L , T and n (0 ¡Ü n ¡Ü 10000). The next n lines give the locations of the n ants
+(measured in cm from the left end of the pole) and the direction they are facing (L or R).
+Output
+For each test case, output one line containing ¡®Case #x:¡¯ followed by n lines describing the locations
+and directions of the n ants in the same format and order as in the input. If two or more ants are at
+the same location, print ¡®Turning¡¯ instead of ¡®L¡¯ or ¡®R¡¯ for their direction. If an ant falls o? the pole
+before T seconds, print ¡®Fell off¡¯ for that ant. Print an empty line after each test case.
+Sample Input
+2
+10 1 4
+1 R
+5 R
+3 L
+10 R
+10 2 3
+4 R
+5 L
+8 R
+Sample Output
+Case #1:
+2 Turning
+6 R
+2 Turning
+Fell off
+Case #2:
+3 L
+6 R
+10 R
