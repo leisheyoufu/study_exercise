@@ -1,0 +1,36 @@
+We have a grid of size N ¡Á N. Each cell of the grid initially contains a zero(0) or a one(1). The parity
+of a cell is the number of 1s surrounding that cell. A cell is surrounded by at most 4 cells (top, bottom,
+left, right).
+Suppose we have a grid of size 4 ¡Á 4:
+1 0 1 0 The parity of each cell would be 1 3 1 2
+1 1 1 1 2 3 2 1
+0 1 0 0 2 1 2 1
+0 0 0 0 0 1 0 0
+For this problem, you have to change some of the 0s to 1s so that the parity of every cell becomes
+even. We are interested in the minimum number of transformations of 0 to 1 that is needed to achieve
+the desired requirement.
+Input
+The first line of input is an integer T (T < 30) that indicates the number of test cases. Each case starts
+with a positive integer N (1 ¡Ü N ¡Ü 15). Each of the next N lines contain N integers (0/1) each. The
+integers are separated by a single space character.
+Output
+For each case, output the case number followed by the minimum number of transformations required.
+If it¡¯s impossible to achieve the desired result, then output ¡®-1¡¯ instead.
+Sample Input
+3
+3
+0 0 0
+0 0 0
+0 0 0
+3
+0 0 0
+1 0 0
+0 0 0
+3
+1 1 1
+1 1 1
+0 0 0
+Sample Output
+Case 1: 0
+Case 2: 3
+Case 3: -1
