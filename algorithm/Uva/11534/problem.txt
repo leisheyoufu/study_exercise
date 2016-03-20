@@ -1,0 +1,29 @@
+Wavio is a sequence of integers. It has some interesting properties.
+? Wavio is of odd length i.e. L = 2 ? n + 1.
+? The first (n + 1) integers of Wavio sequence makes a strictly increasing sequence.
+? The last (n + 1) integers of Wavio sequence makes a strictly decreasing sequence.
+? No two adjacent integers are same in a Wavio sequence.
+For example 1, 2, 3, 4, 5, 4, 3, 2, 0 is an Wavio sequence of length 9. But 1, 2, 3, 4, 5, 4, 3, 2, 2 is
+not a valid wavio sequence. In this problem, you will be given a sequence of integers. You have to find
+out the length of the longest Wavio sequence which is a subsequence of the given sequence. Consider,
+the given sequence as :
+1 2 3 2 1 2 3 4 3 2 1 5 4 1 2 3 2 2 1.
+Here the longest Wavio sequence is : 1 2 3 4 5 4 3 2 1. So, the output will be ¡®9¡¯.
+Input
+The input file contains less than 75 test cases. The description of each test case is given below. Input
+is terminated by end of file.
+Each set starts with a postive integer, N (1 ¡Ü N ¡Ü 10000). In next few lines there will be N
+integers.
+Output
+For each set of input print the length of longest wavio sequence in a line.
+Sample Input
+10
+1 2 3 4 5 4 3 2 1 10
+19
+1 2 3 2 1 2 3 4 3 2 1 5 4 1 2 3 2 2 1
+5
+1 2 3 4 5
+Sample Output
+9
+9
+1
