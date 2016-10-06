@@ -1,0 +1,21 @@
+group 'lei'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+idea {
+    module {
+        downloadSources = true
+    }
+}
+
+dependencies {
+    compile group: 'io.netty', name: 'netty', version: '3.9.0.Final'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
