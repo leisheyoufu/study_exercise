@@ -8,7 +8,9 @@ from datetime import datetime
 import logging
 
 import git
-
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 from elasticsearch import Elasticsearch
 from elasticsearch.helpers import bulk, streaming_bulk
 
@@ -16,13 +18,8 @@ def create_git_index(client, index):
     # we will use user on several places
     user_mapping = {
       'properties': {
-        'name': {
-          'type': 'multi_field',
-          'fields': {
-            'raw': {'type' : 'string', 'index' : 'not_analyzed'},
+            'email': {'type' : 'string', 'index' : 'not_analyzed'},
             'name': {'type' : 'string'}
-          }
-        }
       }
     }
 
@@ -190,9 +187,11 @@ if __name__ == '__main__':
         doc_type='repos',
         id='elasticsearch',
         body={
-          "script" : "ctx._source.tags += tag",
-          "params" : {
-            "tag" : "java"
+          "script" : {
+              "inline": "ctx._source.tags.add(params.tag)",
+              "params" : {
+                 "tag" : "java"
+              }
           }
         }
     )
