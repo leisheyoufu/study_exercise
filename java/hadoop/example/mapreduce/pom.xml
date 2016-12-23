@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <repositories>
+        <repository>
+            <id>hadoop</id>
+            <name>Repository in project's lib dir</name>
+            <layout>default</layout>
+            <url>file:///Users/longcheng/Project/java/hadoop-bin/hadoop-2.7.3/share/hadoop/</url>
+        </repository>
+    </repositories>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.lei</groupId>
+    <artifactId>mapreduce</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+
+    <!--
+    <dependencies>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.hadoop</groupId>
+        <artifactId>hadoop-client</artifactId>
+        <version>2.7.3</version>
+        <scope>system</scope>
+        <systemPath>/Users/longcheng/Project/java/hadoop-bin/hadoop-2.7.3/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.7.3.jar</systemPath>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.hadoop</groupId>
+        <artifactId>hadoop-common</artifactId>
+        <version>2.7.3</version>
+        <scope>system</scope>
+        <systemPath>/Users/longcheng/Project/java/hadoop-bin/hadoop-2.7.3/share/hadoop/common/hadoop-common-2.7.3.jar</systemPath>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.hadoop</groupId>
+        <artifactId>hadoop-hdfs</artifactId>
+        <version>2.7.3</version>
+        <scope>system</scope>
+        <systemPath>/Users/longcheng/Project/java/hadoop-bin/hadoop-2.7.3/share/hadoop/hdfs/hadoop-hdfs-2.7.3.jar</systemPath>
+    </dependency>
+    </dependencies>
+    -->
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-client</artifactId>
+            <version>2.7.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>2.7.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-hdfs</artifactId>
+            <version>2.7.3</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.lei.mapreduce.Sort</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
