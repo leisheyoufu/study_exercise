@@ -11,26 +11,27 @@ class Solution
 {
 public:
 
-    int maxArea(vector<int>& height) {
-		int l=0, r= height.size()-1;
-		int res =0;
-		while(l < r) {
-			res = max(res, min(height[l], height[r]) * (r-l));
-			if( height[l] <height[r]){
-				int k =l;
-				while(k<r && height[k] <= height[l]) {
-					k++;
-				}
-				l =k;
-			} else {
-				int k = r;
-				while(k>l && height[k] <= height[r]) {
-					k--;
-				}
-				r = k;
-			}
-		}
-		return res;
+    int maxArea(vector<int>& height)
+    {
+        int l=0, r= height.size()-1;
+        int res =0;
+        while(l < r) {
+            res = max(res, min(height[l], height[r]) * (r-l));
+            if( height[l] <height[r]) {
+                int k =l;
+                while(k<r && height[k] <= height[l]) {
+                    k++;
+                }
+                l =k;
+            } else {
+                int k = r;
+                while(k>l && height[k] <= height[r]) {
+                    k--;
+                }
+                r = k;
+            }
+        }
+        return res;
     }
 };
 int main()

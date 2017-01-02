@@ -10,23 +10,24 @@ class Solution
 {
 public:
 
-    bool isPalindrome(int x) {
-		int a[100];
-		int k =0, i = 0;
-		if (x<0) {
-			return false;
-		}
-		while(x) {
-			a[k++] = x%10;
-			x/=10;
-		}
-		while( i< k/2) {
-			if(a[i] != a[k-1-i]) {
-				return false;
-			}
-			i++;
-		}
-		return true;
+    bool isPalindrome(int x)
+    {
+        int a[100];
+        int k =0, i = 0;
+        if (x<0) {
+            return false;
+        }
+        while(x) {
+            a[k++] = x%10;
+            x/=10;
+        }
+        while( i< k/2) {
+            if(a[i] != a[k-1-i]) {
+                return false;
+            }
+            i++;
+        }
+        return true;
     }
 };
 int main()

@@ -10,7 +10,8 @@ class Solution
 {
 public:
 
-    int reverse(int x) {
+    int reverse(int x)
+    {
         long long r=0;
         while(x) {
             r *=10;

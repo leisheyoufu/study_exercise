@@ -14,12 +14,14 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-class Solution {
+class Solution
+{
 public:
     TreeNode *mistake1, *mistake2;;
     TreeNode *pre;
-    
-    void recursive_traversal(TreeNode *root) {
+
+    void recursive_traversal(TreeNode *root)
+    {
         if(root==NULL) {
             return;
         }
@@ -39,7 +41,8 @@ public:
             recursive_traversal(root->right);
         }
     }
-    void recoverTree(TreeNode *root) {        
+    void recoverTree(TreeNode *root)
+    {
         recursive_traversal(root);
         if(mistake1!=NULL&&mistake2!=NULL) {
             int tmp = mistake1->val;
@@ -52,9 +55,9 @@ public:
 int main()
 {
     Solution sln;
-	string s1 = "db";
-	string s2 = "b";
-	string s3="cbb";
+    string s1 = "db";
+    string s2 = "b";
+    string s3="cbb";
 
     printf("%d\n",sln.isInterleave(s1,s2,s3));
     getch();

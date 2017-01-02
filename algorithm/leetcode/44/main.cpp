@@ -31,39 +31,39 @@ public:
 			} else if(isMatch(s.substr(1,s.length()), p.substr(1,  p.length()))){
 				return true;
 			}
-			return isMatch(s.substr(0,s.length()), p.substr(1,  p.length()));			
+			return isMatch(s.substr(0,s.length()), p.substr(1,  p.length()));
 		}
 		return false;
     }
 };
 */
-bool isMatch(const char *s, const char *p) 
+bool isMatch(const char *s, const char *p)
 {
-	char *ss = NULL, *pp = NULL;
-	while(*s!= '\0') {
-		if(*s == *p || *p == '?') {
-			s++;
-			p++;
-		} else if(*p == '*') {
-			ss = (char*)s;
-			pp = (char*)p++;
-		} else if(pp != NULL) {
-			p = pp;
-			s = ++ss;
-		} else {
-			return false;
-		}
-	}
-	while(*p == '*') {
-		p++;
-	}
-	return *p=='\0';
+    char *ss = NULL, *pp = NULL;
+    while(*s!= '\0') {
+        if(*s == *p || *p == '?') {
+            s++;
+            p++;
+        } else if(*p == '*') {
+            ss = (char*)s;
+            pp = (char*)p++;
+        } else if(pp != NULL) {
+            p = pp;
+            s = ++ss;
+        } else {
+            return false;
+        }
+    }
+    while(*p == '*') {
+        p++;
+    }
+    return *p=='\0';
 }
 
 
 int main()
-{	
-	cout << isMatch("ab", "?*") << endl;
+{
+    cout << isMatch("ab", "?*") << endl;
     system("pause");
     return 0;
 }
