@@ -1,3 +1,9 @@
+/*
+
+Pow(x, n)
+
+Implement pow(x, n).
+*/
 #include<iostream>
 #include<string>
 #include<vector>
