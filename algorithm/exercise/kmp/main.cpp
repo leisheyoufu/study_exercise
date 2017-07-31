@@ -19,7 +19,7 @@ void get_fail(char *P, int *f)
         while(j &&  (P[i] != P[j])) {
             j=f[j];
         }
-        f[i+1] = (P[j] ==P[j-1])?j+1:0;
+        f[i+1] = (P[i] == P[j])? j+1:0;
     }
 }
 
