@@ -1,9 +1,9 @@
 /*
-127. Word Ladder
+126. Word Ladder II
 
-Given two words (beginWord and endWord), and a dictionary's word list, find the length of shortest transformation sequence from beginWord to endWord, such that:
+Given two words (beginWord and endWord), and a dictionary's word list, find all shortest transformation sequence(s) from beginWord to endWord, such that:
 
-Only one letter can be changed at a time.
+Only one letter can be changed at a time
 Each transformed word must exist in the word list. Note that beginWord is not a transformed word.
 For example,
 
@@ -11,11 +11,13 @@ Given:
 beginWord = "hit"
 endWord = "cog"
 wordList = ["hot","dot","dog","lot","log","cog"]
-As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
-return its length 5.
-
+Return
+  [
+    ["hit","hot","dot","dog","cog"],
+    ["hit","hot","lot","log","cog"]
+  ]
 Note:
-Return 0 if there is no such transformation sequence.
+Return an empty list if there is no such transformation sequence.
 All words have the same length.
 All words contain only lowercase alphabetic characters.
 You may assume no duplicates in the word list.
@@ -62,36 +64,46 @@ public:
         }
     }
 
-    int bfs(unordered_map<int,vector<int>> &m, unordered_map<string, int> &dict, vector<string> &wordList, string begin, string end)
+    void bfs(unordered_map<int,vector<int>> &m, vector<vector<string>> &ret, unordered_map<string, int> &dict, vector<string> &wordList, vector<int> v, string end)
     {
-        queue<pair<int, int>> q;
-        q.push(make_pair(dict[begin], 1));
+        int min_size = INT_MAX;
+        queue<vector<int>> q;
+        q.push(v);
         unordered_set<int> delta;
-        int size = q.front().second;
+        int size = v.size();
         while(!q.empty()) {
-            pair<int,int> front = q.front();
+            vector<int> v = q.front();
             q.pop();
-            string last = wordList[front.first];
+            if(v.size() > min_size) {
+                continue;
+            }
+            string last = wordList[v[v.size()-1]];
             if(last== end) {
-                return front.second;
+                min_size = v.size();
+                vector<string> str_v;
+                for(int i=0; i<v.size(); i++) {
+                    str_v.push_back(wordList[v[i]]);
+                }
+                ret.push_back(str_v);
+                continue;
             }
-            vector<int> path = m[front.first];
+            vector<int> path = m[v[v.size()-1]];
             for(vector<int>::iterator iter=path.begin(); iter!=path.end(); iter++) {
-                q.push(make_pair(*iter, front.second+1));
+                vector<int> new_v = v;
+                new_v.push_back(*iter);
+                q.push(new_v);
             }
-            delta.insert(front.first);
-            if(size != front.second) {
+            delta.insert(v[v.size()-1]);
+            if(size != v.size()) {
                 for(unordered_set<int>::iterator iter=delta.begin(); iter!=delta.end(); iter++) {
                     m.erase(*iter);
                 }
-                delta.clear();
-                size = front.second;
+                size = v.size();
             }
         }
-        return 0;
     }
 
-    int ladderLength(string beginWord, string endWord, vector<string>& wordList)
+    vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList)
     {
         unordered_map<int, vector<int>> m;
         unordered_map<string, int> dict;
@@ -101,7 +113,10 @@ public:
             m[i] = vector<int>();
         }
         buildGraph(m, dict, wordList);
-        int ret = bfs(m, dict, wordList, beginWord, endWord);
+        vector<vector<string>> ret;
+        vector<int> v;
+        v.push_back(dict[beginWord]);
+        bfs(m, ret, dict, wordList, v, endWord);
         return ret;
     }
 };
@@ -140,7 +155,7 @@ int main()
     //string end = "ism";
     string start = "red";
     string end = "tax";
-    cout << sln.ladderLength(start, end, list);
+    sln.findLadders(start, end, list);
     system("pause");
     return 0;
 }
