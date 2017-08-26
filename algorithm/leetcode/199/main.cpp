@@ -24,38 +24,38 @@ Special thanks to @amrsaqr for adding this problem and creating all test cases.
 using namespace std;
 
 struct TreeNode {
-	int val;
-	TreeNode *left;
-	TreeNode *right;
-	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
 class Solution
 {
 public:
-    vector<int> rightSideView(TreeNode* root) 
-	{
-		vector<int> ret;
-		if(!root) {
-			return ret;
-		}
-		vector<TreeNode*> v1;
-		vector<TreeNode*> v2;
-		v1.push_back(root);
-		while(!v1.empty()) {
-			ret.push_back(v1[v1.size()-1]->val);
-			for(int i=0; i<v1.size();i++) {
-				if(v1[i]->left) {
-					v2.push_back(v1[i]->left);
-				}
-				if(v1[i]->right) {
-					v2.push_back(v1[i]->right);
-				}	
-			}
-			v1.swap(v2);
-			v2.clear();
-		}
-		return ret;        
+    vector<int> rightSideView(TreeNode* root)
+    {
+        vector<int> ret;
+        if(!root) {
+            return ret;
+        }
+        vector<TreeNode*> v1;
+        vector<TreeNode*> v2;
+        v1.push_back(root);
+        while(!v1.empty()) {
+            ret.push_back(v1[v1.size()-1]->val);
+            for(int i=0; i<v1.size(); i++) {
+                if(v1[i]->left) {
+                    v2.push_back(v1[i]->left);
+                }
+                if(v1[i]->right) {
+                    v2.push_back(v1[i]->right);
+                }
+            }
+            v1.swap(v2);
+            v2.clear();
+        }
+        return ret;
     }
 };
 int main()
