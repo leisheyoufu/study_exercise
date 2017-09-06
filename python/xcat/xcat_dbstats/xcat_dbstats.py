@@ -17,29 +17,45 @@ class Reader(object):
         self.file = file
         self.buf_list = []
         self.remain = None
+        self.f = None
+
+    def open(self):
+        if self.f is None:
+            self.f = open(self.file)
+
+    def close(self):
+        if self.f is not None:
+            self.f.close()
+            self.f = None
+
+    def __enter__(self):
+        self.open()
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.close()
 
     def _read(self):
         if self.f_pos == 0:
             return None
 
-        with open(self.file) as f:
-            size = BUF_SIZE
-            if self.f_pos - BUF_SIZE >= 0:
-                f.seek(self.f_pos - BUF_SIZE)
-            else:
-                f.seek(0)
-                size = self.f_pos - 0
-            buf = f.read(size)
-            if self.remain is not None:
-                self.buf_list = (buf + self.remain).split('\n')
-            else:
-                self.buf_list = buf.split('\n')
-            if size == BUF_SIZE:
-                self.remain = self.buf_list[0]
-                self.buf_list = self.buf_list[1:]
-            else:
-                self.remain = None
-            self.f_pos -= size
+        size = BUF_SIZE
+        if self.f_pos - BUF_SIZE >= 0:
+            self.f.seek(self.f_pos - BUF_SIZE)
+        else:
+            self.f.seek(0)
+            size = self.f_pos - 0
+        buf = self.f.read(size)
+        if self.remain is not None:
+            self.buf_list = (buf + self.remain).split('\n')
+        else:
+            self.buf_list = buf.split('\n')
+        if size == BUF_SIZE:
+            self.remain = self.buf_list[0]
+            self.buf_list = self.buf_list[1:]
+        else:
+            self.remain = None
+        self.f_pos -= size
 
         return self.buf_list
 
@@ -194,59 +210,61 @@ class Analysis(object):
                 record['cache_hit'][data['msg']['table']] += 1
 
     def process(self, latest, specific_cmd):
-        cmd_reader = CommandReader(self.command_log_file)
-        db_reader = DBTraceReader(self.cluster_log_file)
-        cmd = cmd_reader.get_next()
-        trace = None
-        index = 0
         if specific_cmd is not None:
             latest = None
 
         self._print_header()
-        while cmd is not None:
-            if specific_cmd is not None and not cmd['request'].startswith(
-                    specific_cmd):
-                cmd = cmd_reader.get_next()
-                continue
-
-            stamp = TimeStamp(cmd)
-            if trace is None:
-                trace = db_reader.get_next()
-
-            while trace and trace['stamp'] > stamp.end:
-                trace = db_reader.get_next()
-            key = '%s(%s)' % (cmd['request'], cmd['date'])
-
-            record = {'command': key,
-                      'elapsed': cmd['elapsed'],
-                      'get_sql_time': float(0),
-                      'set_sql_time': float(0),
-                      'del_sql_time': float(0),
-                      'set_sub_time': float(0),
-                      'get_sub_time': float(0),
-                      'del_sub_time': float(0),
-                      'get_tables': {},
-                      'set_tables': {},
-                      'del_tables': {},
-                      'build_cache': {},
-                      'cache_hit': {}}
-
-            while trace and trace['stamp'] >= stamp.start:
-                self._stat(record, trace['db'])
-                trace = db_reader.get_next()
-
-            self._print_csv(record)
-            index += 1
-            if latest is not None and index == latest:
-                break
+        with CommandReader(self.command_log_file) as cmd_reader:
             cmd = cmd_reader.get_next()
+            trace = None
+            index = 0
+            db_reader = DBTraceReader(self.cluster_log_file)
+            db_reader.open()
+            while cmd is not None:
+                if specific_cmd is not None and not cmd['request'].startswith(
+                        specific_cmd):
+                    cmd = cmd_reader.get_next()
+                    continue
+
+                stamp = TimeStamp(cmd)
+                if trace is None:
+                    trace = db_reader.get_next()
+
+                while trace and trace['stamp'] > stamp.end:
+                    trace = db_reader.get_next()
+                key = '%s(%s)' % (cmd['request'], cmd['date'])
+
+                record = {'command': key,
+                          'elapsed': cmd['elapsed'],
+                          'get_sql_time': float(0),
+                          'set_sql_time': float(0),
+                          'del_sql_time': float(0),
+                          'set_sub_time': float(0),
+                          'get_sub_time': float(0),
+                          'del_sub_time': float(0),
+                          'get_tables': {},
+                          'set_tables': {},
+                          'del_tables': {},
+                          'build_cache': {},
+                          'cache_hit': {}}
+
+                while trace and trace['stamp'] >= stamp.start:
+                    self._stat(record, trace['db'])
+                    trace = db_reader.get_next()
+
+                self._print_csv(record)
+                index += 1
+                if latest is not None and index == latest:
+                    break
+                cmd = cmd_reader.get_next()
+            db_reader.close()
 
     def _print_header(self):
         print("command,elapsed(precision: 1s),"
               "get_sub_time(s),set_sub_time(s),del_sub_time(s),"
               "get_sql_time(s),set_sql_time(s),del_sql_time(s),"
-              "build_cache,cache_hit,"
-              "get_tables,set_tables,del_tables")
+              "build_cache(times),cache_hit(times),"
+              "get_tables(times),set_tables(times),del_tables(times)")
 
     def _print_csv(self, record):
         print("%(command)s,%(elapsed)f,"
