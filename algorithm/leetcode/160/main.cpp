@@ -30,8 +30,7 @@ Your code should preferably run in O(n) time and use only O(1) memory.
 
 using namespace std;
 
-struct ListNode
-{
+struct ListNode {
     int val;
     ListNode *next;
     ListNode(int x) : val(x), next(NULL) {}
@@ -40,7 +39,8 @@ struct ListNode
 class Solution
 {
 public:
-    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB)
+    {
         if (!headA || !headB) {
             return NULL;
         }
@@ -54,7 +54,8 @@ public:
         return ret;
     }
 
-    ListNode *getCircleStart(ListNode *head) {
+    ListNode *getCircleStart(ListNode *head)
+    {
         ListNode *slow = head;
         ListNode *fast = head;
         while (fast) {

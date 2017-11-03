@@ -36,7 +36,8 @@ using namespace std;
 class Solution
 {
 public:
-    vector<string> findRestaurant(vector<string> &list1, vector<string> &list2) {
+    vector<string> findRestaurant(vector<string> &list1, vector<string> &list2)
+    {
         int index_sum = INT_MAX;
         vector<int> indexs;
         vector<string> ret;
@@ -51,8 +52,7 @@ public:
                     indexs.clear();
                     indexs.push_back(index1);
                     index_sum = index1 + i;
-                }
-                else if (index1 + i == index_sum) {
+                } else if (index1 + i == index_sum) {
                     indexs.push_back(index1);
                 }
             }
@@ -74,8 +74,7 @@ int main()
     vector<string> list1(s1, s1 + sizeof(s1) / sizeof(string));
     vector<string> list2(s2, s2 + sizeof(s2) / sizeof(string));
     vector<string> ret = sln.findRestaurant(list1, list2);
-    for (int i = 0; i < ret.size(); i++)
-    {
+    for (int i = 0; i < ret.size(); i++) {
         cout << ret[i] << " ";
     }
     system("pause");
