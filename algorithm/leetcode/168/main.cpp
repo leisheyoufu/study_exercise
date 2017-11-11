@@ -26,6 +26,7 @@ class Solution
 public:
     string convertToTitle(int n)
     {
+        /*
         if( n<= 0) {
             return "";
         }
@@ -35,6 +36,16 @@ public:
             n = (n-1)/ 26;
         }
         reverse(ret.begin(), ret.end());
+        return ret;
+        */
+        if( n<= 0) {
+            return "";
+        }
+        string ret;
+        while(n) {
+            ret = char((n-1) % 26 + 'A') + ret;
+            n = (n-1) / 26;
+        }
         return ret;
     }
 };
