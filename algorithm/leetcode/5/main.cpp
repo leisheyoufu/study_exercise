@@ -1,4 +1,5 @@
-/* Longest Palindromic Substring
+/*
+5. Longest Palindromic Substring
 Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
 
 Example:
@@ -13,69 +14,61 @@ Example:
 Input: "cbbd"
 
 Output: "bb"
-*/
 
+*/
 #include<iostream>
 #include<string>
+#include<vector>
+#include<set>
 #include<algorithm>
-#include<conio.h>
-
+#include<unordered_set>
 using namespace std;
 
-#define N 1001
-
-struct item {
-    int start;
-    int end;
-    int val;
-};
-struct item dp[N][N];
 class Solution
 {
 public:
     string longestPalindrome(string s)
     {
-        const int n=s.size();
-        memset(dp,0, sizeof(dp));
-        for(int i=0; i<n; i++) {
-            dp[i][i].val = 1;
-            dp[i][i].start = i;
-            dp[i][i].end = i;
+        int max_len = 1;
+        int index = 0;
+        int n = s.length();
+        if (n <= 1) {
+            return s;
         }
-        for(int i=1; i<n; i++) {
-            for(int j=0; j+i<n; j++) {
-                int temp, start, end;
-
-                if(s[j] == s[j+i] && (dp[j+1][j+i-1].val == 0 && i==1 || dp[j+1][j+i-1].val == i-1)) {
-                    start = j, end = j+i;
-                    temp = dp[j+1][j+i-1].val +2;
-                } else {
-                    if(dp[j][j+i-1].val >= dp[j+1][j+i].val) {
-                        temp = dp[j][j+i-1].val;
-                        start = dp[j][j+i-1].start;
-                        end = dp[j][j+i-1].end;
-                    } else {
-                        temp = dp[j+1][j+i].val;
-                        start = dp[j+1][j+i].start;
-                        end =  dp[j+1][j+i].end;
+        vector<vector<int>> dp(n+1, vector<int>(n, 0));
+        for(int j=0; j<n; j++) {
+            dp[0][j] = 0;
+        }
+        for(int j=0; j<n; j++) {
+            dp[1][j] = 1;
+        }
+        for(int i=2; i<=n; i++) {
+            for(int j=0; j<n; j++) {
+                int e = j+i -1;
+                if (e>=n) {
+                    break;
+                }
+                if(s[j] == s[e] && (i==2 || dp[i-2][j+1])) {
+                    dp[i][j] = dp[i-2][j+1] + 2;
+                    if(dp[i][j] > max_len) {
+                        max_len = dp[i][j];
+                        index = j;
                     }
                 }
-                dp[j][j+i].val = temp;
-                dp[j][j+i].start = start;
-                dp[j][j+i].end = end;
-
             }
         }
-        printf("%d\n", dp[0][n-1].val);
-        return s.substr(dp[0][n-1].start,dp[0][n-1].end - dp[0][n-1].start + 1);
+        return s.substr(index, max_len);
     }
 };
+
 int main()
 {
-    string input = "cbbd";
     Solution sln;
-    cout<< sln.longestPalindrome(input) << endl;
-
-    getch();
+    //cout << sln.longestPalindrome("babad") << endl;
+    //cout << sln.longestPalindrome("b") << endl;
+    // cout << sln.longestPalindrome("banana") << endl;
+    //cout << sln.longestPalindrome("bbbb") << endl;
+    //cout << sln.longestPalindrome("abcda") << endl;
+    system("pause");
     return 0;
 }
