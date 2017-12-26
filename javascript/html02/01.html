@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function myFunction() {
+    document.getElementById("demo").innerHTML="This is my first javascript function";
+}
+function alertFunction() {
+    window.alert(5 + 6);
+}
+function logFunction() {
+    a = 5;
+    b = 6;
+    c = a + b;
+    console.log(c);
+}
+</script>
+</head>
+<body>
+<h1>My web page</h1>
+<p id="demo">A paragraph</p>
+<p><script>
+document.write(Date());
+</script></p>
+<button type="button" onclick="myFunction()">try</button>
+<button type="button" onclick="alertFunction()">alert</button>
+<button type="button" onclick="logFunction()">log</button>
+</body>
+</html>
