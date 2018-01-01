@@ -23,63 +23,73 @@ The median is (2 + 3)/2 = 2.5
 #include<algorithm>
 #include<cmath>
 #include <map>
-#include<conio.h>
 
 using namespace std;
 
-double findKth(int A[], int n1, int B[], int n2, int k)
+class Solution
 {
-    if(n1>n2) {
-        return findKth(B,n2,A,n1,k);
-    }
-    if(n1 == 0 ) {
-        return B[k-1];
-    }
-    if(k==1) {
-        return min(A[0],B[0]);// as k==1, pa=0, it should be the return condition.
-    }
-    int pa = min(k/2,n1), pb = k-pa;
-    if(A[pa-1] < B[pb-1]) {
-        return findKth(A+pa, n1-pa,B,n2,k-pa);
-    } else if(A[pa-1] > B[pb-1]) {
-        return findKth(A,n1,B+pb,n2-pb, k-pb);
-    } else {
-        return A[pa-1];
+public:
+    int findKth(vector<int> &nums1, int start1, vector<int> &nums2, int start2, int k)
+    {
+        if(start1 == nums1.size()) {
+            return nums2[start2 + k];
+        }
+        if(start2 == nums2.size()) {
+            return nums1[start1+ k];
+        }
+        if (k == 0) {
+            return min(nums1[start1], nums2[start2]);
+        }
+        if( k == 1) {
+            if(nums1[start1] < nums2[start2]) {
+                if(start1 + 1 == nums1.size() || nums1[start1 + 1] > nums2[start2]) {
+                    return nums2[start2];
+                }
+                return nums1[start1 + 1];
+            } else {
+                if(start2 + 1 == nums2.size() || nums2[start2 + 1] > nums1[start1]) {
+                    return nums1[start1];
+                }
+                return nums2[start2 + 1];
+            }
+        }
+        int p = k/2;
+        int skip = p;
+        if(start1 + p >= nums1.size()) {
+            p = nums1.size() - start1 -1;
+            skip = p + 1;
+        }
+        if(start2 + p >= nums2.size()) {
+            p = nums2.size() - start2 -1;
+            skip = p + 1;
+        }
+        if(nums1[start1 + p] < nums2[start2 + p]) {
+            return findKth(nums1, start1 + skip, nums2, start2, k-skip);
+        }
+        return findKth(nums1, start1, nums2, start2 + skip, k-skip);
     }
 
-}
-
-double findMedianSortedArrays(vector<int> A, vector<int> B)
-{
-    int n1= A.size();
-    int n2 = B.size();
-    int total = n1+n2;
-    if (total&0x01) {
-        if(n1==0) {
-            return B[total/2];
-        } else if(n2==0) {
-            return A[total/2];
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2)
+    {
+        int count = nums1.size() + nums2.size();
+        if(count & 0x01) {
+            return (double)findKth(nums1, 0, nums2, 0, count/2);
         }
-        return findKth(&A[0],n1,&B[0],n2,total/2+1);
-    } else {
-        if(n1==0) {
-            return (B[total/2]+B[total/2-1])/2.0;
-        } else if(n2==0) {
-            return (A[total/2]+A[total/2-1])/2.0;
-        }
-        return (findKth(&A[0],n1,&B[0],n2,total/2) + findKth(&A[0],n1,&B[0],n2,total/2+1))/2.0;
+        //int a = findKth(nums1, 0, nums2, 0, count/2 -1);
+        //int b = findKth(nums1, 0, nums2, 0, count/2);
+        return ((double)findKth(nums1, 0, nums2, 0, count/2 -1) + (double)findKth(nums1, 0, nums2, 0, count/2)) /2;
     }
-}
+};
 
 int main()
 {
-    vector<int> A;
-    A.push_back(1);
-    A.push_back(3);
-
-    vector<int> B;
-    B.push_back(2);
-    printf("%f\n",findMedianSortedArrays(A,B));
-    getch();
+    Solution sln;
+    int a1[] = {1,3};
+    int a2[] = {8,9,10,12,14,16,17,118};
+    //int a2[] = {2,4};
+    vector<int> nums1(a1, a1+sizeof(a1)/sizeof(int));
+    vector<int> nums2(a2, a2+sizeof(a2)/sizeof(int));
+    cout << sln.findMedianSortedArrays(nums1, nums2) << endl;
+    system("pause");
     return 0;
 }
