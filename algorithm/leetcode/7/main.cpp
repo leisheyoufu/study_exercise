@@ -21,33 +21,33 @@ class Solution
 {
 public:
 
-    int reverse(int x) 
-	{
-		long long ret = 0;
-		/*
-		int sign = 1;
-		if(x < 0) {
-			sign = -1;
-			x = -x;
-		}
-		*/
-		while(x) {
-			ret *= 10;
-			ret += x % 10;
-			if(ret > INT_MAX || ret < INT_MIN) {
-				return 0;
-			}
-			x /= 10;
-		}
-		return (int)ret;
+    int reverse(int x)
+    {
+        long long ret = 0;
+        /*
+        int sign = 1;
+        if(x < 0) {
+        	sign = -1;
+        	x = -x;
+        }
+        */
+        while(x) {
+            ret *= 10;
+            ret += x % 10;
+            if(ret > INT_MAX || ret < INT_MIN) {
+                return 0;
+            }
+            x /= 10;
+        }
+        return (int)ret;
     }
 };
 int main()
 {
     Solution sln;
     cout<< sln.reverse(1534236469)<< endl;
-	cout<< sln.reverse(-98)<< endl;
-	cout<< sln.reverse(120)<< endl;
-	system("pause");
+    cout<< sln.reverse(-98)<< endl;
+    cout<< sln.reverse(120)<< endl;
+    system("pause");
     return 0;
 }
