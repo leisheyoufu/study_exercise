@@ -18,7 +18,6 @@ A solution set is:
 #include<vector>
 #include<set>
 #include<algorithm>
-#include<cstdlib>
 using namespace std;
 /*
 Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
@@ -37,6 +36,7 @@ A solution set is:
 class Solution
 {
 public:
+    /*
     vector<vector<int>> threeSum(vector<int>& nums)
     {
         sort(nums.begin(), nums.end());
@@ -77,11 +77,55 @@ public:
         }
         return ret;
     }
+    */
+    vector<vector<int>> threeSum(vector<int>& nums)
+    {
+        vector<vector<int>> ret;
+        if (nums.size()< 3) {
+            return ret;
+        }
+        int n = nums.size();
+        sort(nums.begin(), nums.end());
+        for(int i=0; i<n - 2; i++) {
+            int j = i + 1;
+            int k = n - 1;
+            if (j == k) {
+                continue;
+            }
+            if(nums[i] + nums[j] > 0) {
+                break;
+            }
+            if(nums[k] < 0) {
+                break;
+            }
+            if(i>0 && nums[i] == nums[i-1]) {
+                continue;
+            }
+            while(j < k) {
+                if(nums[i]+nums[j] + nums[k] == 0) {
+                    vector<int> r(3);
+                    r[0] = nums[i];
+                    r[1] = nums[j];
+                    r[2] = nums[k];
+                    ret.push_back(r);
+                    while(j<k && nums[j] == nums[j+1]) j++;
+                    while(j<k && nums[k] == nums[k-1]) k--;
+                    j++;
+                    k--;
+                } else if(nums[i] + nums[j] + nums[k] < 0) {
+                    j++;
+                } else if(nums[i] + nums[j] + nums[k] > 0) {
+                    k--;
+                }
+            }
+        }
+        return ret;
+    }
 };
 int main()
 {
     Solution sln;
-    int a[] = {0};
+    int a[] = {-1,0,1,2,-1,-4};
     vector<int> v(a, a + sizeof(a)/sizeof(int));
     sln.threeSum(v);
     system("pause");
