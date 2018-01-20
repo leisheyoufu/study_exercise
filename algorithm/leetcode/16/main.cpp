@@ -9,9 +9,7 @@ Given an array S of n integers, find three integers in S such that the sum is cl
 #include<iostream>
 #include<string>
 #include<vector>
-#include<set>
 #include<algorithm>
-#include<cstdlib>
 using namespace std;
 /*
 Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
@@ -24,7 +22,9 @@ Given an array S of n integers, find three integers in S such that the sum is cl
 class Solution
 {
 public:
-    int threeSumClosest(vector<int>& nums, int target)
+
+    /*
+        int threeSumClosest(vector<int>& nums, int target)
     {
         sort(nums.begin(), nums.end());
         int size = nums.size();
@@ -53,6 +53,42 @@ public:
                     k--;
                 } else if(value <target) {
                     j++;
+                }
+            }
+        }
+        return ret;
+    }
+    */
+    int threeSumClosest(vector<int>& nums, int target)
+    {
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        int diff = INT_MAX;
+        int ret = 0;
+        for(int i=0; i<n-2; i++) {
+            if(i>0 && nums[i] == nums[i-1]) {
+                continue;
+            }
+            int j = i+1, k=n-1;
+            if (j == k) {
+                continue;
+            }
+            if(nums[i] + nums[j] - target > diff) {
+                break;
+            }
+            while( j < k) {
+                int value = nums[i] + nums[j] + nums[k];
+                if (value == target) {
+                    return value;
+                }
+                if(abs(value - target) < diff) {
+                    diff = abs(value - target);
+                    ret = value;
+                }
+                if ( value < target) {
+                    j++;
+                } else if(value > target) {
+                    k--;
                 }
             }
         }
