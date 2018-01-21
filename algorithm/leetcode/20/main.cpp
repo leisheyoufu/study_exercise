@@ -21,28 +21,32 @@ public:
 
     bool isValid(string s)
     {
-        unordered_map<char, pair<int,int>> char_map;
-        char_map['{'] = pair<int,int>(0,1);
-        char_map['}'] = pair<int,int>(0,-1);
-        char_map['['] = pair<int,int>(1,1);
-        char_map[']'] = pair<int,int>(1,-1);
-        char_map['('] = pair<int,int>(2,1);
-        char_map[')'] = pair<int,int>(2,-1);
         stack<char> stk;
-
         for(int i=0; i<s.length(); i++) {
-            int index = char_map[s[i]].first;
-            int change = char_map[s[i]].second;
-            if(change >0) {
-                stk.push(index);
-            } else {
-                if(stk.empty()) {
-                    return false;
+            switch(s[i]) {
+            case '(':
+            case '[':
+            case '{':
+                stk.push(s[i]);
+                break;
+            case ')':
+                if(!stk.empty() && stk.top() == '(') {
+                    stk.pop();
+                    break;
                 }
-                if(stk.top() != index) {
-                    return false;
+                return false;
+            case ']':
+                if(!stk.empty() && stk.top() == '[') {
+                    stk.pop();
+                    break;
                 }
-                stk.pop();
+                return false;
+            case '}':
+                if(!stk.empty() && stk.top() == '{') {
+                    stk.pop();
+                    break;
+                }
+                return false;
             }
         }
         if(!stk.empty()) {
@@ -54,7 +58,8 @@ public:
 int main()
 {
     Solution sln;
-    cout << sln.isValid("(){[[]]]}");
+    cout << sln.isValid("(){[[]]]}") << endl;//false
+    cout << sln.isValid("]") << endl; // false
     system("pause");
     return 0;
 }
