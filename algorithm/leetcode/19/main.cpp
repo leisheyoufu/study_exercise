@@ -29,6 +29,7 @@ struct ListNode {
 class Solution
 {
 public:
+    /*
     ListNode* removeNthFromEnd(ListNode* head, int n)
     {
         if (n==0) {
@@ -53,6 +54,35 @@ public:
         }
         ListNode *temp = slow->next->next;
         slow->next = temp;
+        return head;
+    }
+    */
+    ListNode* removeNthFromEnd(ListNode* head, int n)
+    {
+        if (n <=0) {
+            return head;
+        }
+        ListNode *slow = head, *fast = head;
+        ListNode dummy(0);
+        dummy.next = head;
+        ListNode *prev = &dummy;
+        int k = 0;
+        while(fast && k<n) {
+            fast = fast->next;
+            k++;
+        }
+        if (k<n) {
+            return head->next;
+        }
+        while(fast) {
+            fast = fast->next;
+            slow = slow->next;
+            prev = prev->next;
+        }
+        if (prev->next == head) {
+            return head->next;
+        }
+        prev->next = slow->next;
         return head;
     }
 };
