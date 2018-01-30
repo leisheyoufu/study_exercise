@@ -27,13 +27,10 @@ class Solution
 public:
     ListNode* swapPairs(ListNode* head)
     {
-        if (head == NULL) {
-            return NULL;
+        if(!head || !head->next) {
+            return head;
         }
         ListNode *temp = head->next;
-        if (temp == NULL) {
-            return head->next;
-        }
         head->next = swapPairs(temp->next);
         temp->next = head;
         return temp;
