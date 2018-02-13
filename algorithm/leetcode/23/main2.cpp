@@ -1,15 +1,13 @@
-/*
-Merge Two Sorted Lists
-
-Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
+/*  Merge k Sorted Lists
+Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
 */
 #include<iostream>
 #include<string>
 #include<vector>
-#include<unordered_map>
 #include<algorithm>
-#include<cstdlib>
+
 using namespace std;
+
 
 struct ListNode {
     int val;
@@ -55,4 +53,34 @@ public:
         }
         return head;
     }
+
+    ListNode* mergeKLists(vector<ListNode*>& lists)
+    {
+        if(lists.empty()) {
+            return NULL;
+        }
+        while(lists.size() > 1) {
+            vector<ListNode*> temp;
+            int n = lists.size();
+            for(int i=0; i<n/2; i++) {
+                temp.push_back(mergeTwoLists(lists[i*2], lists[i*2+1]));
+            }
+            if(n & 0x1 == 1) {
+                temp.push_back(lists[n-1]);
+            }
+            lists = temp;
+        }
+        return lists[0];
+    }
 };
+int main()
+{
+    Solution sln;
+    vector<ListNode*> lists;
+    ListNode node(1);
+    lists.push_back(NULL);
+    lists.push_back(&node);
+    sln.mergeKLists(lists);
+    system("pause");
+    return 0;
+}
