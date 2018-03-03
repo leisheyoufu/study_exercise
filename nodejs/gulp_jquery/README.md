@@ -20,9 +20,4 @@ Run the following steps
 npm install
 gulp run
 open -a "Google Chrome" build/html/login.html # this command would open the html in Chrome
-
-# Run webpack-dev-server
-npm run devServer
-# open Chrome, type http://127.0.0.1:9090/html/login.html
-# open Chrome, http://127.0.0.1:9000/webpack-dev-server to see the map file
 ```
