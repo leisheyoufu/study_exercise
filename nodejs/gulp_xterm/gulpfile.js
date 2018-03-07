@@ -1,7 +1,7 @@
 var gp = require("gulp");
 var webpack = require('webpack-stream');
 
-gp.task("webpack",function(){
+gp.task("webpack", function() {
     return gp.src([
             'src/js/index.js',
             'src/sass/index.scss'
@@ -10,10 +10,10 @@ gp.task("webpack",function(){
         .pipe(gp.dest('dist/'))
 })
 
-gp.task("run",["webpack"],function(){
+gp.task("run", ["webpack"], function() {
     gp.src(['./src/tpl/*.html'])
         .pipe(gp.dest('dist'))
-    gp.watch('src/*.js', function(){
+    gp.watch('src/*.js', function() {
         gulp.run('run'); //多个任务就直接往后加即可
     });
 })

@@ -11,7 +11,7 @@ var rename = require('gulp-rename');
 // 检查脚本
 gulp.task('lint', function() {
     gulp.src('src/js/*.js') //该任务针对的文件
-        .pipe(jshint())  //该任务调用的模块
+        .pipe(jshint()) //该任务调用的模块
         .pipe(jshint.reporter('default'));
 });
 
@@ -33,15 +33,15 @@ gulp.task('scripts', function() {
 });
 
 // 默认任务
-gulp.task('default', function(){
+gulp.task('default', function() {
     gulp.run('lint', 'less', 'scripts');
 
     // 监听js文件变化
-    gulp.watch('src/js/*.js', function(){
+    gulp.watch('src/js/*.js', function() {
         gulp.run('lint', 'less', 'scripts');
     });
     // 监听less文件变化
-    gulp.watch('src/less/*.less', function(){
+    gulp.watch('src/less/*.less', function() {
         gulp.run('lint', 'less', 'scripts');
     });
 });

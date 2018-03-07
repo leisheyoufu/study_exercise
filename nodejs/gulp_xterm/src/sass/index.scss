@@ -1,16 +1,17 @@
 @import "~xterm/src/xterm.css";
 
 html, body {
-    height: 100%;
-    min-height: 100%;
+    height: 100 % ;
+    min - height: 100 % ;
     margin: 0;
     overflow: hidden;
 }
 
-#term-box {
-      overflow: hidden;
-      width: 500px;
-      height: 500px; /* <- fixed height */
-      font-size: 16px;
-      line-height: 17px; /* <- initial line-height */
+#
+term - box {
+    overflow: hidden;
+    width: 500 px;
+    height: 500 px; /* <- fixed height */
+    font - size: 16 px;
+    line - height: 17 px; /* <- initial line-height */
 }

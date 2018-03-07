@@ -1,4 +1,4 @@
 //src/reg.js
-$("#cmdReg").click(function(){
+$("#cmdReg").click(function() {
     alert('注册');
 });

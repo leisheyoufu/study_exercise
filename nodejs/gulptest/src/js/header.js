@@ -1,3 +1,3 @@
-function A() { 
-    console.log("I am A"); 
+function A() {
+    console.log("I am A");
 }
