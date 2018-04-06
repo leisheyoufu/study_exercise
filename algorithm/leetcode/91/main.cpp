@@ -1,16 +1,18 @@
 /*
-92. Reverse Linked List II
+91. Decode Ways
 
-Reverse a linked list from position m to n. Do it in-place and in one-pass.
+A message containing letters from A-Z is being encoded to numbers using the following mapping:
 
-For example:
-Given 1->2->3->4->5->NULL, m = 2 and n = 4,
+'A' -> 1
+'B' -> 2
+...
+'Z' -> 26
+Given an encoded message containing digits, determine the total number of ways to decode it.
 
-return 1->4->3->2->5->NULL.
+For example,
+Given encoded message "12", it could be decoded as "AB" (1 2) or "L" (12).
 
-Note:
-Given m, n satisfy the following condition:
-1 ? m ? n ? length of list.
+The number of ways decoding "12" is 2.
 */
 #include<iostream>
 #include<string>
@@ -20,12 +22,6 @@ Given m, n satisfy the following condition:
 #include<algorithm>
 #include<unordered_map>
 using namespace std;
-
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
-};
 
 class Solution
 {
