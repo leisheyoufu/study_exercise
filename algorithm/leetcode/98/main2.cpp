@@ -38,7 +38,7 @@ struct TreeNode {
 class Solution
 {
 public:
-    bool validateHelper(TreeNode *root, int left_val, int right_val)
+    bool validateHelper(TreeNode *root, long left_val, long right_val)
     {
         if(!root) {
             return true;
