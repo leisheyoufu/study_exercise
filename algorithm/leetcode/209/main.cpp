@@ -25,16 +25,18 @@ public:
         }
         int minL = INT_MAX;
         int left = 0;
-        int sum = nums[0];
-        for(int i=1; i<n; i++) {
+        int sum = 0;
+        for(int i=0; i<n; i++) {
             sum += nums[i];
-            while(sum > s) {
+            while(sum >= s) {
                 minL = min(minL, i-left + 1);
                 sum -= nums[left++];
             }
         }
-
-
+        if(minL == INT_MAX) {
+            return 0;
+        }
+        return minL;
     }
 };
 
