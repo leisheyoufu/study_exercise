@@ -24,7 +24,8 @@ public:
     {
         int left = 0, right = nums.size() - 1;
         while(left < right) {
-            int p = partition(nums, k, nums[right], left-1, right);
+            int pivot = nums[right];
+            int p = partition(nums, pivot, left-1, right);
             swap(nums[right], nums[p]);
             if(p < k-1) {
                 left = p + 1;
@@ -37,7 +38,7 @@ public:
         return nums[k-1];
 
     }
-    int partition(vector<int> &nums, int k, int pivot, int left, int right)
+    int partition(vector<int> &nums, int pivot, int left, int right)
     {
         do {
             while(nums[++left] > pivot);
