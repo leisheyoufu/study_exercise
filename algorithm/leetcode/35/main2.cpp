@@ -38,14 +38,7 @@ public:
                 right = mid - 1;
             }
         }
-        if(right < 0) {
-            return 0;
-        } else if(nums[right] < target) {
-            return right + 1;
-        } else if(right == 0) {
-            return 0;
-        }
-        return right - 1;
+        return left;
     }
 };
 int main()
