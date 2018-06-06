@@ -47,7 +47,7 @@ public:
 int main()
 {
     Solution sln;
-    cout << sln.computeArea(-1500000001, 0 , -1500000000, 1, 1500000000, 0, 1500000001, 1) << endl; // 2
+    cout << sln.computeArea(-1500000001, 0, -1500000000, 1, 1500000000, 0, 1500000001, 1) << endl;  // 2
     system("pause");
     return 0;
 }

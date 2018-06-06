@@ -71,7 +71,7 @@ public:
             return NULL;
         }
         TreeNode *ret = NULL;
-        traverse(root, p , q, &ret);
+        traverse(root, p, q, &ret);
         return ret;
     }
 
