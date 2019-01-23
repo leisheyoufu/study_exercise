@@ -1,0 +1,254 @@
+version: "3.7"
+services:
+  namenode:
+    image: uhopper/hadoop-namenode
+    hostname: namenode
+    container_name: namenode
+    domainname: hadoop
+    ports:
+      - "50070:50070"
+  #net: hadoop
+    volumes:
+      - /hadoop/dfs/name:/hadoop/dfs/name
+    environment:
+      - GANGLIA_HOST=<GMOND-RECEIVER-HOST>
+      - CLUSTER_NAME=hadoop-spark
+    networks:
+      hadoop-network:
+        ipv4_address: 10.6.0.2
+
+  datanode1:
+    image: uhopper/hadoop-datanode
+    hostname: datanode1
+    container_name: datanode1
+    domainname: hadoop
+    depends_on:
+      - namenode
+    links:
+      - datanode2
+      - datanode3
+      - namenode
+  #net: hadoop
+    volumes:
+      - /hadoop/dfs/data1:/hadoop/dfs/data
+    environment:
+      - GANGLIA_HOST=<GMOND-RECEIVER-HOST>
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+    networks:
+      hadoop-network:
+        ipv4_address: 10.6.0.3
+  
+  datanode2:
+    image: uhopper/hadoop-datanode
+    hostname: datanode2
+    container_name: datanode2
+    domainname: hadoop
+    depends_on:
+      - namenode
+    links:
+      - namenode
+  #net: hadoop
+    volumes:
+      - /hadoop/dfs/data2:/hadoop/dfs/data
+    environment:
+      - GANGLIA_HOST=<GMOND-RECEIVER-HOST>
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+    networks:
+      hadoop-network:
+        ipv4_address: 10.6.0.4
+
+  datanode3:
+    image: uhopper/hadoop-datanode
+    hostname: datanode3
+    container_name: datanode3
+    domainname: hadoop
+    depends_on:
+      - namenode
+    links:
+      - namenode
+  #net: hadoop
+    volumes:
+      - /hadoop/dfs/data3:/hadoop/dfs/data
+    environment:
+      - GANGLIA_HOST=<GMOND-RECEIVER-HOST>
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+    networks:
+      hadoop-network:
+        ipv4_address: 10.6.0.5
+
+  resourcemanager:
+    image: uhopper/hadoop-resourcemanager
+    hostname: resourcemanager
+    container_name: resourcemanager
+    domainname: hadoop
+    depends_on:
+      - namenode
+    extra_hosts:
+      - "namenode.hadoop:10.6.0.2"
+      - "datanode1.hadoop:10.6.0.3" 
+      - "datanode2.hadoop:10.6.0.4"
+      - "datanode3.hadoop:10.6.0.5"
+    links:
+      - namenode
+      - datanode1
+      - datanode2
+      - datanode3
+    #net: hadoop
+    environment:
+      - GANGLIA_HOST=<GMOND-RECEIVER-HOST>
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - YARN_CONF_yarn_log___aggregation___enable=true
+    networks:
+      hadoop-network:
+        ipv4_address: 10.6.0.10
+
+  nodemanager1:
+    image: uhopper/hadoop-nodemanager
+    hostname: nodemanager1
+    container_name: nodemanager1
+    domainname: hadoop
+    depends_on:
+      - namenode
+      - resourcemanager
+    extra_hosts:
+      - "namenode.hadoop:10.6.0.2"
+      - "datanode1.hadoop:10.6.0.3" 
+      - "datanode2.hadoop:10.6.0.4"
+      - "datanode3.hadoop:10.6.0.5"
+    links:
+      - namenode
+      - datanode1
+      - datanode2
+      - datanode3
+  #net: hadoop
+    environment:
+      - GANGLIA_HOST=<GMOND-RECEIVER-HOST>
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
+      - YARN_CONF_yarn_log___aggregation___enable=true
+      - YARN_CONF_yarn_nodemanager_remote___app___log___dir=/app-logs
+    networks:
+      hadoop-network:
+        ipv4_address: 10.6.0.11
+
+  hadoop-spark-master:
+    image: uhopper/hadoop-spark
+    hostname: hadoop-spark-master
+    container_name: hadoop-spark-master
+    domainname: hadoop
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    depends_on:
+      - namenode
+      - resourcemanager
+    extra_hosts:
+      - "namenode.hadoop:10.6.0.2"
+      - "datanode1.hadoop:10.6.0.3" 
+      - "datanode2.hadoop:10.6.0.4"
+      - "datanode3.hadoop:10.6.0.5"
+    links:
+      - namenode
+      - datanode1
+      - datanode2
+      - datanode3
+  #net: hadoop
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
+    command: /spark-master.sh
+    networks:
+      hadoop-network:
+        ipv4_address: 10.6.0.20
+
+  hadoop-spark-slave1:
+    image: uhopper/hadoop-spark
+    hostname: hadoop-spark-slave1
+    container_name: hadoop-spark-slave1
+    domainname: hadoop
+    depends_on:
+      - namenode
+      - resourcemanager
+      - hadoop-spark-master
+    extra_hosts:
+      - "namenode.hadoop:10.6.0.2"
+      - "datanode1.hadoop:10.6.0.3" 
+      - "datanode2.hadoop:10.6.0.4"
+      - "datanode3.hadoop:10.6.0.5"
+    links:
+      - namenode
+      - datanode1
+      - datanode2
+      - datanode3
+  #net: hadoop
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
+    command: /spark-slave.sh spark://hadoop-spark-master:7077
+    networks:
+      hadoop-network:
+        ipv4_address: 10.6.0.21
+
+  hadoop-spark-slave2:
+    image: uhopper/hadoop-spark
+    hostname: hadoop-spark-slave2
+    container_name: hadoop-spark-slave2
+    domainname: hadoop
+    depends_on:
+      - namenode
+      - resourcemanager
+      - hadoop-spark-master
+    extra_hosts:
+      - "namenode.hadoop:10.6.0.2"
+      - "datanode1.hadoop:10.6.0.3" 
+      - "datanode2.hadoop:10.6.0.4"
+      - "datanode3.hadoop:10.6.0.5"
+    links:
+      - namenode
+      - datanode1
+      - datanode2
+      - datanode3
+  #net: hadoop
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
+    command: /spark-slave.sh spark://hadoop-spark-master:7077
+    networks:
+      hadoop-network:
+        ipv4_address: 10.6.0.22
+
+  hadoop-spark-slave3:
+    image: uhopper/hadoop-spark
+    hostname: hadoop-spark-slave3
+    container_name: hadoop-spark-slave3
+    domainname: hadoop
+    depends_on:
+      - namenode
+      - resourcemanager
+      - hadoop-spark-master
+    extra_hosts:
+      - "namenode.hadoop:10.6.0.2"
+      - "datanode1.hadoop:10.6.0.3" 
+      - "datanode2.hadoop:10.6.0.4"
+      - "datanode3.hadoop:10.6.0.5"
+    links:
+      - namenode
+      - datanode1
+      - datanode2
+      - datanode3
+  #net: hadoop
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
+    command: /spark-slave.sh spark://hadoop-spark-master:7077
+    networks:
+      hadoop-network:
+        ipv4_address: 10.6.0.23
+
+networks:
+  hadoop-network:
+    driver: bridge
+    ipam:
+     driver: default
+     config:
+       - subnet: 10.6.0.0/16

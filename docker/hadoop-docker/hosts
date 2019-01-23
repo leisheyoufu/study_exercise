@@ -1,0 +1,3 @@
+10.6.0.3        datanode1.hadoop datanode1
+10.6.0.4        datanode2.hadoop datanode2
+10.6.0.5        datanode3.hadoop datanode3
