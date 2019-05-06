@@ -1,16 +1,19 @@
-import org.apache.spark.sql.{DataFrame, Row, SparkSession}
+import org.apache.spark.sql.{Column, DataFrame, Row, SparkSession}
 import org.apache.spark.{SparkConf, SparkContext}
 
-object DSL {
+object DataFrameDSLExample {
   private val conf: SparkConf = new SparkConf().setAppName("TestTransformation").setMaster("local")
   private val sc = new SparkContext(conf)
   private val sparkSession = SparkSession.builder.appName("ReadTimestamp").getOrCreate()
 
   def main(args: Array[String]) {
-    createDataFrameWithSchema()
-    timeFormatDf()
-    timeDiffDf()
-    selectAs()
+    //    createDataFrameWithSchema()
+        timeFormatDf()
+//        timeDiffDf()
+    //    selectAs()
+    //unionAll()
+    //selectSpecificColumn()
+    sparkSession.stop()
   }
 
   def createDataFrameWithSchema(): Unit = {
@@ -72,6 +75,14 @@ object DSL {
       date_format(col("today"), "yyyy-MM-dd").as("TodayString"),
       to_timestamp(col("now"), "yyyy-MM-dd'T'HH:mm:ss.SSSX'Z'").as("Timestamp"))
     df2.show(false)
+    import sparkSession.implicits._
+    val df3 = Seq(
+      ("A", "2019-04-01T14:00:00.000+00Z"),
+      ("B", "2019-04-01T15:00:00.000+00Z"))
+     .toDF("Id", "Time")
+    val df4 = df3.select(col("Id"), to_timestamp(col("Time"), "yyyy-MM-dd'T'HH:mm:ss.SSSX'Z'").as("Timestamp"))
+    df4.show()
+    df4.select(date_format(col("Timestamp"), "yyyy-MM-dd'T'HH:mm:ss.SSSX'Z'")).show(1,false)
   }
 
   def timeDiffDf() = {
@@ -96,5 +107,49 @@ object DSL {
     df1.select(lit(" ").as("col1"),
       col("b").as("b1"),
       (col("c") + col("d")).as("e")).show()
+  }
+
+  def unionAll() = {
+    import sparkSession.implicits._
+    import org.apache.spark.sql.types._
+    val schema = StructType(List(
+      StructField("alphabet", ByteType, true),
+      StructField("number", IntegerType, true),
+      StructField("word", StringType, true)))
+    var df = sparkSession.createDataFrame(sc.emptyRDD[Row], schema)
+
+    for (i <- 0 to 10) {
+      val dfi = Seq(
+        ('a' + i, i, "Hello %c".format('a'+i))
+      ).toDF("alphabet", "number", "word")
+      df = df.union(dfi)
+    }
+    println(df.columns.length)
+    // print first column name
+    println(df.columns(0))
+    df.show()
+  }
+
+  def selectSpecificColumn(): Unit ={
+    val dataDF = sparkSession.createDataFrame(Seq(
+      (1, 1, 2, 3, 8, 4, 5),
+      (2, 4, 3, 8, 7, 9, 8),
+      (3, 6, 1, 9, 2, 3, 6),
+      (4, 10, 8, 6, 9, 4, 5),
+      (5, 9, 2, 7, 10, 7, 3),
+      (6, 1, 1, 4, 2, 8, 4)
+    )).toDF("colToExclude", "col1", "col2", "col3", "col4", "col5", "col6")
+    val colsToSelect = dataDF.columns.filter(_ != "colToExclude")
+
+    // Take a look at the array as comma separate values.
+    colsToSelect.mkString(",")
+
+    // This method allows you to perform a simple selection
+    dataDF.select(colsToSelect.head, colsToSelect.tail: _*).show()
+
+    // This method creates a new dataframe using your column list
+    // Filter dataDF using the colsToSelect array, and map
+    // the results into columns.
+    dataDF.select(dataDF.columns.filter(colName => colsToSelect.contains(colName)).map(colName => new Column(colName)): _*).show()
   }
 }
