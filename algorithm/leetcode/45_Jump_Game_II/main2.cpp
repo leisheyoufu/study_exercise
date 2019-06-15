@@ -38,21 +38,49 @@ public:
         return f[n-1];
     }
     */
+    /*
+     int jump(vector<int> &nums)
+     {
+         int n = nums.size();
+         if(n==0 || n== 1) {
+             return 0;
+         }
+         int curr = 0, ret = 1, cap = nums[0];
+         for(int i=1; i<n; i++) {
+             if(cap < i) {
+                 ret ++;
+                 cap = curr;
+             }
+             curr = max(curr, i + nums[i]);
+         }
+         return ret;
+     }
+     */
     int jump(vector<int> &nums)
     {
         int n = nums.size();
-        if(n==0 || n== 1) {
+        if(n<=1) {
             return 0;
         }
-        int curr = 0, ret = 1, cap = nums[0];
+        int currCap = nums[0];
+        int nextCap = 0;
+        int steps = 1;
         for(int i=1; i<n; i++) {
-            if(cap < i) {
-                ret ++;
-                cap = curr;
+            if(currCap >= n-1) {
+                return steps;
             }
-            curr = max(curr, i + nums[i]);
+            if(currCap < i) {
+                currCap = nextCap;
+                if(currCap < i) {
+                    return 0;
+                }
+                nextCap = i + nums[i];
+                steps ++;
+            } else {
+                nextCap = max(nextCap, i+nums[i]);
+            }
         }
-        return ret;
+        return steps;
     }
 };
 
