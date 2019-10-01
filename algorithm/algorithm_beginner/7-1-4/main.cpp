@@ -14,7 +14,7 @@ int isright(int a)
         int cont=strlen(str);
         for(int i=0; i<cont/2; i++) {
             if(str[i]!=str[cont-i-1]) {
-				f--;
+                f--;
                 break;
             }
         }

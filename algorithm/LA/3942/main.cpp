@@ -17,20 +17,24 @@ struct Trie {
     int ch[MAXNODE][SIGMASIZE];
     int val[MAXNODE];
     int sz;
-    Trie():sz(1) {
+    Trie():sz(1)
+    {
         memset(ch[0],0,sizeof(ch[0]));
     }
-    void reset() {
+    void reset()
+    {
         memset(ch,0,sizeof(ch));
         memset(val,0,sizeof(val));
         sz =1;
     }
 
-    int idx(char c) {
+    int idx(char c)
+    {
         return c-'a';
     }
 
-    void insert(char *s,int v) {
+    void insert(char *s,int v)
+    {
         int u=0,i;
         for( i =0; i<strlen(s); i++) {
             int c = idx(s[i]);
@@ -44,7 +48,8 @@ struct Trie {
         val[u] =v;
     }
 
-    int find(char *s, int a) {
+    int find(char *s, int a)
+    {
         int i,u=0,ret = 0;
         for(i=a; s[i]; i++) { // 从字符串的后缀开始查找,trie 字典中应包含这个后缀
             int c = idx(s[i]);

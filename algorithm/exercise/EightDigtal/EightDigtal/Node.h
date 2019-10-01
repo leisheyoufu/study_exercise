@@ -5,9 +5,9 @@
 class Node
 {
 public:
-	Node(void);
-	Node *next;
-	EightDigital *val;
-	Node(EightDigital *val);
+    Node(void);
+    Node *next;
+    EightDigital *val;
+    Node(EightDigital *val);
 };
 

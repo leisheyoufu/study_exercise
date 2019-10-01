@@ -42,42 +42,42 @@ int main()
     int n,q,i;
     int s,e;
     //freopen("test.txt","r",stdin);
-	
-	while( scanf("%d %d",&n,&q) == 2){
-		scanf("%d",&seq[1]) ;	
-		count = 1;
-		l[count] =1;
-		m[1]=1;
-		pre =seq[1];
-		for(i=2; i<=n; i++) {
-			scanf("%d",&seq[i]);
-			if( seq[i] != pre) {
-				r[count] = i-1;
-				count ++;
-				l[count] = i;
-				num[count] =0;
-			}
-			m[i] = count;
-			num[count]++;
-			pre = seq[i];
-		}
-		r[count] =i-1;
-		RMQ();
-		for(i=1; i<=q; i++) {
-			scanf("%d %d",&s,&e);
-			if(m[s] == m[e]) {
-				printf("%d\n",e-s+1);
-			} else {
-				int answer= 0;
-				if(m[s]+1<=m[e]-1) {
-					int k = (int)((log(m[e]-m[s]-1)/log(2.0)));
-					answer=max(maxnum[m[s]+1][k],maxnum[m[e]-(1<<k)][k]); //中间段
-				}
-				answer = MAX(r[m[s]]-s+1,answer,e-l[m[e]]+1);
-				printf("%d\n",answer);
-			}
-		}   
-	}	
-	
+
+    while( scanf("%d %d",&n,&q) == 2) {
+        scanf("%d",&seq[1]) ;
+        count = 1;
+        l[count] =1;
+        m[1]=1;
+        pre =seq[1];
+        for(i=2; i<=n; i++) {
+            scanf("%d",&seq[i]);
+            if( seq[i] != pre) {
+                r[count] = i-1;
+                count ++;
+                l[count] = i;
+                num[count] =0;
+            }
+            m[i] = count;
+            num[count]++;
+            pre = seq[i];
+        }
+        r[count] =i-1;
+        RMQ();
+        for(i=1; i<=q; i++) {
+            scanf("%d %d",&s,&e);
+            if(m[s] == m[e]) {
+                printf("%d\n",e-s+1);
+            } else {
+                int answer= 0;
+                if(m[s]+1<=m[e]-1) {
+                    int k = (int)((log(m[e]-m[s]-1)/log(2.0)));
+                    answer=max(maxnum[m[s]+1][k],maxnum[m[e]-(1<<k)][k]); //中间段
+                }
+                answer = MAX(r[m[s]]-s+1,answer,e-l[m[e]]+1);
+                printf("%d\n",answer);
+            }
+        }
+    }
+
     return 0;
 }

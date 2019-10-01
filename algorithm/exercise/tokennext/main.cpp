@@ -11,13 +11,15 @@ struct Source {
     int size;
     int pos;
 
-    Source(char *str) {
+    Source(char *str)
+    {
         this->content = str;
         this->size = strlen(str);
         pos = 0;
     }
 
-    bool in(char c) {
+    bool in(char c)
+    {
         int i=0;
         int len = sizeof(SEP);
         while(i<len) {
@@ -28,7 +30,8 @@ struct Source {
         return false;
     }
 
-    char *next1() {
+    char *next1()
+    {
         int i=0;
         while(i==0 && pos!=size) {
             while( !in(content[pos+i])) {
@@ -48,7 +51,8 @@ struct Source {
         return temp;
     }
 
-    char *next2() {
+    char *next2()
+    {
         int i=0;
         while(pos!=size) {
             if (!in(content[pos])) {

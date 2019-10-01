@@ -3,10 +3,10 @@
 
 int main()
 {
-	char *t = "ABRACADABRA";
-	char *p = "CAD";
-	int f[80];
+    char *t = "ABRACADABRA";
+    char *p = "CAD";
+    int f[80];
 
-	int index = find(t,p,f);
-	printf("Found at index %d",index);
+    int index = find(t,p,f);
+    printf("Found at index %d",index);
 }

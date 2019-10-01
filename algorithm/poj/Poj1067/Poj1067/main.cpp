@@ -15,40 +15,32 @@ int printqueue[1000];
 
 int main()
 {
-	//printf("%d",Min(190,100));
-	int a,b,k,min;
-	int j=0;
-	while(scanf("%d%d",&a,&b) !=EOF)
-	{
-		if(a>b)
-		{
-			k=a-b;
-			min = b;
-		}
-		else
-		{
-			k=b-a;
-			min = a;
-		}
-		 int data = floor(k*(1.0+sqrt(5.0))/2);
-		 if(data == min)
-		 {
-			printqueue[j] = 0;
-		 }
-		 else
-		 {
-			printqueue[j] = 1;
-		 }
-		 j++;
-	}
+    //printf("%d",Min(190,100));
+    int a,b,k,min;
+    int j=0;
+    while(scanf("%d%d",&a,&b) !=EOF) {
+        if(a>b) {
+            k=a-b;
+            min = b;
+        } else {
+            k=b-a;
+            min = a;
+        }
+        int data = floor(k*(1.0+sqrt(5.0))/2);
+        if(data == min) {
+            printqueue[j] = 0;
+        } else {
+            printqueue[j] = 1;
+        }
+        j++;
+    }
 
-	for(int i=0;i<j;i++)
-	{
-		printf("%d\n",printqueue[i]);
-	}
+    for(int i=0; i<j; i++) {
+        printf("%d\n",printqueue[i]);
+    }
 
 
 
-	
-	return 0;
+
+    return 0;
 }

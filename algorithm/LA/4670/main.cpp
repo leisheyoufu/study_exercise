@@ -26,18 +26,21 @@ struct AhoCorsickAutomata {
     int val[MAXNODE];
     int last[MAXNODE];
 
-    void init () {
+    void init ()
+    {
         sz = 1;
         memset(ch,0,sizeof(ch));
         memset(cnt,0,sizeof(cnt));
         ms.clear();
     }
 
-    int idx(char c) {
+    int idx(char c)
+    {
         return c-'a';
     }
 
-    void insert(char *s, int v) {
+    void insert(char *s, int v)
+    {
         int u=0,n=strlen(s);
         for(int i=0; i<n; i++) {
             int c=idx(s[i]);
@@ -52,14 +55,16 @@ struct AhoCorsickAutomata {
         ms[string(s)] =v;
     }
 
-    void print(int j) {
+    void print(int j)
+    {
         if(j) {
             cnt[val[j]]++;
             print(last[j]);
         }
     }
 
-    void find(char *T) {
+    void find(char *T)
+    {
         int n = strlen(T);
         int j=0;
         for(int i=0; i<n; i++) {
@@ -76,7 +81,8 @@ struct AhoCorsickAutomata {
         }
     }
 
-    void getFail() {
+    void getFail()
+    {
         queue<int> q;
         f[0] =0;
         for(int c=0; c<SIGMASIZE; c++) {

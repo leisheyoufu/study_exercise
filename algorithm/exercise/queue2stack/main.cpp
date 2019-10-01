@@ -9,7 +9,8 @@ struct Stack {
     queue<int> q1;
     queue<int> q2;
 
-    void push(int val) {
+    void push(int val)
+    {
         queue<int> *temp;
         if(q1.size() == 0 && !q2.empty()) {
             temp = &q2;
@@ -21,7 +22,8 @@ struct Stack {
         temp->push(val);
     }
 
-    int pop() {
+    int pop()
+    {
         queue<int> *temp, *empty;
         if(q1.size() == 0 && q2.size() !=0) {
             empty = &q1;

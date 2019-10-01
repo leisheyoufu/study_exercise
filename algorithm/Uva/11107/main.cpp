@@ -93,7 +93,7 @@ bool scan( int p,bool f)
 int main()
 {
     bool ss=false;
-   // freopen("test.txt","r",stdin);
+    // freopen("test.txt","r",stdin);
     while( scanf("%d",&n)==1 &&n) {
         if(ss)
             printf("\n");

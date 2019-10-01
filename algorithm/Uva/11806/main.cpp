@@ -13,7 +13,7 @@ int C[MAXK+1][MAXK+1];   // 存放组合数据
 // 组合地推公式
 void init(int k)
 {
-	//memset(C,0,sizeof(C));
+    //memset(C,0,sizeof(C));
     for(int i=0; i<=k; i++) {
         C[i][0] = 1;
         C[i][i]=1;

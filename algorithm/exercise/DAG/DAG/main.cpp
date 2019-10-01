@@ -5,22 +5,19 @@
 
 using namespace std;
 
-int money[]={1,2,5,7,10};
+int money[]= {1,2,5,7,10};
 int d[10][10];
 
 int dp(int n)
 {
-	for(int i=0;i<n;i++)
-	{
-		for(int j=0;j<=i;j++)
-		{
-			d[i][j]
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<=i; j++) {
+            d[i][j]
 
 
-int main()
-{
+            int main() {
 
 
-	getch();
-	return 0;
-}
+                getch();
+                return 0;
+            }

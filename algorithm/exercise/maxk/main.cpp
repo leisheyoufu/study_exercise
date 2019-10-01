@@ -20,18 +20,22 @@ public:
     int sz;
     int *a;
     int maxnum;
-    Minheap(int maxnum) {
+    Minheap(int maxnum)
+    {
         sz = 0;
         a = new int[maxnum];
         this->maxnum = maxnum;
     }
-    ~Minheap() {
+    ~Minheap()
+    {
         delete []a;
     }
-    bool isleaf(int pos) {
+    bool isleaf(int pos)
+    {
         return pos>=sz/2 && pos<sz;
     }
-    bool insert(int num) {
+    bool insert(int num)
+    {
         if (sz == maxnum) return false;
         int curr= sz;
         a[sz++] = num;
@@ -42,7 +46,8 @@ public:
         }
         return true;
     }
-    void siftdown(int pos) {
+    void siftdown(int pos)
+    {
         if (sz == 0 )
             return;
         int lc, rc;
@@ -61,15 +66,18 @@ public:
             pos = m;
         }
     }
-    int top() {
+    int top()
+    {
         return a[0];
     }
 
-    int parent(int pos) {
+    int parent(int pos)
+    {
         return (pos-1)/2;
     }
 
-    bool remove(int pos, int &val) {
+    bool remove(int pos, int &val)
+    {
         if(pos<0 || pos >= sz) {
             return false;
         }
@@ -83,12 +91,14 @@ public:
         siftdown(pos);
         return true;
     }
-    void print() {
+    void print()
+    {
         for(int i=0; i<sz; i++) {
             printf("%d ",a[i]);
         }
     }
-    bool isFull() {
+    bool isFull()
+    {
         return sz==maxnum?true:false;
     }
 };

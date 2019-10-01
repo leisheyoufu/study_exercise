@@ -25,14 +25,16 @@ struct AhoCorsickAutomata {
     int f[MAXNODE];
     int val[MAXNODE];
 
-    void init () {
+    void init ()
+    {
         sz = 1;
-		val[0] =0;
+        val[0] =0;
         memset(ch[0],0,sizeof(ch[0]));
     }
 
 
-    void insert(char *s, int v) {
+    void insert(char *s, int v)
+    {
         int u=0,n=strlen(s);
         for(int i=0; i<n; i++) {
             int c=s[i];
@@ -46,7 +48,8 @@ struct AhoCorsickAutomata {
         val[u] = 1;   // 该pattern 完全匹配后置位
     }
 
-    void getFail() {
+    void getFail()
+    {
         queue<int> q;
         f[0] =0;
         for(int c=0; c<SIGMASIZE; c++) {
@@ -76,7 +79,8 @@ struct AhoCorsickAutomata {
         }
     }
 
-    double get_prob(int u,int l) {
+    double get_prob(int u,int l)
+    {
         if(!l) {
             return 1;
         }
@@ -113,8 +117,8 @@ int main()
             ac.insert(str,i);
         }
         scanf("%d",&c_sz);
-		char s[2];
-        for(int i=0; i<c_sz; i++) {            
+        char s[2];
+        for(int i=0; i<c_sz; i++) {
             scanf("%s %lf",s,&prob[i]);
             charactor[i]=s[0];
         }
@@ -124,6 +128,6 @@ int main()
         memset(vis,0,sizeof(vis));
         printf("Case #%d: %.6f\n", k,ac.get_prob(0,len));
     }
-	
+
     return 0;
 }

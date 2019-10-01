@@ -6,6 +6,6 @@ Node::Node(void)
 }
 Node::Node(EightDigital *val)
 {
-	this->val = val;
-	this->next = NULL;
+    this->val = val;
+    this->next = NULL;
 }

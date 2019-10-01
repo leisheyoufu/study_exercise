@@ -1,4 +1,4 @@
-/* 
+/*
    op1: append A
    op2: reverse string then append B
 */

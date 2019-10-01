@@ -36,7 +36,8 @@ struct IntervalTree {
     int max_suffix[MAXTREENODE];
     Interval max_sub[MAXTREENODE];
 
-    void build(int o,int l, int r) {
+    void build(int o,int l, int r)
+    {
         if(l==r) {
             max_prefix[o] = max_suffix[o]= l;
             max_sub[o]=make_pair(l,l);
@@ -67,7 +68,8 @@ struct IntervalTree {
             max_sub[o] = more(max_sub[o],make_pair(max_suffix[lc],max_prefix[rc]));  // 左子树后缀靠左，右子树前缀和靠右，取中间部分最大
         }
     }
-    Interval query_prefix(int o,int l, int r) { // 前缀是左边序号不变
+    Interval query_prefix(int o,int l, int r)   // 前缀是左边序号不变
+    {
         if(max_prefix[o]<=qr) { // 最大前缀序号小于被查询右端
             return make_pair(l,max_prefix[o]);
         }
@@ -81,7 +83,8 @@ struct IntervalTree {
         temp.first = l;
         return more(temp,make_pair(l,max_prefix[lc]));  // 和仅在左子树比较
     }
-    Interval query_suffix(int o,int l,int r) {
+    Interval query_suffix(int o,int l,int r)
+    {
         if(max_suffix[o]>= ql) {
             return make_pair(max_suffix[o],r);
         }
@@ -96,7 +99,8 @@ struct IntervalTree {
         return more(temp,make_pair(max_suffix[rc],r));
     }
 
-    Interval query(int o, int l,int r) {
+    Interval query(int o, int l,int r)
+    {
         if(ql <=l && qr >=r) {
             return max_sub[o];
         }

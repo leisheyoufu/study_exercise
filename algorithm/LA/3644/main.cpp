@@ -34,6 +34,6 @@ int main()
         }
         printf("%d\n",refuse_count);
 
-    }    
+    }
     return 0;
 }
