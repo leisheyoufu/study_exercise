@@ -1,0 +1,24 @@
+# if file is not exist, kill and restart container
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    test: liveness
+  name: liveness
+  namespace: loch
+spec:
+  restartPolicy: OnFailure
+  containers:
+  - name: liveness
+    image: busybox
+    args:
+    - /bin/sh
+    - -c
+    - touch /tmp/healthcheck;sleep 30; rm -rf /tmp/healthcheck;sleep 600
+    livenessProbe:
+      exec:
+        command:
+        - cat
+        - /tmp/healthcheck
+      initialDelaySeconds: 10
+      periodSeconds: 5
