@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: myservice
+  namespace: loch
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mydb
+  namespace: loch
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9377
