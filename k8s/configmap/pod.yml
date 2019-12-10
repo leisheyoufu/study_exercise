@@ -1,0 +1,67 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+  namespace: loch
+spec:
+  containers:
+    - name: envpod
+      image: busybox:1.28.4
+      command: [ "/bin/sh", "-c", "env" ]
+      env:
+        - name: CONFIG_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: keyconfig
+              key: config.name
+        - name: CONFIG_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: keyconfig
+              key: config.type
+      envFrom:
+        - configMapRef:
+            name: envconfig
+  restartPolicy: Never
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mycommandpod
+  namespace: loch
+spec:
+  containers:
+    - name: mycommand
+      image: busybox:1.28.4
+      command: [ "/bin/sh", "-c", "echo $(CONFIG_NAME) $(CONFIG_KEY)" ]
+      env:
+        - name: CONFIG_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: keyconfig
+              key: config.name
+        - name: CONFIG_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: keyconfig
+              key: config.type
+  restartPolicy: Never
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: volpod
+  namespace: loch
+spec:
+  containers:
+    - name: volpod
+      image: busybox:1.28.4
+      command: [ "/bin/sh", "-c", "cat /etc/config/config.type" ]
+      volumeMounts:
+      - name: config-volume
+        mountPath: /etc/config
+  volumes:
+    - name: config-volume
+      configMap:
+        name: keyconfig
+  restartPolicy: Never
