@@ -27,7 +27,7 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - 192.168.1.202  # should match `kubectl get nodes`
+          - 192.168.126.151  # should match `kubectl get nodes`
 
 ---
 apiVersion: v1

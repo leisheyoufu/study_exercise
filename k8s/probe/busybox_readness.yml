@@ -15,6 +15,7 @@ spec:
     - -c
     - touch /tmp/healthcheck;sleep 30; rm -rf /tmp/healthcheck;sleep 600
     readinessProbe:
+      # exec is running inside contailner, httpget and tcpsocket probe are running out of pod.
       exec:
         command:
         - cat
