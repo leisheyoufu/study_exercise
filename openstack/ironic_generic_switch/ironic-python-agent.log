@@ -1,0 +1,724 @@
+2019-12-21 06:28:05.029 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/ip_vti0/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:05.218 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/ip_vti0/device/driver/module" returned: 1 in 0.189s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:05.232 491 DEBUG oslo_concurrency.processutils [-] 'readlink -v /sys/class/net/ip_vti0/device/driver/module' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:05.241 491 DEBUG root [-] Get driver for interface ip_vti0 failed. Error: Unexpected error while running command.
+Command: readlink -v /sys/class/net/ip_vti0/device/driver/module
+Exit code: 1
+Stdout: ''
+Stderr: 'readlink: /sys/class/net/ip_vti0/device/driver/module: No such file or directory\n' _detect_cna_card /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/cna.py:42[00m
+2019-12-21 06:28:05.252 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/eth1/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:05.364 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/eth1/device/driver/module" returned: 0 in 0.111s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:05.376 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "readlink -v /sys/class/net/eth1/device/driver/module" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:05.383 491 DEBUG ironic_lib.utils [-] Command stdout is: "../../../../module/e1000
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:05.398 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:05.427 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/tunl0/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:05.555 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/tunl0/device/driver/module" returned: 1 in 0.127s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:05.573 491 DEBUG oslo_concurrency.processutils [-] 'readlink -v /sys/class/net/tunl0/device/driver/module' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:05.585 491 DEBUG root [-] Get driver for interface tunl0 failed. Error: Unexpected error while running command.
+Command: readlink -v /sys/class/net/tunl0/device/driver/module
+Exit code: 1
+Stdout: ''
+Stderr: 'readlink: /sys/class/net/tunl0/device/driver/module: No such file or directory\n' _detect_cna_card /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/cna.py:42[00m
+2019-12-21 06:28:05.601 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/dummy0/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:05.792 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/dummy0/device/driver/module" returned: 1 in 0.190s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:05.805 491 DEBUG oslo_concurrency.processutils [-] 'readlink -v /sys/class/net/dummy0/device/driver/module' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:05.812 491 DEBUG root [-] Get driver for interface dummy0 failed. Error: Unexpected error while running command.
+Command: readlink -v /sys/class/net/dummy0/device/driver/module
+Exit code: 1
+Stdout: ''
+Stderr: 'readlink: /sys/class/net/dummy0/device/driver/module: No such file or directory\n' _detect_cna_card /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/cna.py:42[00m
+2019-12-21 06:28:05.823 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/eth0/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:05.956 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/eth0/device/driver/module" returned: 0 in 0.133s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:05.967 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "readlink -v /sys/class/net/eth0/device/driver/module" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:05.974 491 DEBUG ironic_lib.utils [-] Command stdout is: "../../../../module/e1000
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:05.979 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:05.987 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/lo/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:06.114 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/lo/device/driver/module" returned: 1 in 0.126s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:06.125 491 DEBUG oslo_concurrency.processutils [-] 'readlink -v /sys/class/net/lo/device/driver/module' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:06.132 491 DEBUG root [-] Get driver for interface lo failed. Error: Unexpected error while running command.
+Command: readlink -v /sys/class/net/lo/device/driver/module
+Exit code: 1
+Stdout: ''
+Stderr: 'readlink: /sys/class/net/lo/device/driver/module: No such file or directory\n' _detect_cna_card /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/cna.py:42[00m
+2019-12-21 06:28:06.142 491 DEBUG root [-] No Intel CNA network card found evaluate_hardware_support /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/cna.py:81[00m
+2019-12-21 06:28:06.149 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): iscsistart -f execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:06.233 491 DEBUG oslo_concurrency.processutils [-] 'iscsistart -f' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:06.245 491 DEBUG root [-] No iscsi connection detected. Skipping iscsi. Error: [Errno 2] No such file or directory: 'iscsistart': 'iscsistart' _check_for_iscsi /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:109[00m
+2019-12-21 06:28:06.289 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): mdadm --assemble --scan --verbose execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:06.529 491 DEBUG oslo_concurrency.processutils [-] CMD "mdadm --assemble --scan --verbose" returned: 1 in 0.240s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:06.540 491 DEBUG oslo_concurrency.processutils [-] 'mdadm --assemble --scan --verbose' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:06.547 491 INFO root [-] No new RAID devices assembled during start-up[00m
+2019-12-21 06:28:06.559 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): udevadm settle execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:06.680 491 DEBUG oslo_concurrency.processutils [-] CMD "udevadm settle" returned: 0 in 0.120s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:06.692 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "udevadm settle" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:06.699 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:06.708 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:06.718 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:06.919 491 DEBUG oslo_concurrency.processutils [-] CMD "lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE" returned: 0 in 0.200s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:06.930 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:06.937 491 DEBUG ironic_lib.utils [-] Command stdout is: "KNAME="loop0" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop1" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop2" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop3" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop4" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop5" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop6" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop7" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="vda" MODEL="" SIZE="11811160064" ROTA="1" TYPE="disk"
+KNAME="zram0" MODEL="" SIZE="" ROTA="0" TYPE="disk"
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:06.946 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:07.140 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop0" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:07.154 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop1" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:07.165 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop2" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:07.176 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop3" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:07.186 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop4" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:07.197 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop5" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:07.207 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop6" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:07.221 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop7" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:07.249 491 WARNING root [-] Could not find the SCSI address (HCTL) for device /dev/vda. Skipping: FileNotFoundError: [Errno 2] No such file or directory: '/sys/block/vda/device/scsi_device'[00m
+2019-12-21 06:28:07.267 491 DEBUG root [-] Skipping RAM device {'KNAME': 'zram0', 'MODEL': '', 'SIZE': '', 'ROTA': '0', 'TYPE': 'disk'} list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:362[00m
+2019-12-21 06:28:07.276 491 INFO root [-] Picked root device /dev/vda for node None based on root device hints None[00m
+2019-12-21 06:28:07.283 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): iscsistart -f execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:07.383 491 DEBUG oslo_concurrency.processutils [-] 'iscsistart -f' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:07.400 491 DEBUG root [-] No iscsi connection detected. Skipping iscsi. Error: [Errno 2] No such file or directory: 'iscsistart': 'iscsistart' _check_for_iscsi /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:109[00m
+2019-12-21 06:28:07.414 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): mdadm --assemble --scan --verbose execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:07.610 491 DEBUG oslo_concurrency.processutils [-] CMD "mdadm --assemble --scan --verbose" returned: 1 in 0.195s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:07.620 491 DEBUG oslo_concurrency.processutils [-] 'mdadm --assemble --scan --verbose' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:07.628 491 INFO root [-] No new RAID devices assembled during start-up[00m
+2019-12-21 06:28:07.636 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): udevadm settle execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:07.786 491 DEBUG oslo_concurrency.processutils [-] CMD "udevadm settle" returned: 0 in 0.149s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:07.797 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "udevadm settle" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:07.803 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:07.810 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:07.819 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:07.985 491 DEBUG oslo_concurrency.processutils [-] CMD "lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE" returned: 0 in 0.165s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:07.996 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:08.002 491 DEBUG ironic_lib.utils [-] Command stdout is: "KNAME="loop0" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop1" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop2" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop3" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop4" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop5" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop6" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop7" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="vda" MODEL="" SIZE="11811160064" ROTA="1" TYPE="disk"
+KNAME="zram0" MODEL="" SIZE="" ROTA="0" TYPE="disk"
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:08.011 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:08.185 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop0" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:08.198 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop1" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:08.208 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop2" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:08.218 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop3" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:08.228 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop4" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:08.239 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop5" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:08.250 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop6" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:08.259 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop7" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:08.277 491 WARNING root [-] Could not find the SCSI address (HCTL) for device /dev/vda. Skipping: FileNotFoundError: [Errno 2] No such file or directory: '/sys/block/vda/device/scsi_device'[00m
+2019-12-21 06:28:08.292 491 DEBUG root [-] Skipping RAM device {'KNAME': 'zram0', 'MODEL': '', 'SIZE': '', 'ROTA': '0', 'TYPE': 'disk'} list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:362[00m
+2019-12-21 06:28:08.300 491 INFO root [-] Picked root device /dev/vda for node None based on root device hints None[00m
+2019-12-21 06:28:08.308 491 WARNING root [-] Can't find field vendor for device ip_vti0 in device class net: FileNotFoundError: [Errno 2] No such file or directory: '/sys/class/net/ip_vti0/device/vendor'[00m
+2019-12-21 06:28:08.317 491 WARNING root [-] Can't find field vendor for device tunl0 in device class net: FileNotFoundError: [Errno 2] No such file or directory: '/sys/class/net/tunl0/device/vendor'[00m
+2019-12-21 06:28:08.325 491 WARNING root [-] Can't find field vendor for device dummy0 in device class net: FileNotFoundError: [Errno 2] No such file or directory: '/sys/class/net/dummy0/device/vendor'[00m
+2019-12-21 06:28:08.335 491 WARNING root [-] Can't find field vendor for device lo in device class net: FileNotFoundError: [Errno 2] No such file or directory: '/sys/class/net/lo/device/vendor'[00m
+2019-12-21 06:28:08.342 491 DEBUG root [-] No Mellanox devices found evaluate_hardware_support /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/mlnx.py:84[00m
+2019-12-21 06:28:08.351 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/ip_vti0/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:08.527 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/ip_vti0/device/driver/module" returned: 1 in 0.176s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:08.539 491 DEBUG oslo_concurrency.processutils [-] 'readlink -v /sys/class/net/ip_vti0/device/driver/module' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:08.547 491 DEBUG root [-] Get driver for interface ip_vti0 failed. Error: Unexpected error while running command.
+Command: readlink -v /sys/class/net/ip_vti0/device/driver/module
+Exit code: 1
+Stdout: ''
+Stderr: 'readlink: /sys/class/net/ip_vti0/device/driver/module: No such file or directory\n' _detect_cna_card /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/cna.py:42[00m
+2019-12-21 06:28:08.558 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/eth1/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:08.674 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/eth1/device/driver/module" returned: 0 in 0.115s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:08.684 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "readlink -v /sys/class/net/eth1/device/driver/module" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:08.691 491 DEBUG ironic_lib.utils [-] Command stdout is: "../../../../module/e1000
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:08.697 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:08.705 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/tunl0/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:08.832 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/tunl0/device/driver/module" returned: 1 in 0.126s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:08.843 491 DEBUG oslo_concurrency.processutils [-] 'readlink -v /sys/class/net/tunl0/device/driver/module' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:08.851 491 DEBUG root [-] Get driver for interface tunl0 failed. Error: Unexpected error while running command.
+Command: readlink -v /sys/class/net/tunl0/device/driver/module
+Exit code: 1
+Stdout: ''
+Stderr: 'readlink: /sys/class/net/tunl0/device/driver/module: No such file or directory\n' _detect_cna_card /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/cna.py:42[00m
+2019-12-21 06:28:08.861 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/dummy0/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:08.995 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/dummy0/device/driver/module" returned: 1 in 0.133s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:09.007 491 DEBUG oslo_concurrency.processutils [-] 'readlink -v /sys/class/net/dummy0/device/driver/module' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:09.015 491 DEBUG root [-] Get driver for interface dummy0 failed. Error: Unexpected error while running command.
+Command: readlink -v /sys/class/net/dummy0/device/driver/module
+Exit code: 1
+Stdout: ''
+Stderr: 'readlink: /sys/class/net/dummy0/device/driver/module: No such file or directory\n' _detect_cna_card /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/cna.py:42[00m
+2019-12-21 06:28:09.025 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/eth0/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:09.155 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/eth0/device/driver/module" returned: 0 in 0.129s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:09.166 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "readlink -v /sys/class/net/eth0/device/driver/module" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:09.174 491 DEBUG ironic_lib.utils [-] Command stdout is: "../../../../module/e1000
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:09.181 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:09.189 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/lo/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:09.325 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/lo/device/driver/module" returned: 1 in 0.135s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:09.336 491 DEBUG oslo_concurrency.processutils [-] 'readlink -v /sys/class/net/lo/device/driver/module' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:09.344 491 DEBUG root [-] Get driver for interface lo failed. Error: Unexpected error while running command.
+Command: readlink -v /sys/class/net/lo/device/driver/module
+Exit code: 1
+Stdout: ''
+Stderr: 'readlink: /sys/class/net/lo/device/driver/module: No such file or directory\n' _detect_cna_card /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/cna.py:42[00m
+2019-12-21 06:28:09.354 491 DEBUG root [-] No Intel CNA network card found evaluate_hardware_support /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/cna.py:81[00m
+2019-12-21 06:28:09.363 491 WARNING root [-] Can't find field vendor for device ip_vti0 in device class net: FileNotFoundError: [Errno 2] No such file or directory: '/sys/class/net/ip_vti0/device/vendor'[00m
+2019-12-21 06:28:09.375 491 WARNING root [-] Can't find field vendor for device tunl0 in device class net: FileNotFoundError: [Errno 2] No such file or directory: '/sys/class/net/tunl0/device/vendor'[00m
+2019-12-21 06:28:09.383 491 WARNING root [-] Can't find field vendor for device dummy0 in device class net: FileNotFoundError: [Errno 2] No such file or directory: '/sys/class/net/dummy0/device/vendor'[00m
+2019-12-21 06:28:09.396 491 WARNING root [-] Can't find field vendor for device lo in device class net: FileNotFoundError: [Errno 2] No such file or directory: '/sys/class/net/lo/device/vendor'[00m
+2019-12-21 06:28:09.406 491 DEBUG root [-] No Mellanox devices found evaluate_hardware_support /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/mlnx.py:84[00m
+2019-12-21 06:28:09.418 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): iscsistart -f execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:09.517 491 DEBUG oslo_concurrency.processutils [-] 'iscsistart -f' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:09.528 491 DEBUG root [-] No iscsi connection detected. Skipping iscsi. Error: [Errno 2] No such file or directory: 'iscsistart': 'iscsistart' _check_for_iscsi /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:109[00m
+2019-12-21 06:28:09.537 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): mdadm --assemble --scan --verbose execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:09.717 491 DEBUG oslo_concurrency.processutils [-] CMD "mdadm --assemble --scan --verbose" returned: 1 in 0.179s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:09.729 491 DEBUG oslo_concurrency.processutils [-] 'mdadm --assemble --scan --verbose' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:09.737 491 INFO root [-] No new RAID devices assembled during start-up[00m
+2019-12-21 06:28:09.746 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): udevadm settle execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:09.871 491 DEBUG oslo_concurrency.processutils [-] CMD "udevadm settle" returned: 0 in 0.125s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:09.882 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "udevadm settle" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:09.889 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:09.896 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:09.906 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:10.086 491 DEBUG oslo_concurrency.processutils [-] CMD "lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE" returned: 0 in 0.179s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:10.097 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:10.103 491 DEBUG ironic_lib.utils [-] Command stdout is: "KNAME="loop0" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop1" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop2" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop3" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop4" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop5" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop6" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop7" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="vda" MODEL="" SIZE="11811160064" ROTA="1" TYPE="disk"
+KNAME="zram0" MODEL="" SIZE="" ROTA="0" TYPE="disk"
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:10.111 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:10.301 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop0" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:10.315 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop1" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:10.325 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop2" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:10.335 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop3" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:10.345 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop4" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:10.359 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop5" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:10.370 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop6" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:10.380 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop7" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:10.406 491 WARNING root [-] Could not find the SCSI address (HCTL) for device /dev/vda. Skipping: FileNotFoundError: [Errno 2] No such file or directory: '/sys/block/vda/device/scsi_device'[00m
+2019-12-21 06:28:10.433 491 DEBUG root [-] Skipping RAM device {'KNAME': 'zram0', 'MODEL': '', 'SIZE': '', 'ROTA': '0', 'TYPE': 'disk'} list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:362[00m
+2019-12-21 06:28:10.446 491 INFO root [-] Picked root device /dev/vda for node None based on root device hints None[00m
+2019-12-21 06:28:10.453 491 INFO root [-] Hardware manager found: ironic_python_agent.hardware:GenericHardwareManager[00m
+2019-12-21 06:28:10.460 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/ip_vti0/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:10.612 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/ip_vti0/device/driver/module" returned: 1 in 0.150s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:10.640 491 DEBUG oslo_concurrency.processutils [-] 'readlink -v /sys/class/net/ip_vti0/device/driver/module' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:10.660 491 DEBUG root [-] Get driver for interface ip_vti0 failed. Error: Unexpected error while running command.
+Command: readlink -v /sys/class/net/ip_vti0/device/driver/module
+Exit code: 1
+Stdout: ''
+Stderr: 'readlink: /sys/class/net/ip_vti0/device/driver/module: No such file or directory\n' _detect_cna_card /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/cna.py:42[00m
+2019-12-21 06:28:10.676 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/eth1/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:10.832 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/eth1/device/driver/module" returned: 0 in 0.155s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:10.843 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "readlink -v /sys/class/net/eth1/device/driver/module" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:10.851 491 DEBUG ironic_lib.utils [-] Command stdout is: "../../../../module/e1000
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:10.857 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:10.865 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/tunl0/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:10.990 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/tunl0/device/driver/module" returned: 1 in 0.125s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:11.003 491 DEBUG oslo_concurrency.processutils [-] 'readlink -v /sys/class/net/tunl0/device/driver/module' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:11.011 491 DEBUG root [-] Get driver for interface tunl0 failed. Error: Unexpected error while running command.
+Command: readlink -v /sys/class/net/tunl0/device/driver/module
+Exit code: 1
+Stdout: ''
+Stderr: 'readlink: /sys/class/net/tunl0/device/driver/module: No such file or directory\n' _detect_cna_card /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/cna.py:42[00m
+2019-12-21 06:28:11.021 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/dummy0/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:11.147 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/dummy0/device/driver/module" returned: 1 in 0.125s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:11.158 491 DEBUG oslo_concurrency.processutils [-] 'readlink -v /sys/class/net/dummy0/device/driver/module' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:11.166 491 DEBUG root [-] Get driver for interface dummy0 failed. Error: Unexpected error while running command.
+Command: readlink -v /sys/class/net/dummy0/device/driver/module
+Exit code: 1
+Stdout: ''
+Stderr: 'readlink: /sys/class/net/dummy0/device/driver/module: No such file or directory\n' _detect_cna_card /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/cna.py:42[00m
+2019-12-21 06:28:11.176 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/eth0/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:11.297 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/eth0/device/driver/module" returned: 0 in 0.120s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:11.308 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "readlink -v /sys/class/net/eth0/device/driver/module" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:11.315 491 DEBUG ironic_lib.utils [-] Command stdout is: "../../../../module/e1000
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:11.321 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:11.329 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): readlink -v /sys/class/net/lo/device/driver/module execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:11.490 491 DEBUG oslo_concurrency.processutils [-] CMD "readlink -v /sys/class/net/lo/device/driver/module" returned: 1 in 0.161s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:11.502 491 DEBUG oslo_concurrency.processutils [-] 'readlink -v /sys/class/net/lo/device/driver/module' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:11.510 491 DEBUG root [-] Get driver for interface lo failed. Error: Unexpected error while running command.
+Command: readlink -v /sys/class/net/lo/device/driver/module
+Exit code: 1
+Stdout: ''
+Stderr: 'readlink: /sys/class/net/lo/device/driver/module: No such file or directory\n' _detect_cna_card /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/cna.py:42[00m
+2019-12-21 06:28:11.519 491 DEBUG root [-] No Intel CNA network card found evaluate_hardware_support /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/cna.py:81[00m
+2019-12-21 06:28:11.527 491 WARNING root [-] Can't find field vendor for device ip_vti0 in device class net: FileNotFoundError: [Errno 2] No such file or directory: '/sys/class/net/ip_vti0/device/vendor'[00m
+2019-12-21 06:28:11.539 491 WARNING root [-] Can't find field vendor for device tunl0 in device class net: FileNotFoundError: [Errno 2] No such file or directory: '/sys/class/net/tunl0/device/vendor'[00m
+2019-12-21 06:28:11.547 491 WARNING root [-] Can't find field vendor for device dummy0 in device class net: FileNotFoundError: [Errno 2] No such file or directory: '/sys/class/net/dummy0/device/vendor'[00m
+2019-12-21 06:28:11.558 491 WARNING root [-] Can't find field vendor for device lo in device class net: FileNotFoundError: [Errno 2] No such file or directory: '/sys/class/net/lo/device/vendor'[00m
+2019-12-21 06:28:11.567 491 DEBUG root [-] No Mellanox devices found evaluate_hardware_support /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware_managers/mlnx.py:84[00m
+2019-12-21 06:28:11.602 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): biosdevname -i eth1 execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:11.689 491 DEBUG oslo_concurrency.processutils [-] 'biosdevname -i eth1' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:11.701 491 WARNING root [-] Executable 'biosdevname' not found: FileNotFoundError: [Errno 2] No such file or directory: 'biosdevname': 'biosdevname'[00m
+2019-12-21 06:28:11.726 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): biosdevname -i eth0 execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:11.814 491 DEBUG oslo_concurrency.processutils [-] 'biosdevname -i eth0' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:11.854 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): biosdevname -i eth1 execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:11.944 491 DEBUG oslo_concurrency.processutils [-] 'biosdevname -i eth1' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:11.972 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): biosdevname -i eth0 execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:12.077 491 DEBUG oslo_concurrency.processutils [-] 'biosdevname -i eth0' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:12.100 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): lscpu execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:12.470 491 DEBUG oslo_concurrency.processutils [-] CMD "lscpu" returned: 0 in 0.368s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:12.515 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "lscpu" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:12.523 491 DEBUG ironic_lib.utils [-] Command stdout is: "Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              1
+On-line CPU(s) list: 0
+Thread(s) per core:  1
+Core(s) per socket:  1
+Socket(s):           1
+Vendor ID:           AuthenticAMD
+CPU family:          6
+Model:               2
+Model name:          QEMU Virtual CPU version 1.0
+Stepping:            3
+CPU MHz:             2294.612
+BogoMIPS:            4591.44
+Virtualization:      AMD-V
+L1d cache:           64K
+L1i cache:           64K
+L2 cache:            512K
+Flags:               fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm nopl cpuid pni cx16 popcnt hypervisor lahf_lm svm abm sse4a 3dnowprefetch vmmcall
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:12.534 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:12.552 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): grep -Em1 ^flags /proc/cpuinfo execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:12.746 491 DEBUG oslo_concurrency.processutils [-] CMD "grep -Em1 ^flags /proc/cpuinfo" returned: 0 in 0.194s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:12.757 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "grep -Em1 ^flags /proc/cpuinfo" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:12.764 491 DEBUG ironic_lib.utils [-] Command stdout is: "flags		: fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm nopl cpuid pni cx16 popcnt hypervisor lahf_lm svm abm sse4a 3dnowprefetch vmmcall
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:12.770 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:12.779 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): udevadm settle execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:12.919 491 DEBUG oslo_concurrency.processutils [-] CMD "udevadm settle" returned: 0 in 0.140s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:12.929 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "udevadm settle" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:12.935 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:12.941 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:12.953 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:13.139 491 DEBUG oslo_concurrency.processutils [-] CMD "lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE" returned: 0 in 0.185s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:13.149 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:13.155 491 DEBUG ironic_lib.utils [-] Command stdout is: "KNAME="loop0" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop1" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop2" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop3" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop4" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop5" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop6" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop7" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="vda" MODEL="" SIZE="11811160064" ROTA="1" TYPE="disk"
+KNAME="zram0" MODEL="" SIZE="" ROTA="0" TYPE="disk"
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:13.163 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:13.421 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop0" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:13.445 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop1" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:13.454 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop2" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:13.465 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop3" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:13.474 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop4" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:13.483 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop5" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:13.492 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop6" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:13.500 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop7" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:13.528 491 WARNING root [-] Could not find the SCSI address (HCTL) for device /dev/vda. Skipping: FileNotFoundError: [Errno 2] No such file or directory: '/sys/block/vda/device/scsi_device'[00m
+2019-12-21 06:28:13.549 491 DEBUG root [-] Skipping RAM device {'KNAME': 'zram0', 'MODEL': '', 'SIZE': '', 'ROTA': '0', 'TYPE': 'disk'} list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:362[00m
+2019-12-21 06:28:13.568 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): lshw -quiet -json execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:18.495 491 DEBUG oslo_concurrency.processutils [-] CMD "lshw -quiet -json" returned: 0 in 4.927s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:18.506 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "lshw -quiet -json" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:18.511 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:18.562 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): modprobe ipmi_msghandler execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:18.726 491 DEBUG oslo_concurrency.processutils [-] CMD "modprobe ipmi_msghandler" returned: 1 in 0.163s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:18.738 491 DEBUG oslo_concurrency.processutils [-] 'modprobe ipmi_msghandler' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:18.746 491 DEBUG ironic_python_agent.utils [-] Command failed: Unexpected error while running command.
+Command: modprobe ipmi_msghandler
+Exit code: 1
+Stdout: ''
+Stderr: 'modprobe: module ipmi_msghandler not found in modules.dep\n' try_execute /usr/local/lib/python3.6/site-packages/ironic_python_agent/utils.py:93[00m
+2019-12-21 06:28:18.791 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): modprobe ipmi_devintf execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:18.957 491 DEBUG oslo_concurrency.processutils [-] CMD "modprobe ipmi_devintf" returned: 1 in 0.166s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:18.968 491 DEBUG oslo_concurrency.processutils [-] 'modprobe ipmi_devintf' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:18.976 491 DEBUG ironic_python_agent.utils [-] Command failed: Unexpected error while running command.
+Command: modprobe ipmi_devintf
+Exit code: 1
+Stdout: ''
+Stderr: 'modprobe: module ipmi_devintf not found in modules.dep\n' try_execute /usr/local/lib/python3.6/site-packages/ironic_python_agent/utils.py:93[00m
+2019-12-21 06:28:18.985 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): modprobe ipmi_si execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:19.153 491 DEBUG oslo_concurrency.processutils [-] CMD "modprobe ipmi_si" returned: 1 in 0.167s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:19.164 491 DEBUG oslo_concurrency.processutils [-] 'modprobe ipmi_si' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:19.171 491 DEBUG ironic_python_agent.utils [-] Command failed: Unexpected error while running command.
+Command: modprobe ipmi_si
+Exit code: 1
+Stdout: ''
+Stderr: 'modprobe: module ipmi_si not found in modules.dep\n' try_execute /usr/local/lib/python3.6/site-packages/ironic_python_agent/utils.py:93[00m
+2019-12-21 06:28:19.180 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan print 1 | awk '/IP Address[ \t]*:/ {print $4}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:19.436 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan print 1 | awk '/IP Address[ \t]*:/ {print $4}'" returned: 0 in 0.255s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:19.446 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan print 1 | awk '/IP Address[ \t]*:/ {print $4}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:19.452 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:19.458 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:19.467 491 WARNING root [-] Invalid IP address : '' does not appear to be an IPv4 or IPv6 address[00m
+2019-12-21 06:28:19.475 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan print 2 | awk '/IP Address[ \t]*:/ {print $4}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:19.687 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan print 2 | awk '/IP Address[ \t]*:/ {print $4}'" returned: 0 in 0.212s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:19.699 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan print 2 | awk '/IP Address[ \t]*:/ {print $4}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:19.705 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:19.710 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:19.718 491 WARNING root [-] Invalid IP address : '' does not appear to be an IPv4 or IPv6 address[00m
+2019-12-21 06:28:19.725 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan print 3 | awk '/IP Address[ \t]*:/ {print $4}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:19.952 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan print 3 | awk '/IP Address[ \t]*:/ {print $4}'" returned: 0 in 0.226s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:19.964 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan print 3 | awk '/IP Address[ \t]*:/ {print $4}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:19.969 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:19.975 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:19.983 491 WARNING root [-] Invalid IP address : '' does not appear to be an IPv4 or IPv6 address[00m
+2019-12-21 06:28:19.990 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan print 4 | awk '/IP Address[ \t]*:/ {print $4}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:20.209 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan print 4 | awk '/IP Address[ \t]*:/ {print $4}'" returned: 0 in 0.219s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:20.219 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan print 4 | awk '/IP Address[ \t]*:/ {print $4}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:20.225 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:20.230 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:20.238 491 WARNING root [-] Invalid IP address : '' does not appear to be an IPv4 or IPv6 address[00m
+2019-12-21 06:28:20.246 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan print 5 | awk '/IP Address[ \t]*:/ {print $4}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:20.493 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan print 5 | awk '/IP Address[ \t]*:/ {print $4}'" returned: 0 in 0.247s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:20.504 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan print 5 | awk '/IP Address[ \t]*:/ {print $4}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:20.510 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:20.516 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:20.524 491 WARNING root [-] Invalid IP address : '' does not appear to be an IPv4 or IPv6 address[00m
+2019-12-21 06:28:20.531 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan print 6 | awk '/IP Address[ \t]*:/ {print $4}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:20.831 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan print 6 | awk '/IP Address[ \t]*:/ {print $4}'" returned: 0 in 0.299s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:20.841 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan print 6 | awk '/IP Address[ \t]*:/ {print $4}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:20.847 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:20.853 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:20.860 491 WARNING root [-] Invalid IP address : '' does not appear to be an IPv4 or IPv6 address[00m
+2019-12-21 06:28:20.867 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan print 7 | awk '/IP Address[ \t]*:/ {print $4}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:21.096 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan print 7 | awk '/IP Address[ \t]*:/ {print $4}'" returned: 0 in 0.229s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:21.110 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan print 7 | awk '/IP Address[ \t]*:/ {print $4}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:21.117 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:21.123 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:21.130 491 WARNING root [-] Invalid IP address : '' does not appear to be an IPv4 or IPv6 address[00m
+2019-12-21 06:28:21.137 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan print 8 | awk '/IP Address[ \t]*:/ {print $4}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:21.361 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan print 8 | awk '/IP Address[ \t]*:/ {print $4}'" returned: 0 in 0.223s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:21.372 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan print 8 | awk '/IP Address[ \t]*:/ {print $4}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:21.379 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:21.384 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:21.396 491 WARNING root [-] Invalid IP address : '' does not appear to be an IPv4 or IPv6 address[00m
+2019-12-21 06:28:21.407 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan print 9 | awk '/IP Address[ \t]*:/ {print $4}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:21.647 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan print 9 | awk '/IP Address[ \t]*:/ {print $4}'" returned: 0 in 0.240s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:21.659 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan print 9 | awk '/IP Address[ \t]*:/ {print $4}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:21.665 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:21.671 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:21.678 491 WARNING root [-] Invalid IP address : '' does not appear to be an IPv4 or IPv6 address[00m
+2019-12-21 06:28:21.685 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan print 10 | awk '/IP Address[ \t]*:/ {print $4}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:21.923 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan print 10 | awk '/IP Address[ \t]*:/ {print $4}'" returned: 0 in 0.238s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:21.934 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan print 10 | awk '/IP Address[ \t]*:/ {print $4}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:21.941 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:21.947 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:21.955 491 WARNING root [-] Invalid IP address : '' does not appear to be an IPv4 or IPv6 address[00m
+2019-12-21 06:28:21.962 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan print 11 | awk '/IP Address[ \t]*:/ {print $4}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:22.183 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan print 11 | awk '/IP Address[ \t]*:/ {print $4}'" returned: 0 in 0.220s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:22.194 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan print 11 | awk '/IP Address[ \t]*:/ {print $4}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:22.200 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:22.205 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:22.213 491 WARNING root [-] Invalid IP address : '' does not appear to be an IPv4 or IPv6 address[00m
+2019-12-21 06:28:22.224 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): modprobe ipmi_msghandler execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:22.422 491 DEBUG oslo_concurrency.processutils [-] CMD "modprobe ipmi_msghandler" returned: 1 in 0.196s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:22.438 491 DEBUG oslo_concurrency.processutils [-] 'modprobe ipmi_msghandler' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:22.448 491 DEBUG ironic_python_agent.utils [-] Command failed: Unexpected error while running command.
+Command: modprobe ipmi_msghandler
+Exit code: 1
+Stdout: ''
+Stderr: 'modprobe: module ipmi_msghandler not found in modules.dep\n' try_execute /usr/local/lib/python3.6/site-packages/ironic_python_agent/utils.py:93[00m
+2019-12-21 06:28:22.458 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): modprobe ipmi_devintf execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:22.622 491 DEBUG oslo_concurrency.processutils [-] CMD "modprobe ipmi_devintf" returned: 1 in 0.163s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:22.633 491 DEBUG oslo_concurrency.processutils [-] 'modprobe ipmi_devintf' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:22.640 491 DEBUG ironic_python_agent.utils [-] Command failed: Unexpected error while running command.
+Command: modprobe ipmi_devintf
+Exit code: 1
+Stdout: ''
+Stderr: 'modprobe: module ipmi_devintf not found in modules.dep\n' try_execute /usr/local/lib/python3.6/site-packages/ironic_python_agent/utils.py:93[00m
+2019-12-21 06:28:22.649 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): modprobe ipmi_si execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:22.814 491 DEBUG oslo_concurrency.processutils [-] CMD "modprobe ipmi_si" returned: 1 in 0.164s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:22.824 491 DEBUG oslo_concurrency.processutils [-] 'modprobe ipmi_si' failed. Not Retrying. execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:457[00m
+2019-12-21 06:28:22.831 491 DEBUG ironic_python_agent.utils [-] Command failed: Unexpected error while running command.
+Command: modprobe ipmi_si
+Exit code: 1
+Stdout: ''
+Stderr: 'modprobe: module ipmi_si not found in modules.dep\n' try_execute /usr/local/lib/python3.6/site-packages/ironic_python_agent/utils.py:93[00m
+2019-12-21 06:28:22.850 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan6 print 1 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:23.069 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan6 print 1 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" returned: 0 in 0.219s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:23.080 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan6 print 1 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:23.087 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:23.092 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:23.100 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan6 print 2 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:23.315 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan6 print 2 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" returned: 0 in 0.215s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:23.326 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan6 print 2 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:23.332 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:23.339 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:23.351 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan6 print 3 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:23.599 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan6 print 3 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" returned: 0 in 0.247s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:23.610 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan6 print 3 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:23.617 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:23.622 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:23.630 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan6 print 4 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:23.852 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan6 print 4 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" returned: 0 in 0.222s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:23.863 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan6 print 4 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:23.869 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:23.875 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:23.883 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan6 print 5 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:24.102 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan6 print 5 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" returned: 0 in 0.218s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:24.112 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan6 print 5 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:24.119 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:24.127 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:24.137 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan6 print 6 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:24.367 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan6 print 6 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" returned: 0 in 0.231s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:24.379 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan6 print 6 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:24.385 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:24.393 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:24.406 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan6 print 7 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:24.633 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan6 print 7 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" returned: 0 in 0.227s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:24.643 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan6 print 7 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:24.649 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:24.655 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:24.663 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan6 print 8 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:24.883 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan6 print 8 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" returned: 0 in 0.220s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:24.895 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan6 print 8 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:24.901 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:24.907 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:24.916 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan6 print 9 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:25.135 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan6 print 9 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" returned: 0 in 0.219s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:25.146 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan6 print 9 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:25.152 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:25.158 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:25.165 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan6 print 10 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:25.386 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan6 print 10 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" returned: 0 in 0.219s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:25.401 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan6 print 10 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:25.411 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:25.421 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:25.434 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ipmitool lan6 print 11 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}' execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:25.727 491 DEBUG oslo_concurrency.processutils [-] CMD "ipmitool lan6 print 11 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" returned: 0 in 0.293s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:25.745 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ipmitool lan6 print 11 enables | awk '/IPv6\/IPv4 Addressing Enables[ \t]*:/{print $NF}'" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:25.754 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:25.759 491 DEBUG ironic_lib.utils [-] Command stderr is: "Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:25.768 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): lshw -quiet -json execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:30.694 491 DEBUG oslo_concurrency.processutils [-] CMD "lshw -quiet -json" returned: 0 in 4.926s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:30.714 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "lshw -quiet -json" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:30.723 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:30.745 491 DEBUG root [-] The current boot mode is bios get_boot_info /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:1002[00m
+2019-12-21 06:28:31.054 491 DEBUG ironic_python_agent.agent [-] Received lookup results: {'node': {'uuid': '22e30797-eac0-4207-8a68-b00699367a1e', 'instance_info': {'image_source': '96d55cb6-51eb-4a1f-93a3-bbbca7d7f569', 'root_gb': '10', 'swap_mb': '0', 'display_name': 'test', 'vcpus': '1', 'nova_host_id': 'loch-ironic', 'memory_mb': '1024', 'local_gb': '0', 'traits': ['CUSTOM_GOLD'], 'capabilities': {'boot_option': 'local'}, 'image_url': '******', 'image_checksum': '443b7623e27ecf03dc9e01ee93f67afe', 'image_disk_format': 'qcow2', 'image_os_hash_algo': 'sha512', 'image_os_hash_value': '6513f21e44aa3da349f248188a44bc304a3653a04122d8fb4535423c8e1d14cd6a153f735bb0982e2161b5b5186106570c17a9e58b64dd39390617cd5a350f78', 'image_container_format': 'bare', 'image_tags': [], 'image_properties': {'os_hidden': False, 'virtual_size': None, 'hw_rng_model': 'virtio'}, 'image_type': 'whole-disk-image'}, 'driver_internal_info': {'agent_erase_devices_iterations': 1, 'agent_erase_devices_zeroize': True, 'agent_continue_if_ata_erase_failed': False, 'agent_enable_ata_secure_erase': True, 'disk_erasure_concurrency': 1, 'last_power_state_change': '2019-12-21T06:26:08.109458', 'agent_version': '5.1.0.dev43', 'agent_last_heartbeat': '2019-12-21T06:10:27.013253', 'hardware_manager_version': {'generic_hardware_manager': '1.1'}, 'agent_cached_clean_steps': {'deploy': [{'step': 'erase_devices', 'priority': 10, 'interface': 'deploy', 'reboot_requested': False, 'abortable': True}, {'step': 'erase_devices_metadata', 'priority': 99, 'interface': 'deploy', 'reboot_requested': False, 'abortable': True}], 'raid': [{'step': 'delete_configuration', 'priority': 0, 'interface': 'raid', 'reboot_requested': False, 'abortable': True}, {'step': 'create_configuration', 'priority': 0, 'interface': 'raid', 'reboot_requested': False, 'abortable': True}]}, 'agent_cached_clean_steps_refreshed': '2019-12-21 06:10:10.230513', 'deploy_steps': [{'step': 'deploy', 'priority': 100, 'argsinfo': None, 'interface': 'deploy'}], 'deploy_step_index': 0, 'clean_steps': None, 'is_whole_disk_image': True, 'deploy_boot_mode': 'bios'}, 'properties': {'cpu_arch': 'x86_64'}, 'links': [{'href': 'http://10.196.1.4/baremetal/v1/nodes/22e30797-eac0-4207-8a68-b00699367a1e', 'rel': 'self'}, {'href': 'http://10.196.1.4/baremetal/nodes/22e30797-eac0-4207-8a68-b00699367a1e', 'rel': 'bookmark'}]}, 'config': {'metrics': {'backend': 'noop', 'prepend_host': False, 'prepend_uuid': False, 'prepend_host_reverse': True, 'global_prefix': None}, 'metrics_statsd': {'statsd_host': 'localhost', 'statsd_port': 8125}, 'heartbeat_timeout': 300}} run /usr/local/lib/python3.6/site-packages/ironic_python_agent/agent.py:403[00m
+2019-12-21 06:28:31.072 491 INFO ironic_python_agent.agent [-] Lookup succeeded, node UUID is 22e30797-eac0-4207-8a68-b00699367a1e[00m
+2019-12-21 06:28:31.076 491 INFO root [-] Cached node 22e30797-eac0-4207-8a68-b00699367a1e, waiting for its root device to appear[00m
+2019-12-21 06:28:31.086 491 DEBUG root [-] Looking for a device matching root hints None get_os_install_device /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:957[00m
+2019-12-21 06:28:31.120 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): udevadm settle execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:31.256 491 DEBUG oslo_concurrency.processutils [-] CMD "udevadm settle" returned: 0 in 0.136s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:31.267 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "udevadm settle" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:31.273 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:31.280 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:31.289 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:31.495 491 DEBUG oslo_concurrency.processutils [-] CMD "lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE" returned: 0 in 0.206s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:31.506 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:31.511 491 DEBUG ironic_lib.utils [-] Command stdout is: "KNAME="loop0" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop1" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop2" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop3" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop4" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop5" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop6" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop7" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="vda" MODEL="" SIZE="11811160064" ROTA="1" TYPE="disk"
+KNAME="zram0" MODEL="" SIZE="" ROTA="0" TYPE="disk"
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:31.518 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:31.714 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop0" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:31.733 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop1" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:31.748 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop2" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:31.763 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop3" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:31.779 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop4" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:31.794 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop5" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:31.808 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop6" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:31.823 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop7" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:31.850 491 WARNING root [-] Could not find the SCSI address (HCTL) for device /dev/vda. Skipping: FileNotFoundError: [Errno 2] No such file or directory: '/sys/block/vda/device/scsi_device'[00m
+2019-12-21 06:28:31.873 491 DEBUG root [-] Skipping RAM device {'KNAME': 'zram0', 'MODEL': '', 'SIZE': '', 'ROTA': '0', 'TYPE': 'disk'} list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:362[00m
+2019-12-21 06:28:31.885 491 INFO root [-] Picked root device /dev/vda for node 22e30797-eac0-4207-8a68-b00699367a1e based on root device hints None[00m
+2019-12-21 06:28:31.926 491 INFO oslo.service.wsgi [-] ironic-python-agent listening on :::9999[00m
+2019-12-21 06:28:31.955 491 INFO ironic_python_agent.api.app [-] Started API service on port 9999[00m
+2019-12-21 06:28:32.047 491 INFO eventlet.wsgi.server [-] (491) wsgi starting up on http://[::]:9999[00m
+2019-12-21 06:28:32.051 491 INFO ironic_python_agent.agent [-] starting heartbeater[00m
+2019-12-21 06:28:32.080 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ip route get 10.196.1.4 execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:32.478 491 DEBUG oslo_concurrency.processutils [-] CMD "ip route get 10.196.1.4" returned: 0 in 0.397s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:32.494 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ip route get 10.196.1.4" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:32.507 491 DEBUG ironic_lib.utils [-] Command stdout is: "10.196.1.4 via 10.0.5.1 dev eth1  src 10.0.5.56 
+    cache 
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:32.519 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:32.953 491 INFO ironic_python_agent.agent [-] heartbeat successful[00m
+2019-12-21 06:28:32.979 491 INFO ironic_python_agent.agent [-] sleeping before next heartbeat, interval: 174.90906223450733[00m
+2019-12-21 06:28:32.992 491 DEBUG eventlet.wsgi.server [-] (491) accepted ('::ffff:10.0.5.1', 56578, 0, 0) server /usr/local/lib/python3.6/site-packages/eventlet/wsgi.py:985[00m
+2019-12-21 06:28:33.052 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands HTTP/1.1" status: 308  len: 478 time: 0.0335293[00m
+2019-12-21 06:28:33.084 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands/ HTTP/1.1" status: 200  len: 148 time: 0.0135183[00m
+2019-12-21 06:28:33.153 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "POST /v1/commands?wait=false HTTP/1.1" status: 308  len: 511 time: 0.0202415[00m
+2019-12-21 06:28:33.174 491 DEBUG root [-] Executing command: standby.prepare_image with args: {'image_info': {'id': '96d55cb6-51eb-4a1f-93a3-bbbca7d7f569', 'urls': ['http://10.196.1.4:8080/v1/AUTH_fbe58b46a077480bbc749c0f50278f96/glance/96d55cb6-51eb-4a1f-93a3-bbbca7d7f569?temp_url_sig=93121c8a2407fdcff88ff25de4b11447bde58515&temp_url_expires=1576910745'], 'checksum': '443b7623e27ecf03dc9e01ee93f67afe', 'disk_format': 'qcow2', 'container_format': 'bare', 'stream_raw_images': True, 'os_hash_algo': 'sha512', 'os_hash_value': '6513f21e44aa3da349f248188a44bc304a3653a04122d8fb4535423c8e1d14cd6a153f735bb0982e2161b5b5186106570c17a9e58b64dd39390617cd5a350f78', 'node_uuid': '22e30797-eac0-4207-8a68-b00699367a1e'}} execute_command /usr/local/lib/python3.6/site-packages/ironic_python_agent/extensions/base.py:237[00m
+2019-12-21 06:28:33.189 491 DEBUG ironic_python_agent.extensions.standby [-] Preparing image 96d55cb6-51eb-4a1f-93a3-bbbca7d7f569 prepare_image /usr/local/lib/python3.6/site-packages/ironic_python_agent/extensions/standby.py:567[00m
+2019-12-21 06:28:33.195 491 INFO root [-] Command standby.prepare_image completed: Command name: prepare_image, params: {'image_info': {'id': '96d55cb6-51eb-4a1f-93a3-bbbca7d7f569', 'urls': ['http://10.196.1.4:8080/v1/AUTH_fbe58b46a077480bbc749c0f50278f96/glance/96d55cb6-51eb-4a1f-93a3-bbbca7d7f569?temp_url_sig=93121c8a2407fdcff88ff25de4b11447bde58515&temp_url_expires=1576910745'], 'checksum': '443b7623e27ecf03dc9e01ee93f67afe', 'disk_format': 'qcow2', 'container_format': 'bare', 'stream_raw_images': True, 'os_hash_algo': 'sha512', 'os_hash_value': '6513f21e44aa3da349f248188a44bc304a3653a04122d8fb4535423c8e1d14cd6a153f735bb0982e2161b5b5186106570c17a9e58b64dd39390617cd5a350f78', 'node_uuid': '22e30797-eac0-4207-8a68-b00699367a1e'}}, status: RUNNING, result: None.[00m
+2019-12-21 06:28:33.199 491 DEBUG root [-] Looking for a device matching root hints None get_os_install_device /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:957[00m
+2019-12-21 06:28:33.222 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): udevadm settle execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:33.230 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "POST /v1/commands/?wait=false HTTP/1.1" status: 200  len: 928 time: 0.0613625[00m
+2019-12-21 06:28:33.536 491 DEBUG oslo_concurrency.processutils [-] CMD "udevadm settle" returned: 0 in 0.314s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:33.550 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "udevadm settle" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:33.564 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:33.574 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:33.587 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:28:33.975 491 DEBUG oslo_concurrency.processutils [-] CMD "lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE" returned: 0 in 0.388s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:28:33.996 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "lsblk -Pbia -oKNAME,MODEL,SIZE,ROTA,TYPE" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:28:34.005 491 DEBUG ironic_lib.utils [-] Command stdout is: "KNAME="loop0" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop1" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop2" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop3" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop4" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop5" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop6" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="loop7" MODEL="" SIZE="" ROTA="1" TYPE="loop"
+KNAME="vda" MODEL="" SIZE="11811160064" ROTA="1" TYPE="disk"
+KNAME="zram0" MODEL="" SIZE="" ROTA="0" TYPE="disk"
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:28:34.019 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:28:34.352 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop0" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:34.372 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop1" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:34.411 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop2" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:34.438 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop3" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:34.452 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop4" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:34.468 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop5" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:34.485 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop6" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:34.501 491 DEBUG root [-] TYPE did not match. Wanted: 'disk' but found: 'KNAME="loop7" MODEL="" SIZE="" ROTA="1" TYPE="loop"' list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:349[00m
+2019-12-21 06:28:34.536 491 WARNING root [-] Could not find the SCSI address (HCTL) for device /dev/vda. Skipping: FileNotFoundError: [Errno 2] No such file or directory: '/sys/block/vda/device/scsi_device'[00m
+2019-12-21 06:28:34.562 491 DEBUG root [-] Skipping RAM device {'KNAME': 'zram0', 'MODEL': '', 'SIZE': '', 'ROTA': '0', 'TYPE': 'disk'} list_all_block_devices /usr/local/lib/python3.6/site-packages/ironic_python_agent/hardware.py:362[00m
+2019-12-21 06:28:34.580 491 INFO root [-] Picked root device /dev/vda for node 22e30797-eac0-4207-8a68-b00699367a1e based on root device hints None[00m
+2019-12-21 06:28:34.612 491 INFO ironic_python_agent.extensions.standby [-] Attempting to download image from http://10.196.1.4:8080/v1/AUTH_fbe58b46a077480bbc749c0f50278f96/glance/96d55cb6-51eb-4a1f-93a3-bbbca7d7f569?temp_url_sig=93121c8a2407fdcff88ff25de4b11447bde58515&temp_url_expires=1576910745[00m
+2019-12-21 06:28:37.944 491 INFO ironic_python_agent.extensions.standby [-] Image downloaded from /tmp/96d55cb6-51eb-4a1f-93a3-bbbca7d7f569 in 3.350148916244507 seconds[00m
+2019-12-21 06:28:37.957 491 DEBUG ironic_python_agent.extensions.standby [-] Verifying image at /tmp/96d55cb6-51eb-4a1f-93a3-bbbca7d7f569 against sha512 checksum 6513f21e44aa3da349f248188a44bc304a3653a04122d8fb4535423c8e1d14cd6a153f735bb0982e2161b5b5186106570c17a9e58b64dd39390617cd5a350f78 verify_image /usr/local/lib/python3.6/site-packages/ironic_python_agent/extensions/standby.py:330[00m
+2019-12-21 06:28:37.986 491 INFO ironic_python_agent.extensions.standby [-] Writing image with command: /bin/bash /usr/local/lib/python3.6/site-packages/ironic_python_agent/extensions/../shell/write_image.sh /tmp/96d55cb6-51eb-4a1f-93a3-bbbca7d7f569 /dev/vda[00m
+2019-12-21 06:28:37.999 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): /bin/bash /usr/local/lib/python3.6/site-packages/ironic_python_agent/extensions/../shell/write_image.sh /tmp/96d55cb6-51eb-4a1f-93a3-bbbca7d7f569 /dev/vda execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:31:28.308 491 INFO ironic_python_agent.agent [-] heartbeat successful[00m
+2019-12-21 06:31:28.326 491 INFO ironic_python_agent.agent [-] sleeping before next heartbeat, interval: 132.95408839332862[00m
+2019-12-21 06:32:57.390 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands HTTP/1.1" status: 308  len: 478 time: 0.0457706[00m
+2019-12-21 06:32:57.430 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands/ HTTP/1.1" status: 200  len: 944 time: 0.0155396[00m
+2019-12-21 06:32:57.519 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands HTTP/1.1" status: 308  len: 478 time: 0.0370750[00m
+2019-12-21 06:32:57.574 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands/ HTTP/1.1" status: 200  len: 944 time: 0.0204487[00m
+2019-12-21 06:33:41.771 491 INFO ironic_python_agent.agent [-] heartbeat successful[00m
+2019-12-21 06:33:41.798 491 INFO ironic_python_agent.agent [-] sleeping before next heartbeat, interval: 103.83189317133666[00m
+2019-12-21 06:35:31.949 491 DEBUG oslo_concurrency.processutils [-] CMD "/bin/bash /usr/local/lib/python3.6/site-packages/ironic_python_agent/extensions/../shell/write_image.sh /tmp/96d55cb6-51eb-4a1f-93a3-bbbca7d7f569 /dev/vda" returned: 0 in 413.950s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:35:31.962 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "/bin/bash /usr/local/lib/python3.6/site-packages/ironic_python_agent/extensions/../shell/write_image.sh /tmp/96d55cb6-51eb-4a1f-93a3-bbbca7d7f569 /dev/vda" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:35:31.975 491 DEBUG ironic_lib.utils [-] Command stdout is: "write_image.sh: Erasing existing GPT and MBR data structures from /dev/vda
+Creating new GPT entries.
+GPT data structures destroyed! You may now partition the disk using fdisk or
+other utilities.
+write_image.sh: Imaging /tmp/96d55cb6-51eb-4a1f-93a3-bbbca7d7f569 to /dev/vda
+write_image.sh: /dev/vda imaged successfully!
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:35:31.986 491 DEBUG ironic_lib.utils [-] Command stderr is: "33+0 records in
+33+0 records out
+16896 bytes (17 kB, 16 KiB) copied, 0.0502381 s, 336 kB/s
+33+0 records in
+33+0 records out
+16896 bytes (17 kB, 16 KiB) copied, 0.0301548 s, 560 kB/s
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:35:31.999 491 INFO ironic_python_agent.extensions.standby [-] Image /tmp/96d55cb6-51eb-4a1f-93a3-bbbca7d7f569 written to device /dev/vda in 414.02535367012024 seconds[00m
+2019-12-21 06:35:32.016 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): partprobe /dev/vda execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:35:35.584 491 DEBUG oslo_concurrency.processutils [-] CMD "partprobe /dev/vda" returned: 0 in 3.567s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:35:35.620 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "partprobe /dev/vda" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:35:35.646 491 DEBUG ironic_lib.utils [-] Command stdout is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:35:35.674 491 DEBUG ironic_lib.utils [-] Command stderr is: "Warning: Not all of the space available to /dev/vda appears to be used, you can fix the GPT to use all of the space (an extra 22978560 blocks) or continue with the current setting? 
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:35:35.707 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): parted -s -m /dev/vda unit MiB print execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:35:37.170 491 DEBUG oslo_concurrency.processutils [-] CMD "parted -s -m /dev/vda unit MiB print" returned: 0 in 1.462s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:35:37.220 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "parted -s -m /dev/vda unit MiB print" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:35:37.247 491 DEBUG ironic_lib.utils [-] Command stdout is: "BYT;
+/dev/vda:11264MiB:virtblk:512:512:gpt:Virtio Block Device:;
+15:1.00MiB:9.00MiB:8.00MiB:::boot, esp;
+1:9.00MiB:44.0MiB:35.0MiB:ext3::;
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:35:37.269 491 DEBUG ironic_lib.utils [-] Command stderr is: "Warning: Not all of the space available to /dev/vda appears to be used, you can fix the GPT to use all of the space (an extra 22978560 blocks) or continue with the current setting? 
+" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:35:37.304 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): hexdump -s 440 -n 4 -e "0x%08x" /dev/vda execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:35:37.814 491 DEBUG oslo_concurrency.processutils [-] CMD "hexdump -s 440 -n 4 -e "0x%08x" /dev/vda" returned: 0 in 0.510s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:35:37.867 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "hexdump -s 440 -n 4 -e "0x%08x" /dev/vda" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:35:37.899 491 DEBUG ironic_lib.utils [-] Command stdout is: "0x00000000" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:103[00m
+2019-12-21 06:35:37.930 491 DEBUG ironic_lib.utils [-] Command stderr is: "" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:35:37.947 491 INFO ironic_python_agent.extensions.standby [-] image (96d55cb6-51eb-4a1f-93a3-bbbca7d7f569) written to device /dev/vda root_uuid=0x00000000[00m
+2019-12-21 06:35:37.980 491 INFO root [-] Command: prepare_image, result: {'result': 'prepare_image: image (96d55cb6-51eb-4a1f-93a3-bbbca7d7f569) written to device /dev/vda root_uuid=0x00000000'}[00m
+2019-12-21 06:35:40.842 491 INFO ironic_python_agent.agent [-] heartbeat successful[00m
+2019-12-21 06:35:41.060 491 INFO ironic_python_agent.agent [-] sleeping before next heartbeat, interval: 110.92208319541935[00m
+2019-12-21 06:35:41.085 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands HTTP/1.1" status: 308  len: 478 time: 0.5774283[00m
+2019-12-21 06:35:41.287 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands/ HTTP/1.1" status: 200  len: 1063 time: 0.0773289[00m
+2019-12-21 06:35:41.632 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands HTTP/1.1" status: 308  len: 478 time: 0.2177887[00m
+2019-12-21 06:35:41.884 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands/ HTTP/1.1" status: 200  len: 1063 time: 0.0773709[00m
+2019-12-21 06:35:41.982 491 DEBUG eventlet.wsgi.server [-] (491) accepted ('::ffff:10.0.5.1', 57608, 0, 0) server /usr/local/lib/python3.6/site-packages/eventlet/wsgi.py:985[00m
+2019-12-21 06:35:42.162 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands HTTP/1.1" status: 308  len: 478 time: 0.0784006[00m
+2019-12-21 06:35:42.396 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands HTTP/1.1" status: 308  len: 478 time: 0.1403339[00m
+2019-12-21 06:35:42.440 491 INFO ironic_python_agent.agent [-] heartbeat successful[00m
+2019-12-21 06:35:42.502 491 INFO ironic_python_agent.agent [-] sleeping before next heartbeat, interval: 152.68145433500086[00m
+2019-12-21 06:35:42.561 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands/ HTTP/1.1" status: 200  len: 1063 time: 0.0397944[00m
+2019-12-21 06:35:42.699 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands HTTP/1.1" status: 308  len: 478 time: 0.0801728[00m
+2019-12-21 06:35:42.851 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands/ HTTP/1.1" status: 200  len: 1063 time: 0.0807834[00m
+2019-12-21 06:35:43.050 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands/ HTTP/1.1" status: 200  len: 1063 time: 0.0588870[00m
+2019-12-21 06:35:43.203 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands HTTP/1.1" status: 308  len: 478 time: 0.0754557[00m
+2019-12-21 06:35:43.304 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands/ HTTP/1.1" status: 200  len: 1063 time: 0.0410635[00m
+2019-12-21 06:35:43.835 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands HTTP/1.1" status: 308  len: 478 time: 0.0764170[00m
+2019-12-21 06:35:43.956 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands/ HTTP/1.1" status: 200  len: 1063 time: 0.0421360[00m
+2019-12-21 06:35:44.107 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands HTTP/1.1" status: 308  len: 478 time: 0.0809312[00m
+2019-12-21 06:35:44.211 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "GET /v1/commands/ HTTP/1.1" status: 200  len: 1063 time: 0.0387945[00m
+2019-12-21 06:35:58.476 491 DEBUG eventlet.wsgi.server [-] (491) accepted ('::ffff:10.0.5.1', 57706, 0, 0) server /usr/local/lib/python3.6/site-packages/eventlet/wsgi.py:985[00m
+2019-12-21 06:35:58.542 491 INFO eventlet.wsgi.server [-] ::ffff:10.0.5.1 "POST /v1/commands?wait=true HTTP/1.1" status: 308  len: 508 time: 0.0300524[00m
+2019-12-21 06:35:58.566 491 DEBUG root [-] Executing command: log.collect_system_logs with args: {} execute_command /usr/local/lib/python3.6/site-packages/ironic_python_agent/extensions/base.py:237[00m
+2019-12-21 06:35:58.644 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): dmesg execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:35:58.843 491 DEBUG oslo_concurrency.processutils [-] CMD "dmesg" returned: 0 in 0.199s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:35:58.854 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "dmesg" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:35:58.860 491 DEBUG ironic_lib.utils [-] Command stderr is: "b''" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:35:58.903 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ps au execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:35:59.095 491 DEBUG oslo_concurrency.processutils [-] CMD "ps au" returned: 0 in 0.192s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:35:59.105 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ps au" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:35:59.112 491 DEBUG ironic_lib.utils [-] Command stderr is: "b''" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:35:59.120 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): df -a execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:35:59.269 491 DEBUG oslo_concurrency.processutils [-] CMD "df -a" returned: 0 in 0.148s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:35:59.279 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "df -a" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:35:59.285 491 DEBUG ironic_lib.utils [-] Command stderr is: "b''" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:35:59.295 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): iptables -L execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:35:59.466 491 DEBUG oslo_concurrency.processutils [-] CMD "iptables -L" returned: 0 in 0.172s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:35:59.478 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "iptables -L" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:35:59.486 491 DEBUG ironic_lib.utils [-] Command stderr is: "b''" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:35:59.497 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): ip addr execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:35:59.745 491 DEBUG oslo_concurrency.processutils [-] CMD "ip addr" returned: 0 in 0.247s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:35:59.769 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "ip addr" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:35:59.781 491 DEBUG ironic_lib.utils [-] Command stderr is: "b''" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
+2019-12-21 06:35:59.789 491 DEBUG oslo_concurrency.processutils [-] Running cmd (subprocess): lshw -quiet -json execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:372[00m
+2019-12-21 06:36:07.000 491 DEBUG oslo_concurrency.processutils [-] CMD "lshw -quiet -json" returned: 0 in 7.210s execute /usr/local/lib/python3.6/site-packages/oslo_concurrency/processutils.py:409[00m
+2019-12-21 06:36:07.011 491 DEBUG ironic_lib.utils [-] Execution completed, command line is "lshw -quiet -json" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:101[00m
+2019-12-21 06:36:07.017 491 DEBUG ironic_lib.utils [-] Command stderr is: "b''" execute /usr/local/lib/python3.6/site-packages/ironic_lib/utils.py:104[00m
