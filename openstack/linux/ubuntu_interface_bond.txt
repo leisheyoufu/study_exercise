@@ -1,0 +1,70 @@
+auto lo
+iface lo inet loopback
+auto bond0
+iface bond0 inet manual
+    mtu 9000
+    bond-ad_select 0
+    bond-downdelay 200
+    bond-lacp_rate 0
+    bond-miimon 100
+    bond-mode 4
+    bond-slaves ten1 ten2
+    bond-updelay 0
+    bond-use_carrier on
+    bond-xmit_hash_policy layer3+4
+auto bond1
+iface bond1 inet manual
+    mtu 9000
+    bond-ad_select 0
+    bond-downdelay 200
+    bond-lacp_rate 0
+    bond-miimon 100
+    bond-mode 4
+    bond-slaves ten3 ten4
+    bond-updelay 0
+    bond-use_carrier on
+    bond-xmit_hash_policy layer3+4
+auto one1
+iface one1 inet static
+    address 10.5.5.132
+    netmask 255.255.252.0
+    gateway 10.5.7.254
+auto vhost0
+iface vhost0 inet static
+    address 10.5.12.132
+    netmask 255.255.252.0
+    mtu 9000
+    dns-nameservers 8.8.8.8 1.1.1.1
+    pre-up /usr/lib/contrail/if-vhost0
+auto bond0.512
+iface bond0.512 inet static
+    vlan-raw-device bond0
+    address 10.5.8.132
+    netmask 255.255.252.0
+    mtu 9000
+auto ten3
+iface ten3 inet manual
+    mtu 9000
+    bond-master bond1
+auto ten2
+iface ten2 inet manual
+    mtu 9000
+    bond-master bond0
+auto ten1
+iface ten1 inet manual
+    mtu 9000
+    bond-master bond0
+auto bond1.516
+iface bond1.516 inet static
+    vlan-raw-device bond1
+    address 10.5.24.132
+    netmask 255.255.252.0
+    mtu 9000
+auto ten4
+iface ten4 inet manual
+    mtu 9000
+    bond-master bond1
+auto bond0.513
+iface bond0.513 inet manual
+    vlan-raw-device bond0
+    mtu 9000

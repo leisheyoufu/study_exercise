@@ -1,3 +1,11 @@
+## Setup ironic with devstack
+sudo useradd -s /bin/bash -d /opt/stack -m stack
+echo "stack ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/stack
+sudo su - stack
+git clone https://git.openstack.org/openstack-dev/devstack --branch stable/queens
+vi local.conf
+./stack.sh
+
 ## Service for ironic
 systemctl restart devstack@ir-cond.service
 journalctl -u devstack@ir-cond.service --since="2019-12-21 06:04:48" --until="2019-12-21 06:50:35" | grep agent
