@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+  namespace: loch
+spec:
+  containers:
+  - name: busybox
+    image: busybox:1.28.4 # latest version has problem
+    command:
+    - sleep
+    - "3600"

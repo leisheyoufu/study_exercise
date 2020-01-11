@@ -1,0 +1,9 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-ingress
+  namespace: loch
+spec:
+  podSelector: {}
+  policyTypes: ["Ingress"]  
+  # Ingress policy was specified, but no any endpoint, thereforce deny all of the traffic.

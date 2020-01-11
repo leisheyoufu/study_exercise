@@ -1,0 +1,139 @@
+Reference https://www.cnblogs.com/linuxk/p/10517055.html
+Can also reference https://www.jianshu.com/p/79bce56c0bfb
+
+## Start httpd service
+kubectl apply -f httpd.yml
+kubectl get svc httpd-svc -n loch
+```
+[root@k8sdev network-policy]# kubectl get svc httpd-svc -n loch
+NAME        TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+httpd-svc   NodePort   10.43.163.217   <none>        8080:30000/TCP   18m
+[root@k8sdev network-policy]# kubectl get po -o wide -n loch
+NAME                     READY   STATUS    RESTARTS   AGE   IP            NODE              NOMINATED NODE   READINESS GATES
+httpd-6dd946dcdc-kw7l7   1/1     Running   0          21m   10.42.0.191   192.168.126.151   <none>           <none>
+httpd-6dd946dcdc-nzrpd   1/1     Running   0          21m   10.42.0.190   192.168.126.151   <none>           <none>
+httpd-6dd946dcdc-zrs96   1/1     Running   0          21m   10.42.0.192   192.168.126.151   <none>           <none>
+```
+## Start test container
+kubectl apply -f busybox.yml
+kubectl exec -it busybox -n loch -- /bin/sh
+```
+/ # ping -c 2 10.42.0.190
+PING 10.42.0.190 (10.42.0.190): 56 data bytes
+64 bytes from 10.42.0.190: seq=0 ttl=63 time=0.180 ms
+64 bytes from 10.42.0.190: seq=1 ttl=63 time=0.085 ms
+
+--- 10.42.0.190 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max = 0.085/0.132/0.180 ms
+/ # ping -c 2 10.42.0.191
+PING 10.42.0.191 (10.42.0.191): 56 data bytes
+64 bytes from 10.42.0.191: seq=0 ttl=63 time=0.062 ms
+64 bytes from 10.42.0.191: seq=1 ttl=63 time=0.096 ms
+```
+
+Access service port in busybox pod
+```
+/ # wget httpd-svc:8080
+Connecting to httpd-svc:8080 (10.43.163.217:8080)
+index.html           100% |*******************************************************************************************************|    45   0:00:00 ETA
+/ # wget 10.43.163.217:8080
+Connecting to 10.43.163.217:8080 (10.43.163.217:8080)
+wget: can't open 'index.html': File exists
+/ # rm index.html
+/ # wget 10.43.163.217:8080
+Connecting to 10.43.163.217:8080 (10.43.163.217:8080)
+index.html           100% |*******************************************************************************************************************************************************|    45   0:00:00 ETA
+/ #
+```
+
+Access service port inside cluster env
+```
+[root@k8sdev network-policy]# curl 10.43.163.217:8080
+<html><body><h1>It works!</h1></body></html>
+```
+
+## Apply network policy to deny all the trafic
+```
+[root@k8sdev network-policy]# kubectl apply -f deny-policy-demo
+networkpolicy.networking.k8s.io/deny-all-ingress created
+```
+kubectl exec -it busybox -n loch -- /bin/sh
+```
+/ # wget httpd-svc:8080
+Connecting to httpd-svc:8080 (10.43.163.217:8080)
+^C
+```
+kubectl delete -f deny-all-ingress.yml
+
+## Access Rule
+kubectl apply -f ingress-rule.yml
+```
+[root@k8sdev network-policy]# kubectl get networkpolicy -n loch
+NAME           POD-SELECTOR   AGE
+access-httpd   run=httpd      6m46s
+```
+
+Can not access inside busybox now
+```
+[root@k8sdev network-policy]#  kubectl exec -it busybox -n loch -- /bin/sh
+/ # rm index.html
+/ # wget httpd-svc:8080
+Connecting to httpd-svc:8080 (10.43.163.217:8080)
+```
+
+# Delete busybox above and create a new busybox match
+kubectl delete -f busybox.yml
+
+# Start a new busybox with label access
+kubectl apply -f busybox-label.yml
+kubectl exec -it busybox -n loch -- /bin/sh
+
+```
+/ #  wget http://10.42.0.190:80
+Connecting to 10.42.0.190:80 (10.42.0.190:80)
+index.html           100% |*******************************************************************************************************|    45   0:00:00 ETA
+/ #
+/ # wget httpd-svc:8080
+Connecting to httpd-svc:8080 (10.43.163.217:8080)
+index.html           100% |*******************************************************************************************************|    45   0:00:00 ETA
+/ #
+```
+
+## Define policy for egress
+kubectl apply -f deny-all-egress.yml
+kubectl exec -it busybox -n loch -- /bin/sh
+
+# Can not access node ip 192.168.126.151
+```
+/ # ping 192.168.126.151
+PING 192.168.126.151 (192.168.126.151): 56 data bytes
+^C
+--- 192.168.126.151 ping statistics ---
+4 packets transmitted, 0 packets received, 100% packet loss
+```
+
+kubectl delete -f deny-all-egress.yml
+kubectl exec -it busybox -n loch -- /bin/sh
+# Can access now
+```
+/ #  ping 192.168.126.151
+PING 192.168.126.151 (192.168.126.151): 56 data bytes
+64 bytes from 192.168.126.151: seq=0 ttl=64 time=0.046 ms
+64 bytes from 192.168.126.151: seq=1 ttl=64 time=0.119 ms
+```
+
+
+## Spedify rule for egress    (CL: I don't know what's wrong with egress here)
+kubectl apply -f deny-all-egress.yml
+kubectl apply -f egress-rule.yml
+kubectl apply -f busybox.yml
+kubectl exec -it busybox -n loch -- /bin/sh
+```
+/ # wget httpd-svc:8080    # can not access resource
+^C
+```
+
+kubectl delete -f busybox.yml
+kubectl run busybox --rm -it --labels="access=true" --image=busybox:1.28.4 /bin/sh
+
