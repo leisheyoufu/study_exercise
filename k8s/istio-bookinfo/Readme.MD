@@ -1,3 +1,10 @@
+## Setup istio
+https://istio.io/docs/setup/getting-started/
+istioctl manifest apply --set profile=demo     // install
+istioctl manifest generate --set profile=demo | kubectl delete -f -   // uninstall
+
+
+
 ## Setup bookinfo
 kubectl label namespace default istio-injection=enabled
 kubectl get namespace -L istio-injection
