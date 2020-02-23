@@ -1,0 +1,16 @@
+global:
+#监控时间，每隔15s去exporter去pull数据
+scrape_interval: 15s
+evaluation_interval: 15s
+#抓取目标设置
+scrape_configs:
+- job_name: 'prometheus'
+static_configs:
+#targets里面是监控的ip地址
+- targets: ['localhost:9090']
+- job_name: 'node_exporter'
+static_configs:
+- targets: ['docker.testing-studio.com:9100'] // CL： 改为exporter 的address:port
+- job_name: 'mysql'
+static_configs:
+- targets: ['docker.testing-studio.com:9104'] // CL： 改为exporter 的address:port
