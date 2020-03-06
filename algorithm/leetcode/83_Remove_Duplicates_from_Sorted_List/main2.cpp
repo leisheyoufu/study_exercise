@@ -31,11 +31,11 @@ public:
         if(!head || !head->next) {
             return head;
         }
-        int val = head->val;
         ListNode **entry = &head->next;
+        int val = head->val;
         while(*entry) {
             ListNode *curr = *entry;
-            if(curr->val == val) {
+            if(val == curr->val) {
                 *entry = curr->next;
             } else {
                 entry = &curr->next;
@@ -48,7 +48,21 @@ public:
 
 int main()
 {
+    // 1->1->2->3->3
+    ListNode head(1);
+    ListNode *temp = &head;
+    vector<int> nums = {1, 1,2,3,3};
+    for(auto num : nums) {
+        temp->next = new ListNode(num);
+        temp = temp->next;
+    }
+    temp = head.next;
     Solution sln;
+    sln.deleteDuplicates(head.next);
+    while(temp) {
+        cout << temp->val << " ";
+        temp = temp->next;
+    }
     system("pause");
     return 0;
 }
