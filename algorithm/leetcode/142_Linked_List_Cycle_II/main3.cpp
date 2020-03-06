@@ -31,7 +31,7 @@ struct ListNode {
 class Solution
 {
 public:
-    ListNode *detectCycle(ListNode *head) 
+    ListNode *detectCycle(ListNode *head)
     {
         ListNode *fast = head, *slow=head;
         while(fast && fast->next && fast->next->next) {
@@ -49,7 +49,7 @@ public:
             fast = fast->next;
             slow = slow->next;
         }
-        return fast;        
+        return fast;
     }
 };
 
