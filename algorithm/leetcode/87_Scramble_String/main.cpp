@@ -82,7 +82,8 @@ public:
 int main()
 {
     Solution sln;
-    cout << sln.isScramble("great","rgtae") << endl;
+    cout << sln.isScramble("great","rgeat") << endl;  // 1
+    cout << sln.isScramble("abcde","caebd") << endl; // 0
     system("pause");
     return 0;
 }

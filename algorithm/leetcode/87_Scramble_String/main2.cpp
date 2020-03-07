@@ -51,38 +51,39 @@ class Solution
 public:
     bool isScramble(string s1, string s2)
     {
-        int l1 = s1.length();
-        int l2 = s2.length();
-        if(l1 != l2) {
+        if(s1.length() != s2.length()) {
             return false;
         }
-        if(s1 == s2) {
+        if(s1==s2) {
             return true;
         }
-        vector<vector<vector<bool> > > dp(l1, vector<vector<bool> > (l1, vector<bool> (l1+1, false)));
-        for(int i=0; i<l1; i++) {
-            for(int j=0; j<l1; j++) {
+        int n = s1.length();
+        vector<vector<vector<bool>>> dp(n, vector<vector<bool>> (n, vector<bool>(n+1, false)));
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<n; j++) {
                 if(s1[i] == s2[j]) {
                     dp[i][j][1] = true;
                 }
             }
         }
-        for (int len =2; len <=l1; len++) {
-            for(int i=0; i<l1-len+1; i++) {
-                for(int j=0; j<l2-len+1; j++) {
+        for(int len=2; len<n+1; len++) {
+            for(int i=0; i<n-len + 1; i++) {
+                for(int j=0; j<n-len + 1; j++) {
                     for(int k=1; k<len; k++) {
-                        dp[i][j][len] = dp[i][j][len] || dp[i][j][k] && dp[i+k][j+k][len-k] || dp[i+k][j][len-k] && dp[i][j+len-k][k];
+                        dp[i][j][len] = dp[i][j][len] || dp[i][j][k] && dp[i+k][j+k][len-k] || dp[i+k][j][len-k] && dp[i][j+len-k][k];  // must have dp[i][j][len] to avoid of override
                     }
                 }
             }
         }
-        return dp[0][0][l1];
+        return dp[0][0][n];
     }
 };
 int main()
 {
     Solution sln;
-    cout << sln.isScramble("great","rgtae") << endl;
+    cout << sln.isScramble("great","rgeat") << endl;  // 1
+    cout << sln.isScramble("abcde","caebd") << endl; // 0
+    cout << sln.isScramble("abc","acb") << endl; // 1
     system("pause");
     return 0;
 }
