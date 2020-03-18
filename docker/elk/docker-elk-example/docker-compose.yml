@@ -1,0 +1,148 @@
+version: '2'
+
+services:
+
+  elasticsearch:
+    build:
+      context: elasticsearch/
+    container_name: elasticsearch
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      ELASTIC_PASSWORD: "123456"
+    networks:
+      elk:
+        ipv4_address: 172.25.0.2
+    restart: always
+
+  logstash:
+    build:
+      context: logstash/
+    container_name: logstash
+    volumes:
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./logstash/config/pipelines.yml:/usr/share/logstash/config/pipelines.yml:ro
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - mysqllog:/xlogs/mysqllog:ro
+    ports:
+      - "5000:5000"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    user: "root"
+    networks:
+      elk:
+        ipv4_address: 172.25.0.3
+    depends_on:
+      - elasticsearch
+    restart: always
+
+  kibana:
+    build:
+      context: kibana/
+    container_name: kibana
+    volumes:
+      - ./kibana/config/:/usr/share/kibana/config:ro
+    ports:
+      - "5601:5601"
+    networks:
+      elk:
+        ipv4_address: 172.25.0.4
+    depends_on:
+      - elasticsearch
+    restart: always
+
+  metricbeat:
+    build:
+      context: metricbeat/
+    container_name: metricbeat
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc:/hostfs/proc:ro
+      - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
+      - /:/hostfs:ro
+      - ./metricbeat/metricbeat.yml:/usr/share/metricbeat/metricbeat.yml:ro
+      - ./metricbeat/modules.d:/usr/share/metricbeat/modules.d:ro
+      -  /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro
+    user: "root"
+    network_mode: host
+    depends_on:
+      - elasticsearch
+      - kibana
+      - logstash
+    command: -system.hostfs=/hostfs -e
+    restart: always
+  
+  nginx:
+    build:
+      context: nginx/
+    container_name: nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      -  /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      elk:
+        ipv4_address: 172.25.0.5
+    depends_on:
+      - kibana
+    restart: always
+
+  mysql:
+    build:
+      context: mariadb/
+    container_name: mysql
+    volumes:
+      - mysqldata:/var/lib/mysql
+      - ./mariadb/conf.d:/etc/mysql/conf.d:ro
+      - ./mariadb/my.cnf:/etc/mysql/my.cnf:ro
+      -  /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro
+      - mysqllog:/var/log/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      elk:
+        ipv4_address: 172.25.0.6
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+
+  redis:
+    build:
+      context: redis/
+    container_name: redis
+    volumes:
+      - redisdata:/data
+      -  /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro
+    ports:
+      - "6379:6379"
+    networks: 
+      elk:
+        ipv4_address: 172.25.0.7
+    restart: always
+
+
+volumes:
+  esdata:
+    driver: local
+  mysqldata:
+    driver: local
+  mysqllog:
+    driver: local
+  redisdata:
+    driver: local
+  
+
+networks:
+  elk:
+    driver: bridge
+    ipam:
+      config:
+       - subnet: 172.25.0.0/16
