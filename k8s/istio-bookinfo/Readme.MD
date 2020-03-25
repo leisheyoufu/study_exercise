@@ -81,3 +81,7 @@ http://blog.daocloud.io/istio-canary-deployment/  使用 Istio 实现应用的�
 http://blog.daocloud.io/istio-ingress/   使用 Istio 控制 Ingress 流量
 http://blog.daocloud.io/where-is-the-request-1/   Istio 网关中的 Gateway 和 VirtualService 配置深度解析
 http://blog.daocloud.io/istio-1-part-2/   // 服务网格内部的 VirtualService 和 DestinationRule 配置深度解析
+
+https://blog.csdn.net/luanpeng825485697/article/details/84570723   白名单黑名单
+https://m.sohu.com/a/357954115_99953378?spm=smwp.media.fd-s.6.15848045337302W8AMb9  全局锁
+https://m.sohu.com/a/324883682_99953378?qq-pf-to=pcqq.c2c   Envoy——Service Mesh体系中的私人订制，把你安排得明明白白！   dpdk ebpf
