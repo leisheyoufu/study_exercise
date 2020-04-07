@@ -11,3 +11,4 @@ airflow test Helloworld task_1 2020-02-05
 
 ## Refefence
 https://github.com/vishalsatam/Data-Pipelining/blob/master/Airflow/AirflowDemo/Helloworld.py
+https://github.com/yennanliu/XJob      airflow dag example, include spark and toy data

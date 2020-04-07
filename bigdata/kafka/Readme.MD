@@ -15,6 +15,9 @@ docker run -d --name kafka --publish 9092:9092 --link zookeeper --env KAFKA_ZOOK
 ## Consumer command
 /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic demo --from-beginning
 
+## Spark bulk api
+Set max.poll.records in consumer properties
+
 ## Reference
 https://www.cnblogs.com/yxlblogs/p/10115672.html
 https://studygolang.com/articles/17912
