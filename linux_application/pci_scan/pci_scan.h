@@ -40,8 +40,7 @@ typedef __u16 word;
 typedef __u32 u32;
 
 
-struct pci_device
-{
+struct pci_device {
     unsigned int bus;
     unsigned int dev;
     unsigned int fun;
@@ -53,7 +52,7 @@ struct pci_device
     char *device_name;
 };
 
-struct pci_device_node{
+struct pci_device_node {
     struct pci_device pci_dev;
     struct pci_device_node *next;
 };

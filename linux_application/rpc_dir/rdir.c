@@ -26,7 +26,7 @@ int main(int argc, char **argv)
     int wrdlen;
     if(argc >= 2) {
         handle = clnt_create(argv[1], DIRPROG, DIRVERS, "tcp");
-    } else{
+    } else {
         handle = clnt_create(RMACHINE, DIRPROG, DIRVERS, "tcp");
     }
 

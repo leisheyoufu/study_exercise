@@ -8,7 +8,8 @@
 #include <sys/syscall.h>
 const int long_size = sizeof(long);
 void reverse(char *str)
-{   int i, j;
+{
+    int i, j;
     char temp;
     for(i = 0, j = strlen(str) - 2;
         i <= j; ++i, --j) {
@@ -19,12 +20,13 @@ void reverse(char *str)
 }
 void getdata(pid_t child, long addr,
              char *str, int len)
-{   char *laddr;
+{
+    char *laddr;
     int i, j;
     union u {
-            long val;
-            char chars[long_size];
-    }data;
+        long val;
+        char chars[long_size];
+    } data;
     i = 0;
     j = len / long_size;
     laddr = str;
@@ -47,12 +49,13 @@ void getdata(pid_t child, long addr,
 }
 void putdata(pid_t child, long addr,
              char *str, int len)
-{   char *laddr;
+{
+    char *laddr;
     int i, j;
     union u {
-            long val;
-            char chars[long_size];
-    }data;
+        long val;
+        char chars[long_size];
+    } data;
     i = 0;
     j = len / long_size;
     laddr = str;
@@ -67,58 +70,56 @@ void putdata(pid_t child, long addr,
     if(j != 0) {
         memcpy(data.chars, laddr, j);
         ptrace(PTRACE_POKEDATA, child,
-               addr + i * 4, data.val); // POKEDATA can read and write 
+               addr + i * 4, data.val); // POKEDATA can read and write
     }
 }
 int main()
 {
-   pid_t child;
-   child = fork();
-   if(child == 0) {
-      ptrace(PTRACE_TRACEME, 0, NULL, NULL);
-      execl("/bin/ls", "ls", NULL);
-   }
-   else {
-      long orig_eax;
-      long params[3];
-      int status;
-      char *str, *laddr;
-      int toggle = 0;
-      while(1) {
-         wait(&status);
-         if(WIFEXITED(status))
-             break;
-         orig_eax = ptrace(PTRACE_PEEKUSER,
-                           child, 4 * ORIG_EAX,
-                           NULL);
-         if(orig_eax == SYS_write) {
-            if(toggle == 0) {
-               toggle = 1;
-               params[0] = ptrace(PTRACE_PEEKUSER,
-                                  child, 4 * EBX,
-                                  NULL);
-               params[1] = ptrace(PTRACE_PEEKUSER,
-                                  child, 4 * ECX,
-                                  NULL);
-               params[2] = ptrace(PTRACE_PEEKUSER,
-                                  child, 4 * EDX,
-                                  NULL);
-               str = (char *)malloc((params[2]+1)
-                                 * sizeof(char));
-               getdata(child, params[1], str,
-                       params[2]);  //  params[2] is the len of data
-               reverse(str);
-               putdata(child, params[1], str,
-                       params[2]); // prames[1] is the addr
+    pid_t child;
+    child = fork();
+    if(child == 0) {
+        ptrace(PTRACE_TRACEME, 0, NULL, NULL);
+        execl("/bin/ls", "ls", NULL);
+    } else {
+        long orig_eax;
+        long params[3];
+        int status;
+        char *str, *laddr;
+        int toggle = 0;
+        while(1) {
+            wait(&status);
+            if(WIFEXITED(status))
+                break;
+            orig_eax = ptrace(PTRACE_PEEKUSER,
+                              child, 4 * ORIG_EAX,
+                              NULL);
+            if(orig_eax == SYS_write) {
+                if(toggle == 0) {
+                    toggle = 1;
+                    params[0] = ptrace(PTRACE_PEEKUSER,
+                                       child, 4 * EBX,
+                                       NULL);
+                    params[1] = ptrace(PTRACE_PEEKUSER,
+                                       child, 4 * ECX,
+                                       NULL);
+                    params[2] = ptrace(PTRACE_PEEKUSER,
+                                       child, 4 * EDX,
+                                       NULL);
+                    str = (char *)malloc((params[2]+1)
+                                         * sizeof(char));
+                    getdata(child, params[1], str,
+                            params[2]);  //  params[2] is the len of data
+                    reverse(str);
+                    putdata(child, params[1], str,
+                            params[2]); // prames[1] is the addr
+                } else {
+                    toggle = 0;
+                }
             }
-            else {
-               toggle = 0;
-            }
-         }
-      ptrace(PTRACE_SYSCALL, child, NULL, NULL);
-      }
-   }
-   return 0;
+            ptrace(PTRACE_SYSCALL, child, NULL, NULL);
+        }
+    }
+    return 0;
 }
 
 

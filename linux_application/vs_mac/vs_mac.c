@@ -24,8 +24,7 @@
 
 
 
-typedef struct iphdr //定义IP首部
-{
+typedef struct iphdr { //定义IP首部
     unsigned char h_verlen; //4位首部长度+4位IP版本号
     unsigned char tos; //8位服务类型TOS
     unsigned short total_len; //16位总长度（字节）
@@ -38,16 +37,14 @@ typedef struct iphdr //定义IP首部
     unsigned int dest_ip; //32位目的IP地址
 } __attribute__((packed));
 
-typedef struct udphdr //定义UDP首部
-{
+typedef struct udphdr { //定义UDP首部
     unsigned short uh_sport;    //16位源端口
     unsigned short uh_dport;    //16位目的端口
     unsigned int uh_len;//16位UDP包长度
     unsigned int uh_sum;//16位校验和
 } __attribute__((packed));
 
-typedef struct tcphdr //定义TCP首部
-{
+typedef struct tcphdr { //定义TCP首部
     unsigned short th_sport; //16位源端口
     unsigned short th_dport; //16位目的端口
     unsigned int th_seq; //32位序列号
@@ -60,8 +57,7 @@ typedef struct tcphdr //定义TCP首部
 } __attribute__((packed));
 
 
-typedef struct icmphdr
-{
+typedef struct icmphdr {
     unsigned char  icmp_type;
     unsigned char icmp_code; /* type sub code */
     unsigned short icmp_cksum;
@@ -72,8 +68,7 @@ typedef struct icmphdr
 } __attribute__((packed));
 
 
-struct eth_hdr
-{
+struct eth_hdr {
     unsigned char	h_dest[ETH_ALEN];	/* destination eth addr	*/
     unsigned char	h_source[ETH_ALEN];	/* source ether addr	*/
     __be16		h_proto;		/* packet type ID field	*/
@@ -91,8 +86,7 @@ int analyse_eth(struct eth_hdr *eth)
            p[0]&n, p[1]&n, p[2]&n, p[3]&n, p[4]&n, p[5]&n,
            eth->h_proto);
     // change dest mac when the packet is mime
-    if(mac_compare(eth->h_dest,LOCAL_MAC)== 0 )
-    {
+    if(mac_compare(eth->h_dest,LOCAL_MAC)== 0 ) {
         printf("Now change the mac \n");
         COPY_STR2MAC(eth->h_dest,DEST_MAC);
         return REDIRECT;
@@ -133,8 +127,7 @@ void analyse_ip(struct iphdr *iph)
            src[0]&m,src[1]&m,src[2]&m,src[3]&m,
            des[0]&m,des[1]&m,des[2]&m,des[3]&m);
     printf("Protocol: ");
-    switch(iph->proto)
-    {
+    switch(iph->proto) {
     case IPPROTO_ICMP:
         analyse_icmp((struct icmphdr*)p);
         break;
@@ -171,8 +164,7 @@ void capture(int sock, struct sockaddr_ll *st_eth_addr)
 
     //	char *ethhead, *iphead, *tcphead, *udphead, *icmphead, *p;
 
-    while(1)
-    {
+    while(1) {
         n_read = recvfrom(sock, buffer, BUFFER_MAX, 0, NULL, NULL);
         /*
            14   6(dest)+6(source)+2(type or length)
@@ -182,16 +174,14 @@ void capture(int sock, struct sockaddr_ll *st_eth_addr)
            8   icmp,tcp or udp header
            = 42
            */
-        if(n_read < 42)
-        {
+        if(n_read < 42) {
             fprintf(stdout, "Incomplete header, packet corrupt\n");
             continue;
         }
         p = buffer;
         ret = analyse_eth((struct eth_hdr*)p);
 
-        if(ret == REDIRECT)
-        {
+        if(ret == REDIRECT) {
             unsigned short eth_len = n_read;
             char *eth_msg = buffer;
             p+=sizeof(struct eth_hdr);
@@ -200,11 +190,10 @@ void capture(int sock, struct sockaddr_ll *st_eth_addr)
             // printf("eth_len = %u\n", ntohs(ip_hdr->total_len)+sizeof(struct eth_hdr));  // eaqual
             unsigned long dest_ip;
             inet_pton(AF_INET, DEST_IP, &dest_ip);
-          //  ip_hdr->dest_ip = dest_ip;
+            //  ip_hdr->dest_ip = dest_ip;
             analyse_ip((struct iphdr*)p);
             if(sendto(sock,eth_msg,eth_len,0x0,(struct sockaddr *)st_eth_addr,
-                      sizeof(*st_eth_addr)) != eth_len)
-            {
+                      sizeof(*st_eth_addr)) != eth_len) {
                 printf("buffer len = %u\n",eth_len);
                 perror("sendto");
                 free(eth_msg);
@@ -224,15 +213,13 @@ int get_eth_index(char *eth_name)
     int index;
     sockfd = socket(AF_PACKET,SOCK_RAW,htons(ETH_P_IP));//这个sd就是用来获取eth0的index，完了就关闭 d = socket(PF_INET,SOCK_DGRAM,0) AF_INET,SOCK_DGRAM,0 SOCK_PACKET
 
-    if(sockfd < 0)
-    {
+    if(sockfd < 0) {
         perror("create sd ");
         exit(0);
     }
-     strncpy(req.ifr_name,IF_NAME,sizeof(IF_NAME));
+    strncpy(req.ifr_name,IF_NAME,sizeof(IF_NAME));
     ret=ioctl(sockfd,SIOCGIFINDEX,&req);
-    if(ret < 0)
-    {
+    if(ret < 0) {
         perror("SIOCGIFINDEX ");
     }
     printf("%s index = %u\n",IF_NAME,req.ifr_ifindex);
@@ -243,7 +230,7 @@ int get_eth_index(char *eth_name)
 
 void init_tag_addr(struct sockaddr_ll *st_eth_addr,int index)
 {
-    memset(st_eth_addr, 0 , sizeof(*st_eth_addr));
+    memset(st_eth_addr, 0, sizeof(*st_eth_addr));
     st_eth_addr->sll_family = PF_PACKET;
     st_eth_addr->sll_protocol = htons(VSTRONG_PROTOCOL);
     st_eth_addr->sll_ifindex = index;// eth index
@@ -262,8 +249,7 @@ int main(int argc, char *argv[])
     index = get_eth_index(IF_NAME);
     init_tag_addr(&st_eth_addr,index);
 
-    if((sock = socket(PF_PACKET, SOCK_RAW, htons(ETH_P_IP))) < 0)
-    {
+    if((sock = socket(PF_PACKET, SOCK_RAW, htons(ETH_P_IP))) < 0) {
         printf("create socket error\n");
         exit(0);
     }

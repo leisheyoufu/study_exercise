@@ -50,10 +50,8 @@ int main(int argc, char* argv[])
 
     int fd = open(file_name, O_RDWR);
     int count = 0;
-    if(fd > 0)
-    {
-        while(1)
-        {
+    if(fd > 0) {
+        while(1) {
             /*
             int ret = read(fd, &event, sizeof(event));
             if(ret == sizeof(event))
@@ -65,13 +63,10 @@ int main(int argc, char* argv[])
                 break;
             }
             */
-            if(count %2 == 0)
-            {
+            if(count %2 == 0) {
                 simulate_key(fd,KEY_CAPSLOCK);
                 printf("caps lock enter\n");
-            }
-            else
-            {
+            } else {
                 simulate_key(fd,KEY_NUMLOCK);
                 printf("caps lock enter\n");
             }

@@ -200,7 +200,7 @@ void generate_modify_buf(char *buf,off_t len,struct chunk_modify_descriptor *chu
         }
         if(!match) {
             strncpy(next_chunk->buf,buf+cur,1);
-           // strncpy(next_chunk->buf,chunk_desc->buf+cur,1);
+            // strncpy(next_chunk->buf,chunk_desc->buf+cur,1);
             next_chunk->size = 1;
             next_chunk->buf[1] = '\0';
             cur++;
@@ -298,8 +298,8 @@ void print_chunk_modify(struct chunk_modify_descriptor *chunk_modify_desc)
     curr_chunk = chunk_modify_desc->chunk_list;
     size = 0;
     while(curr_chunk != NULL && curr_chunk->buf !=NULL) {
-            size+=curr_chunk->size;
-      //  printf("size = %d\n",curr_chunk->size);
+        size+=curr_chunk->size;
+        //  printf("size = %d\n",curr_chunk->size);
         printf("%s",curr_chunk->buf);
         curr_chunk = curr_chunk->next;
     }

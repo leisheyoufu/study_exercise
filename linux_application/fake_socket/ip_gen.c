@@ -7,15 +7,13 @@ unsigned short in_cksum(unsigned short *addr,int len)
     register unsigned short *w = addr;
     register int nleft = len;
 
-    while (nleft > 1)
-    {
+    while (nleft > 1) {
         sum += *w++;
         nleft -= 2;
     }
 
     //  mop up an odd byte, if necessary
-    if (nleft == 1)
-    {
+    if (nleft == 1) {
         *(u_char *)(&answer) = *(u_char *)w ;
         sum += answer;
     }

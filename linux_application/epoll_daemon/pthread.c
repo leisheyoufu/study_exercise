@@ -4,39 +4,35 @@
 // return 1  success
 int remove_fd(struct d_thread * t,int fd)
 {
-	int i,j;
-	printf("remove fd\n");
-	pthread_mutex_lock(&t->wait_mutex);
-	for(i=0;i<t->size;i++)
-	{
-		if(t->fds[i] == fd)
-		{
-			t->fds[i] = 0;
-			for(j=i;j<t->size-1;j++)
-			{
-				t->fds[j] = t->fds[j+1];
-			}
-			t->size--;
-			pthread_mutex_unlock(&t->wait_mutex);
-			return 1;
-		}
-	}
-	pthread_mutex_unlock(&t->wait_mutex);
-	return 0;
+    int i,j;
+    printf("remove fd\n");
+    pthread_mutex_lock(&t->wait_mutex);
+    for(i=0; i<t->size; i++) {
+        if(t->fds[i] == fd) {
+            t->fds[i] = 0;
+            for(j=i; j<t->size-1; j++) {
+                t->fds[j] = t->fds[j+1];
+            }
+            t->size--;
+            pthread_mutex_unlock(&t->wait_mutex);
+            return 1;
+        }
+    }
+    pthread_mutex_unlock(&t->wait_mutex);
+    return 0;
 }
 // return 1 success
 int insert_fd(struct d_thread *t,int fd)
 {
-	pthread_mutex_lock(&t->wait_mutex);
-	if(t->size < ARRAY_SIZE)
-	{
-		t->fds[t->size] = fd;
-		(t->size)++;
-		pthread_mutex_unlock(&t->wait_mutex);
-		return 1;
-	}
-	pthread_mutex_unlock(&t->wait_mutex);
-	return 0;
+    pthread_mutex_lock(&t->wait_mutex);
+    if(t->size < ARRAY_SIZE) {
+        t->fds[t->size] = fd;
+        (t->size)++;
+        pthread_mutex_unlock(&t->wait_mutex);
+        return 1;
+    }
+    pthread_mutex_unlock(&t->wait_mutex);
+    return 0;
 }
 /*
 int insert_waitfd(struct d_thread *t,int fd)

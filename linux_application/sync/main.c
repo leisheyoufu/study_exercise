@@ -37,7 +37,7 @@ int main( int argc, char **argv )
     init_chunk_modify_descriptor(&chunk_modify_desc);
     generate_modify_descriptor(filename2,&chunk_modify_desc,chunk_desc);
     // print_hash_stat();
-     // print_chunk_modify(&chunk_modify_desc);
+    // print_chunk_modify(&chunk_modify_desc);
     sync_file(filename1,&chunk_modify_desc);
     cleanup_modify_list(&chunk_modify_desc);
     cleanup_hash_list();

@@ -16,8 +16,7 @@ int scan_pci_devices( struct pci_device_node *head)
                 /* Identify vendor ID */
                 if ((data != 0xFFFFFFFF) && (data != 0)) {
                     node = alloc_pci_device_node(1);
-                    if(node == NULL)
-                    {
+                    if(node == NULL) {
                         DBG("error alloc node\n");
                         return -ENOMEM;
                     }
@@ -27,8 +26,7 @@ int scan_pci_devices( struct pci_device_node *head)
                     node->pci_dev.device_id = data>>16;
                     node->pci_dev.vendor_id = data &0xFFFF; // Little-Endian
                     node->pci_dev.device_name = lookup_device_full(node->pci_dev.vendor_id, node->pci_dev.device_id);
-                    if(node->pci_dev.device_name == NULL)
-                    {
+                    if(node->pci_dev.device_name == NULL) {
                         DBG("error lookup device\n");
                         return -ENOMEM;
                     }
@@ -44,7 +42,7 @@ int scan_pci_devices( struct pci_device_node *head)
                     data = inl(CONFIG_DATA);
                     if (data&0xFF) {
                         node->pci_dev.revision_id = data&0xFF;
-                       // printf(" (rev %02X)\n", data&0xFF);
+                        // printf(" (rev %02X)\n", data&0xFF);
                     } else {
                         node->pci_dev.revision_id = 0;
                         //printf("\n");
@@ -68,8 +66,7 @@ struct pci_device_node* alloc_pci_device_node(int num)
 void cleanup(struct pci_device_node *head)
 {
     struct pci_device_node *temp;
-    while(head!=NULL)
-    {
+    while(head!=NULL) {
         temp = head->next;
         free(head->pci_dev.device_name);
         free(head);
@@ -80,8 +77,7 @@ void cleanup(struct pci_device_node *head)
 
 void pci_devices_show(struct pci_device_node *head)
 {
-    while(head !=NULL)
-    {
+    while(head !=NULL) {
         printf("%02X:%02X:%02X ", head->pci_dev.bus, head->pci_dev.dev, head->pci_dev.fun);
         printf("%04X:%04X", head->pci_dev.vendor_id, head->pci_dev.device_id);
         printf(" %s",head->pci_dev.device_name);
@@ -103,8 +99,7 @@ int main()
     }
 
     head = alloc_pci_device_node(1);
-    if(head == NULL)
-    {
+    if(head == NULL) {
         DBG("error alloc node\n");
         return -ENOMEM;
     }

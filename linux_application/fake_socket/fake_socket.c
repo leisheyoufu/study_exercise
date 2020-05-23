@@ -12,8 +12,7 @@
 int init_sockfd(char * saddr,int sport, char * daddr, int dport,struct sockaddr_in * sock_saddr,struct sockaddr_in * sock_daddr)
 {
     int sockfd;
-    if( (sockfd = socket(AF_INET,SOCK_RAW,IPPROTO_RAW)) < 0)
-    {
+    if( (sockfd = socket(AF_INET,SOCK_RAW,IPPROTO_RAW)) < 0) {
         perror("socket");
         exit(1);
     }
@@ -51,8 +50,7 @@ int main()
     in_saddr = sock_saddr.sin_addr;
     in_daddr = sock_daddr.sin_addr;
 
-    if( setsockopt(sockfd,IPPROTO_IP,IP_HDRINCL, (char *)&bs, sizeof(bs)) < 0)
-    {
+    if( setsockopt(sockfd,IPPROTO_IP,IP_HDRINCL, (char *)&bs, sizeof(bs)) < 0) {
         perror("setsockopt");
         exit(1);
     }
@@ -67,16 +65,15 @@ int main()
     tcp_gen((char *)tcp,sport,dport,seq,ack);
     /*
     tcp->check = trans_check(IPPROTO_TCP,(char *)tcp,
-			   sizeof(struct tcphdr),
-			   in_saddr,
-			   in_daddr);
+    		   sizeof(struct tcphdr),
+    		   in_saddr,
+    		   in_daddr);
     */
     printf("start send\n");
     msg =  (char*)(packet + sizeof(struct iphdr)+sizeof(struct tcphdr));
     strcpy(msg,"hello world");
     if(sendto(sockfd,packet,sizeof(packet),0x0,(struct sockaddr *)&sock_daddr,
-    sizeof(sock_daddr)) != sizeof(packet))
-    {
+              sizeof(sock_daddr)) != sizeof(packet)) {
         perror("sendto");
         exit(1);
     }

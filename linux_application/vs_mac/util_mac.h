@@ -36,14 +36,10 @@ int mac_compare(char mac[6],char str[6])
     char mac_r[6];
     int i;
     COPY_STR2MAC(mac_r,str);
-    for( i=0;i<6;i++)
-    {
-        if((unsigned char)mac[i] < (unsigned char )mac_r[i])
-        {
+    for( i=0; i<6; i++) {
+        if((unsigned char)mac[i] < (unsigned char )mac_r[i]) {
             return -1;
-        }
-        else if((unsigned char)mac[i] > (unsigned char )mac_r[i])
-        {
+        } else if((unsigned char)mac[i] > (unsigned char )mac_r[i]) {
             return 1;
         }
     }

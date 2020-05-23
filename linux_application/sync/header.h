@@ -21,21 +21,21 @@ typedef unsigned int uint32;
 #define CL_ERROR
 
 #ifdef CL_DEBUG
-	#define CL_DBG_PRINT(fmt,args...) fprintf(stdout,"CL debug: %s  %d  "fmt,__FILE__,__LINE__,##args)
+#define CL_DBG_PRINT(fmt,args...) fprintf(stdout,"CL debug: %s  %d  "fmt,__FILE__,__LINE__,##args)
 #else
-	#define CL_DBG_PRINT(fmt,args...)
+#define CL_DBG_PRINT(fmt,args...)
 #endif
 
 #ifdef CL_INFO
-	#define CL_INFO_PRINT(fmt,args...) fprintf(stdout,"CL info: %s  %d  "fmt,__FILE__,__LINE__,##args)
+#define CL_INFO_PRINT(fmt,args...) fprintf(stdout,"CL info: %s  %d  "fmt,__FILE__,__LINE__,##args)
 #else
-	#define CL_INFO_PRINT(fmt,args...)
+#define CL_INFO_PRINT(fmt,args...)
 #endif
 
 #ifdef CL_ERROR
-	#define CL_ERR_PRINT(fmt,args...) fprintf(stdout,"CL err: %s  %d  "fmt,__FILE__,__LINE__,##args)
+#define CL_ERR_PRINT(fmt,args...) fprintf(stdout,"CL err: %s  %d  "fmt,__FILE__,__LINE__,##args)
 #else
-	#define CL_ERR_PRINT(fmt,args...)
+#define CL_ERR_PRINT(fmt,args...)
 #endif
 
 #include "util.h"

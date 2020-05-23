@@ -3,33 +3,33 @@
 #include "header.h"
 
 
-struct chunk_buffer{
-  void * chunk_desc;
-  off_t offset;			/* offset in file of this chunk */
-  int len;			/* length of chunk of file */
-  int i;			/* index of this chunk */
-  uint32 adler_sum;
-  char md5_sum[MD5_SUM_LEN];
+struct chunk_buffer {
+    void * chunk_desc;
+    off_t offset;			/* offset in file of this chunk */
+    int len;			/* length of chunk of file */
+    int i;			/* index of this chunk */
+    uint32 adler_sum;
+    char md5_sum[MD5_SUM_LEN];
 };
-struct chunk_descriptor{
+struct chunk_descriptor {
     off_t total;
     int chunk_count;
     struct chunk_buffer *chunk;
     char *buf;
 };
 
-struct chunk_buffer_list{
+struct chunk_buffer_list {
     int size;
     char buf[CHUNK_SIZE+1];
     struct chunk_buffer_list *next;
 };
 
-struct chunk_modify_descriptor{
+struct chunk_modify_descriptor {
     int modify;
     struct chunk_buffer_list *chunk_list;
 };
 
-struct hash_tag{
+struct hash_tag {
     struct chunk_buffer *chunk;
     struct hash_tag *next;
 };

@@ -5,7 +5,8 @@
 int (*realopen)(const char *pathname, int flags);
 int (*realclose)(int fd);
 
-int open(const char *pathname, int flags) {
+int open(const char *pathname, int flags)
+{
 
     void *handle;
     char *error;
@@ -30,7 +31,8 @@ int open(const char *pathname, int flags) {
     return realopen(pathname, flags); // old open
 }
 
-int close(int fd) {
+int close(int fd)
+{
 
     void *handle;
     char *error;

@@ -17,15 +17,15 @@
 #define ARRAY_SIZE 100
 #define THREAD_NUM 10
 
-struct d_thread{
-	int id;
-	int fds[ARRAY_SIZE];
-	int size;
-	int epfd;
+struct d_thread {
+    int id;
+    int fds[ARRAY_SIZE];
+    int size;
+    int epfd;
 //	int waitfds[ARRAY_SIZE];
 //	int wait_size;
-	pthread_mutex_t wait_mutex;
-	
+    pthread_mutex_t wait_mutex;
+
 };
 
 
@@ -36,5 +36,5 @@ int insert_fd(struct d_thread *t,int fd);
 //int batch_insert_fd(struct d_thread *t);
 
 
-	
+
 #endif
