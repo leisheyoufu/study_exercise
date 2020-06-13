@@ -1,5 +1,5 @@
 pscp -pw 123456 -r D:\Projects\study_exercise\linux_application\backtrace root@192.168.126.141:/root/projects/study_exercise/linux_application/
-gcc -g -rdynamic main.cpp -o main
+gcc -g -rdynamic sigsegv.cpp -o sigsegv
 
 ## Theroy principle
 -rdynamic 却是一个 连接选项 ，它将指示连接器把所有符号（而不仅仅只是程序已使用到的外部符号）都添加到动态符号表（即.dynsym表）里，以便那些通过 dlopen() 或 backtrace() （这一系列函数使用.dynsym表内符号）这样的函数使用。
@@ -18,10 +18,10 @@ How to automatically generate a stacktrace when my program crashes: https://stac
 ## Readelf
 
 ### Compile without -rdynamic
-gcc -g main.cpp -o main
+gcc -g sigsegv.cpp -o sigsegv
 Only symbols used by program will be included
 ```
-readelf -s main
+readelf -s sigsegv
 Symbol table '.dynsym' contains 13 entries: // cl 13
    Num:    Value          Size Type    Bind   Vis      Ndx Name
      0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND
@@ -29,7 +29,7 @@ Symbol table '.dynsym' contains 13 entries: // cl 13
      2: 0000000000000000     0 NOTYPE  WEAK   DEFAULT  UND _ITM_deregisterTMCloneTab
      3: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND backtrace@GLIBC_2.2.5 (2)
      4: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND printf@GLIBC_2.2.5 (2)
-     5: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_main@GLIBC_2.2.5 (2)
+     5: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_sigsegv@GLIBC_2.2.5 (2)
      6: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND signal@GLIBC_2.2.5 (2)
      7: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND fprintf@GLIBC_2.2.5 (2)
      8: 0000000000000000     0 NOTYPE  WEAK   DEFAULT  UND __gmon_start__
@@ -79,7 +79,7 @@ Symbol table '.symtab' contains 78 entries:
     36: 0000000000200d98     0 OBJECT  LOCAL  DEFAULT   20 __do_global_dtors_aux_fin
     37: 00000000000007f0     0 FUNC    LOCAL  DEFAULT   14 frame_dummy
     38: 0000000000200d90     0 OBJECT  LOCAL  DEFAULT   19 __frame_dummy_init_array_
-    39: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS main.cpp
+    39: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS sigsegv.cpp
     40: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS crtstuff.c
     41: 0000000000000b5c     0 OBJECT  LOCAL  DEFAULT   18 __FRAME_END__
     42: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS
@@ -97,7 +97,7 @@ Symbol table '.symtab' contains 78 entries:
     54: 0000000000000954     0 FUNC    GLOBAL DEFAULT   15 _fini
     55: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND backtrace@@GLIBC_2.2.5
     56: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND printf@@GLIBC_2.2.5
-    57: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_main@@GLIBC_
+    57: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_sigsegv@@GLIBC_
     58: 0000000000201000     0 NOTYPE  GLOBAL DEFAULT   23 __data_start
     59: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND signal@@GLIBC_2.2.5
     60: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND fprintf@@GLIBC_2.2.5
@@ -108,7 +108,7 @@ Symbol table '.symtab' contains 78 entries:
     65: 0000000000201030     0 NOTYPE  GLOBAL DEFAULT   24 _end
     66: 00000000000006f0    43 FUNC    GLOBAL DEFAULT   14 _start
     67: 0000000000201010     0 NOTYPE  GLOBAL DEFAULT   24 __bss_start
-    68: 00000000000008b0    44 FUNC    GLOBAL DEFAULT   14 main
+    68: 00000000000008b0    44 FUNC    GLOBAL DEFAULT   14 sigsegv
     69: 00000000000008a4    12 FUNC    GLOBAL DEFAULT   14 _Z3foov
     70: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND exit@@GLIBC_2.2.5
     71: 0000000000201010     0 OBJECT  GLOBAL HIDDEN    23 __TMC_END__
@@ -119,10 +119,10 @@ Symbol table '.symtab' contains 78 entries:
     76: 0000000000000658     0 FUNC    GLOBAL DEFAULT   11 _init
     77: 0000000000201020     8 OBJECT  GLOBAL DEFAULT   24 stderr@@GLIBC_2.2.5
 ```
-strip main   // delete symbol table in main
+strip sigsegv   // delete symbol table in sigsegv
 ```
-root@ubuntu1:~/projects/study_exercise/linux_application/exception# strip main
-root@ubuntu1:~/projects/study_exercise/linux_application/exception# readelf -s main
+root@ubuntu1:~/projects/study_exercise/linux_application/exception# strip sigsegv
+root@ubuntu1:~/projects/study_exercise/linux_application/exception# readelf -s sigsegv
 
 Symbol table '.dynsym' contains 13 entries:
    Num:    Value          Size Type    Bind   Vis      Ndx Name
@@ -131,7 +131,7 @@ Symbol table '.dynsym' contains 13 entries:
      2: 0000000000000000     0 NOTYPE  WEAK   DEFAULT  UND _ITM_deregisterTMCloneTab
      3: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND backtrace@GLIBC_2.2.5 (2)
      4: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND printf@GLIBC_2.2.5 (2)
-     5: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_main@GLIBC_2.2.5 (2)
+     5: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_sigsegv@GLIBC_2.2.5 (2)
      6: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND signal@GLIBC_2.2.5 (2)
      7: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND fprintf@GLIBC_2.2.5 (2)
      8: 0000000000000000     0 NOTYPE  WEAK   DEFAULT  UND __gmon_start__
@@ -142,10 +142,10 @@ Symbol table '.dynsym' contains 13 entries:
 ```
 
 ### Compile with -rdynamic
-gcc -g -O0 -rdynamic main.cpp -o main.rd
+gcc -g -O0 -rdynamic sigsegv.cpp -o sigsegv.rd
 All of the symbols used by program will be included
 ```
-readelf -s main.rd
+readelf -s sigsegv.rd
 Symbol table '.dynsym' contains 29 entries:  // cl: 29
    Num:    Value          Size Type    Bind   Vis      Ndx Name
      0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND
@@ -153,7 +153,7 @@ Symbol table '.dynsym' contains 29 entries:  // cl: 29
      2: 0000000000000000     0 NOTYPE  WEAK   DEFAULT  UND _ITM_deregisterTMCloneTab
      3: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND backtrace@GLIBC_2.2.5 (2)
      4: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND printf@GLIBC_2.2.5 (2)
-     5: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_main@GLIBC_2.2.5 (2)
+     5: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_sigsegv@GLIBC_2.2.5 (2)
      6: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND signal@GLIBC_2.2.5 (2)
      7: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND fprintf@GLIBC_2.2.5 (2)
      8: 0000000000000000     0 NOTYPE  WEAK   DEFAULT  UND __gmon_start__
@@ -162,7 +162,7 @@ Symbol table '.dynsym' contains 29 entries:  // cl: 29
     11: 0000000000000000     0 FUNC    WEAK   DEFAULT  UND __cxa_finalize@GLIBC_2.2.5 (2)
     12: 0000000000000a9a   114 FUNC    GLOBAL DEFAULT   14 _Z7handleri
     13: 0000000000000bf4     0 FUNC    GLOBAL DEFAULT   15 _fini
-    14: 0000000000000b50    44 FUNC    GLOBAL DEFAULT   14 main
+    14: 0000000000000b50    44 FUNC    GLOBAL DEFAULT   14 sigsegv
     15: 0000000000000b44    12 FUNC    GLOBAL DEFAULT   14 _Z3foov
     16: 00000000000008f0     0 FUNC    GLOBAL DEFAULT   11 _init
     17: 0000000000202010     0 NOTYPE  GLOBAL DEFAULT   24 __bss_start
@@ -219,7 +219,7 @@ Symbol table '.symtab' contains 78 entries:
     36: 0000000000201d98     0 OBJECT  LOCAL  DEFAULT   20 __do_global_dtors_aux_fin
     37: 0000000000000a90     0 FUNC    LOCAL  DEFAULT   14 frame_dummy
     38: 0000000000201d90     0 OBJECT  LOCAL  DEFAULT   19 __frame_dummy_init_array_
-    39: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS main.cpp
+    39: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS sigsegv.cpp
     40: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS crtstuff.c
     41: 0000000000000dfc     0 OBJECT  LOCAL  DEFAULT   18 __FRAME_END__
     42: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS
@@ -239,7 +239,7 @@ Symbol table '.symtab' contains 78 entries:
     56: 0000000000000bf4     0 FUNC    GLOBAL DEFAULT   15 _fini
     57: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND backtrace@@GLIBC_2.2.5
     58: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND printf@@GLIBC_2.2.5
-    59: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_main@@GLIBC_
+    59: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_sigsegv@@GLIBC_
     60: 0000000000202000     0 NOTYPE  GLOBAL DEFAULT   23 __data_start
     61: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND signal@@GLIBC_2.2.5
     62: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND fprintf@@GLIBC_2.2.5
@@ -249,7 +249,7 @@ Symbol table '.symtab' contains 78 entries:
     66: 0000000000202030     0 NOTYPE  GLOBAL DEFAULT   24 _end
     67: 0000000000000990    43 FUNC    GLOBAL DEFAULT   14 _start
     68: 0000000000202010     0 NOTYPE  GLOBAL DEFAULT   24 __bss_start
-    69: 0000000000000b50    44 FUNC    GLOBAL DEFAULT   14 main
+    69: 0000000000000b50    44 FUNC    GLOBAL DEFAULT   14 sigsegv
     70: 0000000000000b44    12 FUNC    GLOBAL DEFAULT   14 _Z3foov
     71: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND exit@@GLIBC_2.2.5
     72: 0000000000000000     0 NOTYPE  WEAK   DEFAULT  UND _ITM_registerTMCloneTable
