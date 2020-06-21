@@ -54,6 +54,31 @@ metadata:
 type: kubernetes.io/dockerconfigjson
 ```
 
+##Create screctr from literal and read secret from ENV
+Define secret
+```
+[root@k8snode1 secret]# kubectl create secret generic lochsecret --from-literal=username=loch --from-literal=password=123456 -n loch
+[root@k8snode1 secret]# kubectl describe secret lochsecret -n loch
+Name:         lochsecret
+Namespace:    loch
+Labels:       <none>
+Annotations:  <none>
+
+Type:  Opaque
+
+Data
+====
+password:  6 bytes
+username:  4 bytes
+[root@k8snode1 secret]# kubectl create -f envpod.yml
+pod/pod-secret-env created
+[root@k8snode1 secret]# kubectl exec -it pod-secret-env -n loch /bin/sh
+/ # echo $SECRET_USERNAME
+loch
+/ # echo $SECRET_PASSWORD
+123456
+```
+
 ## ServiceAccount secret
 kubectl create serviceaccount cluster-admin-dashboard-sa -n loch
  
