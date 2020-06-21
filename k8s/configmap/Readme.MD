@@ -34,3 +34,19 @@ nosql[root@k8sdev configmap]#
 ```
 
 Reference: https://www.jianshu.com/p/b1d516f02ecd
+
+
+## Create config map from file
+kubectl create configmap nginx-www --from-file=./www.conf -n loch
+kubectl create -f nginx.yml
+kubectl replace --force -f nginx.yml   # force restart
+kubectl get pod {podname} -n {namespace} -o yaml | kubectl replace --force -f -  # force restart pod
+kubectl exec -it nginx -n loch -- cat /etc/nginx/www.conf
+sed -i 's/80/8080/g' www.conf
+kubectl create configmap nginx-www --from-file=./www.conf --dry-run -o yaml | kubectl apply -n loch -f -
+kubectl exec -it nginx -n loch -- cat /etc/nginx/www.conf   # wait about 30 seconds
+
+
+## TODO
+[watch file change](https://github.com/howeyc/fsnotify)
+[Leverage side car to hot update the configuration](https://www.jianshu.com/p/66c1ac15044f)
