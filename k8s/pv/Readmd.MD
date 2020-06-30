@@ -20,3 +20,7 @@ myclaim   Bound    example-local-pv   5Gi        RWO            local-volume   6
 ```
 Local volumn bonding completed.
 
+
+## Mysql
+mkdir -p /mnt/data
+kubectl create -f mysql.yml
