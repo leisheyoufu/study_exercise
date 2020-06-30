@@ -1,0 +1,11 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: ubuntu-pod
+  namespace: loch
+spec:
+  containers:
+    - name: ubuntu-container
+      image: ubuntu
+      command: ["/bin/bash", "-ec", "while :; do echo '.'; sleep 5 ; done"]
+  restartPolicy: Never
