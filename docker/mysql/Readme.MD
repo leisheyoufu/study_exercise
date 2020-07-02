@@ -1,0 +1,1 @@
+docker run --name mysql-master -e "MYSQL_ROOT_PASSWORD=123456" -p 3309:3306 --net=service -v ./conf/master:/etc/mysql/conf.d/ mysql:5.7
