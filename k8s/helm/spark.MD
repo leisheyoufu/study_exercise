@@ -6,7 +6,7 @@ $ ./get_helm.sh
 ## Spark
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 $ helm install my-release bitnami/spark   // spark will be installed
-$ helm delete my-release --purge  // uninstall spark Use the option --purge to delete all persistent volumes too.
+$ helm delete my-release // uninstall spark Use the option --purge to delete all persistent volumes too.
 
 ## Port-Forward to access spark ui
 Web UI port is 8080 in pod configration
