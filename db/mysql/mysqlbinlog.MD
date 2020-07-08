@@ -92,6 +92,27 @@ mysqlbinlog  --no-defaults --database=binlogdb  --base64-output=decode-rows -v -
 根据pos查询
 mysqlbinlog  --no-defaults --database=binlogdb  --base64-output=decode-rows -v --start-position=154 --stop-position=970 /var/lib/mysql/binlog.000004
 
+The output is like:
+```
+# at 8065298
+#200708 12:54:33 server id 9527  end_log_pos 8065462 CRC32 0xf00b199d 	Update_rows: table id 108 flags: STMT_END_F
+### UPDATE `binlogdb`.`sales`
+### WHERE
+###   @1=2
+###   @2='name'
+###   @3='AAAAAAAA'
+###   @4=1594212871
+###   @5=1594128201
+###   @6=1594212875
+### SET
+###   @1=2
+###   @2='name'
+###   @3='BBBBBBBB'
+###   @4=1594212873
+###   @5=1594128201
+###   @6=1594212877
+```
+
 ## Clear binlog manually
 purge master logs to BINLOGNAME;
 purge master logs before DATE;
