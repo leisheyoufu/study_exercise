@@ -1,7 +1,20 @@
 ## Start zookeeper statefulset
 kubectl create ns loch
-mkdir -p /mnt/data
+mkdir -p /mnt/data-1 /mnt/data-2 /mnt/data-3
 kubectl create -f zookeeper.yml
+
+```
+[root@devcloud-franck /data/Projects/ops/k8s/zookeeper-statefulset]# kubectl get pv -n loch
+NAME               CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM               STORAGECLASS   REASON   AGE
+task-pv-volume-1   100Mi      RWO            Retain           Bound    loch/datadir-zk-0   manual                  52s
+task-pv-volume-2   100Mi      RWO            Retain           Bound    loch/datadir-zk-1   manual                  52s
+task-pv-volume-3   100Mi      RWO            Retain           Bound    loch/datadir-zk-2   manual                  52s
+[root@devcloud-franck /data/Projects/ops/k8s/zookeeper-statefulset]# kubectl get all -n loch
+NAME       READY   STATUS    RESTARTS   AGE
+pod/zk-0   1/1     Running   0          54s
+pod/zk-1   1/1     Running   0          31s
+pod/zk-2   0/1     Running   0          9s
+```
 
 ## zk command
 ./bin/zkCli.sh -server <ip>:2181 ls / 

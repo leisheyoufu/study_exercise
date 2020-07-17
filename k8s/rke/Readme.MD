@@ -61,13 +61,15 @@ vim /etc/docker/daemon.json
 }
 ```
 
+rke up --config cluster.yml
+
 ## Download kubectl
 wget https://dl.k8s.io/v1.16.5/kubernetes-client-linux-amd64.tar.gz
 export KUBECONFIG=./kube_config_cluster.yml
 
 
 ## Reference
-[Rancher official website](https://rancher.com/docs/rke/latest/en/installation/)
-[Rancher minimal configuration](https://rancher.com/docs/rke/latest/en/example-yamls/#minimal-cluster-yml-example)
-[More steps to setup kubernetes CL 最重要](https://computingforgeeks.com/install-kubernetes-production-cluster-using-rancher-rke/)
-[Change docker root dir](https://github.com/IronicBadger/til/blob/master/docker/change-docker-root.md)
+- [Rancher official website](https://rancher.com/docs/rke/latest/en/installation/)
+- [Rancher minimal configuration](https://rancher.com/docs/rke/latest/en/example-yamls/#minimal-cluster-yml-example)
+- [More steps to setup kubernetes CL 最重要](https://computingforgeeks.com/install-kubernetes-production-cluster-using-rancher-rke/)
+- [Change docker root dir](https://github.com/IronicBadger/til/blob/master/docker/change-docker-root.md)

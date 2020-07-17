@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: etcd-client
+  namespace: loch
+spec:
+  containers:
+    - name: etcd-client
+      image: gcr.io/etcd-development/etcd:v3.3.8
+      command: [ "/bin/sh", "-c", "sleep 10;touch /tmp/health-check;sleep 30000" ]
+  restartPolicy: Never
