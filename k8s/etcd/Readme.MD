@@ -17,3 +17,7 @@ ETCDCTL_API=3 etcdctl get "" --prefix --keys-only | sed '/^\s*$/d'
 ```
 
 etcdctl --endpoints <ip>：<port> member list
+
+## Volumn ,PV, PVC
+- 可以使用initContainer用命令读取configmap mount的位置，然后在输出到emptyDir{}挂载的位置供实例container使用。
+- configmap目前不支持tar包的方式，

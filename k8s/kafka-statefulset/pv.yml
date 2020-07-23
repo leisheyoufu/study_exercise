@@ -1,0 +1,130 @@
+# # should use local volumn provisioner
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: manual
+  namespace: loch
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+reclaimPolicy: Delete
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: volume-1
+  namespace: loch
+  #annotations:  # CL: no usage
+  #  pv.beta.kubernetes.io/gid: "1234"
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 500Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data/mnt/k8s/data-1"
+  persistentVolumeReclaimPolicy: Recycle  
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: volume-2
+  namespace: loch
+  #annotations:  # CL: no usage
+  #  pv.beta.kubernetes.io/gid: "1234"
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 500Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data/mnt/k8s/data-2"
+  persistentVolumeReclaimPolicy: Recycle
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: volume-3
+  namespace: loch
+  #annotations:  # CL: no usage
+  #  pv.beta.kubernetes.io/gid: "1234"
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 500Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data/mnt/k8s/data-3"
+  persistentVolumeReclaimPolicy: Recycle
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: volume-4
+  namespace: loch
+  #annotations:  # CL: no usage
+  #  pv.beta.kubernetes.io/gid: "1234"
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 500Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data/mnt/k8s/data-4"
+  persistentVolumeReclaimPolicy: Recycle
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: volume-5
+  namespace: loch
+  #annotations:  # CL: no usage
+  #  pv.beta.kubernetes.io/gid: "1234"
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 500Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data/mnt/k8s/data-5"
+  persistentVolumeReclaimPolicy: Recycle
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: volume-6
+  namespace: loch
+  #annotations:  # CL: no usage
+  #  pv.beta.kubernetes.io/gid: "1234"
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 500Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data/mnt/k8s/data-6"
+  persistentVolumeReclaimPolicy: Recycle

@@ -1,0 +1,86 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: etcd
+  namespace: loch
+  labels:
+    app: etcd
+spec:
+  ports:
+  - port: 2379
+    name: client
+  selector:
+    app: etcd
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: etcd
+  name: etcd
+  namespace: loch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: etcd
+  serviceName: etcd
+  template:
+    metadata:
+      labels:
+        app: etcd
+      name: etcd
+    spec:
+      containers:
+      - command:
+          - "/usr/local/bin/etcd"
+          - "--name"
+          - "s1"
+          - "--data-dir"
+          - "/var/run/etcd"
+          - "--advertise-client-urls"
+          - "http://0.0.0.0:2379"
+          - --listen-client-urls
+          - "http://0.0.0.0:2379"
+          - "--initial-advertise-peer-urls"
+          - "http://0.0.0.0:2380"
+          - "--listen-peer-urls"
+          - "http://0.0.0.0:2380"
+          - "--initial-cluster-token"
+          - "tkn"
+          - "--initial-cluster"
+          - "s1=http://0.0.0.0:2380"
+          - "--initial-cluster-state"
+          - "new"
+        env:
+          - name: INITIAL_CLUSTER_SIZE
+            value: "1"
+          - name: ETCDAPI_VERSION
+            value: "3"
+        image: quay.io/coreos/etcd:v3.3.12
+        imagePullPolicy: IfNotPresent
+        
+        name: etcd
+        ports:
+          - containerPort: 2380
+            name: peer
+            protocol: TCP
+          - containerPort: 2379
+            name: client
+            protocol: TCP
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: 500Mi
+          requests:
+            cpu: "0.5"
+            memory: 100Mi
+        volumeMounts:
+          - mountPath: /var/run/etcd
+            name: datadir
+        
+      volumes:
+      - name: datadir
+        emptyDir: {}

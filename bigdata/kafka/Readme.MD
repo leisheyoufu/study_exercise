@@ -3,6 +3,7 @@ docker pull wurstmeister/zookeeper
 docker pull wurstmeister/kafka
 docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper
 docker run -d --name kafka --publish 9092:9092 --link zookeeper --env KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 --env KAFKA_ADVERTISED_HOST_NAME=<HOST_IP> --env KAFKA_ADVERTISED_PORT=9092 --volume /etc/localtime:/etc/localtime wurstmeister/kafka:latest
+docker run --name zktest -it --rm wurstmeister/zookeeper /bin/bash
 
 ## Topic command
 /opt/kafka/bin/kafka-topics.sh --zookeeper zookeeper:2181 --list

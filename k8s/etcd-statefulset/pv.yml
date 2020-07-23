@@ -25,6 +25,7 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: "/data/mnt/k8s/data-1"
+  persistentVolumeReclaimPolicy: Recycle
 
 ---
 apiVersion: v1
@@ -44,6 +45,7 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: "/data/mnt/k8s/data-2"
+  persistentVolumeReclaimPolicy: Recycle
 
 ---
 apiVersion: v1
@@ -63,3 +65,4 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: "/data/mnt/k8s/data-3"
+  persistentVolumeReclaimPolicy: Recycle
