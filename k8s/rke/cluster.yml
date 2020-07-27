@@ -1,0 +1,37 @@
+nodes:
+    - address: <master_ip>
+      user: rke
+      hostname_override: k8smaster
+      role:
+        - controlplane
+        - etcd
+      port: 22
+    - address: <node1_ip>
+      user: rke
+      hostname_override: k8snode1
+      role:
+        - controlplane
+        - etcd
+        - worker
+      port: 22
+    - address: <node2_ip>
+      user: rke
+      hostname_override: k8snode2
+      role:
+        - controlplane
+        - etcd
+        - worker
+      port: 22
+    - address: <node3_ip>
+      hostname_override: k8snode3
+      user: rke
+      role:
+        - worker
+      port: 22
+network:
+    plugin: calico
+
+services:
+  kubelet:
+    extra_binds:
+       - /mnt:/mnt:rshared
