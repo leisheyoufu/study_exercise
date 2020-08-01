@@ -58,6 +58,11 @@ ifconfig eth0 -promisc　#取消混杂　
 iptables -A INPUT -p tcp --dport 22 -j ACCEPT // if firewall is used , skip this
 iptables -A INPUT -p tcp --dport 2379 -j ACCEPT
 
+ip link delete flannel.1
+kubectl rollout restart daemonset/calico-node -n kube-system // restart calico-node
+See issue https://github.com/projectcalico/calico/issues/2561
+calico/node is not ready: BIRD is not ready: BGP not established
+
 ## Configuration
 cluster.yml
 ```

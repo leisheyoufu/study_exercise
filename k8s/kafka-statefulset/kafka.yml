@@ -89,7 +89,7 @@ spec:
           --override auto.leader.rebalance.enable=true \
           --override background.threads=10 \
           --override compression.type=producer \
-          --override delete.topic.enable=false \
+          --override delete.topic.enable=true \
           --override leader.imbalance.check.interval.seconds=300 \
           --override leader.imbalance.per.broker.percentage=10 \
           --override log.flush.interval.messages=9223372036854775807 \
@@ -182,6 +182,11 @@ spec:
             - sh
             - -c
             - "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server=localhost:9092"
+        # readinessProbe:
+        #   tcpSocket:
+        #     port: 9092
+        #   timeoutSeconds: 1
+        #   initialDelaySeconds: 5
       securityContext:
         runAsUser: 0
   volumeClaimTemplates:

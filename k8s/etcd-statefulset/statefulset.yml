@@ -20,6 +20,16 @@ spec:
         app: infra-etcd
       name: infra-etcd-cluster
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: "app"
+                    operator: In
+                    values:
+                    - etcd
+              topologyKey: "kubernetes.io/hostname"
       containers:
       - command:
         - /bin/sh
@@ -136,6 +146,13 @@ spec:
           value: "infra-etcd-cluster"
         - name: GOMAXPROCS
           value: "4"
+        livenessProbe:
+          exec:
+            command:
+              - etcdctl
+              - cluster-health
+          initialDelaySeconds: 15
+          timeoutSeconds: 10
         image: gcr.io/etcd-development/etcd:v3.3.8
         imagePullPolicy: Always
         lifecycle:

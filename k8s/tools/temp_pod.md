@@ -1,0 +1,1 @@
+kubectl run --rm -i --tty busybox --image=busybox:1.28 --restart=Never -- ping 127.0.0.1
