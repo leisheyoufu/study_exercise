@@ -1,0 +1,9 @@
+k8smaster
+k8snode1
+k8snode2
+k8snode3
+
+[node]
+k8snode1
+k8snode2
+k8snode3

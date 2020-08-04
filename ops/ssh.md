@@ -9,3 +9,11 @@ scp -o RequestTTY=no -r
 
 
 https://superuser.com/questions/1148390/scp-stalls-at-sending-command-v-t
+
+
+## ssh config
+
+Host <跳板机>
+        ServerAliveInterval 30    // 定时心跳
+        ControlMaster auto       // 配置会话共享
+        ControlPath ~/.ssh/%r@%h:%p       //会话共享socket文件

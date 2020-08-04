@@ -10,3 +10,4 @@ Welcome to the MySQL monitor.  Commands end with ; or \g.
 ## Reference
 - [通过搭建MySQL掌握k8s（Kubernetes）重要概念（上](https://blog.csdn.net/weixin_38748858/article/details/102514721)
 - [通过搭建MySQL掌握k8s（Kubernetes）重要概念（下）：参数配置](https://blog.csdn.net/weixin_38748858/article/details/102514901)
+- [Kubernetes中部署MySQL, statefulset, liveness readiness很详细](https://www.cnblogs.com/fan-gx/p/12874257.html)

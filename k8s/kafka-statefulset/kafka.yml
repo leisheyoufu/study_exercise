@@ -189,6 +189,10 @@ spec:
         #   initialDelaySeconds: 5
       securityContext:
         runAsUser: 0
+      initContainers:
+      - name: init-zk
+        image: busybox:1.28
+        command: ['sh', '-c', 'until nslookup zk-cs; do echo waiting for zk-cs; sleep 2; done;']
   volumeClaimTemplates:
   - metadata:
       name: datadir
