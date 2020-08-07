@@ -1,0 +1,1 @@
+kubectl rollout restart statefulset kafka -n loch

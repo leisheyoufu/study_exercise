@@ -71,7 +71,8 @@ function create_config() {
     cat $CONFIG_FILE >&2
 }
 ```
-
+## NOTE
+zookeeper.yml is for single node test
 ## Refefence
 [kubernetes zookeeper](https://kubernetes.io/docs/tutorials/stateful-application/zookeeper/)
 [github kubernetes zookeeper docker file ](https://github.com/kow3ns/kubernetes-zookeeper)
