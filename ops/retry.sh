@@ -30,3 +30,14 @@ if ! timeout 10 /bin/bash -c "while ! $mysql_cmd; do sleep 2; done"; then
     echo "ERROR: Failed to init mysql db"
     exit 1
 fi
+
+# nc command -w 3 : timeout 3
+nc_cmd="nc -w 3 -v $DB_HOST 3306 < /dev/null >> /tmp/nc.txt"
+
+
+## Function 2
+NEXT_WAIT_TIME=0
+until [ $NEXT_WAIT_TIME -eq 5 ] || command; do
+    sleep $(( NEXT_WAIT_TIME++ ))
+done
+[ $NEXT_WAIT_TIME -lt 5 ]

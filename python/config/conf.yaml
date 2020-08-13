@@ -1,0 +1,6 @@
+common:
+  kafka:
+    brokers: kafka:9092
+loader:
+  etcd:
+    hosts: etcd-cluster:2379
