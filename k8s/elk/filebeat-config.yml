@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: filebeat-config
+  namespace: loch
+  labels:
+    k8s-app: filebeat
+data:
+  filebeat.yml: |-
+
+    filebeat.inputs:
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/*.log
+
+    # Send events to elasticsearch
+    output.elasticsearch:
+      enabled: true
+      hosts: ["elasticsearch:9200"]
+      index: "filebeat-%{+yyyy.MM.dd}"
+    setup.template.name: "filebeat"        #顶格，和output对其
+    setup.template.pattern: "filebeat-*"   #顶格，和output对其
