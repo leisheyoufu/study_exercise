@@ -1,0 +1,39 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: consul
+  namespace: loch
+spec:
+  selector:
+    app: consul
+  ports:
+  - protocol: TCP
+    port: 8500           # service port
+    targetPort: 8500     # container port
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consul
+  namespace: loch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consul
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: consul
+    spec:
+      containers:
+      - image: bitnami/consul:latest
+        name: consul
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 8500
+            name: consul

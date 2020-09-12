@@ -1,0 +1,46 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysqld-exporter
+  namespace: loch
+  labels:
+    app.kubernetes.io/name: mysqld-exporter
+spec:
+  selector:
+    app: mysqld-exporter
+  ports:
+  - protocol: TCP
+    port: 9104           # service port
+    targetPort: 9104     # container port
+    name:  mysql-metrics
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysqld-exporter
+  namespace: loch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysqld-exporter
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysqld-exporter
+    spec:
+      containers:
+      - image: prom/mysqld-exporter:latest
+        name: mysqld-exporter
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: DATA_SOURCE_NAME
+            value: "root:123456@(mysql-svc.loch.svc.cluster.local:3306)/"
+        
+        ports:
+          - containerPort: 9104
+            name: mysqld-exporter
