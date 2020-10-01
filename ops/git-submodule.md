@@ -3,7 +3,7 @@ git clone --recurse-submodules <main_project_url>  # 获取主项目和所有子
 git submodule update --remote <submodule_name> 
 
 cd my_project/
-git submodule add https://github.com/tensorflow/tensorflow.git my_tensorflow
+git submodule add -b master https://github.com/tensorflow/tensorflow.git my_tensorflow
 git submodule update --init --recursive
 
 ### 更新submodule源码，默认更新的branch是master，如果要修改branch，在.gitmodule中设置
