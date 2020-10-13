@@ -1,0 +1,53 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: Kafka
+metadata:
+  name: my-cluster
+spec:
+  kafka:
+    version: 2.6.0
+    replicas: 4
+    listeners:
+      # - name: plain
+      #   port: 9092
+      #   type: internal
+      #   tls: false
+      #   useServiceDnsDomain: true
+      # - name: tls
+      #   port: 9093
+      #   type: internal
+      #   tls: true
+      external:
+        type: nodeport
+        tls: false
+        overrides:
+          brokers:
+          - broker: 0
+            advertisedHost: broker-0.mydomain.com
+          - broker: 1
+            advertisedHost: broker-1.mydomain.com
+          - broker: 2
+            advertisedHost: broker-2.mydomain.com
+          - broker: 3
+            advertisedHost: broker-3.mydomain.com
+    config:
+      offsets.topic.replication.factor: 3
+      transaction.state.log.replication.factor: 3
+      transaction.state.log.min.isr: 2
+      log.message.format.version: "2.6"
+    storage:
+      type: jbod
+      volumes:
+      - id: 0
+        type: persistent-claim
+        size: 20Gi
+        deleteClaim: false
+  zookeeper:
+    replicas: 3
+    storage:
+      type: persistent-claim
+      size: 10Gi
+      deleteClaim: false
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}
+
