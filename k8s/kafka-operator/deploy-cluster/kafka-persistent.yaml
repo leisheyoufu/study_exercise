@@ -5,30 +5,33 @@ metadata:
 spec:
   kafka:
     version: 2.6.0
-    replicas: 4
+    jvmOptions:
+      "-Xmx": "512m"
+      "-Xms": "512m"
+    replicas: 3
     listeners:
-      # - name: plain
-      #   port: 9092
-      #   type: internal
-      #   tls: false
-      #   useServiceDnsDomain: true
-      # - name: tls
-      #   port: 9093
-      #   type: internal
-      #   tls: true
+      plain:
+        port: 9092
+        tls: false
+        type: internal
       external:
         type: nodeport
+        port: 9094
         tls: false
+        authentication:
+          type: scram-sha-512
         overrides:
           brokers:
           - broker: 0
-            advertisedHost: broker-0.mydomain.com
+            advertisedHost: nj.kafka-broker-0.domain.com
           - broker: 1
-            advertisedHost: broker-1.mydomain.com
+            advertisedHost: nj.kafka-broker-1.domain.com
           - broker: 2
-            advertisedHost: broker-2.mydomain.com
-          - broker: 3
-            advertisedHost: broker-3.mydomain.com
+            advertisedHost: nj.kafka-broker-2.domain.com
+    authorization:
+      type: simple
+      superUsers:
+        - admin
     config:
       offsets.topic.replication.factor: 3
       transaction.state.log.replication.factor: 3
@@ -41,12 +44,66 @@ spec:
         type: persistent-claim
         size: 20Gi
         deleteClaim: false
+        # class:
+    resources:
+      reqeusts:
+        cpu: 0.3
+        memory: 512Mi
+      limits:
+        cpu: 0.5
+        memory: 1024Mi
+    readinessProbe:
+      initialDelaySeconds: 15
+      timeoutSeconds: 5
+    livenessProbe:
+      initialDelaySeconds: 15
+      timeoutSeconds: 5
+    template:
+      pod:
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - kafka
+                topologyKey: "kubernetes.io/hostname"
   zookeeper:
     replicas: 3
     storage:
       type: persistent-claim
       size: 10Gi
       deleteClaim: false
+    vmOptions:
+      "-Xmx": "256m"
+      "-Xms": "256m"
+    resources:
+      reqeusts:
+        cpu: 0.3
+        memory: 256Mi
+      limits:
+        cpu: 0.5
+        memory: 512Mi
+    readinessProbe:
+      initialDelaySeconds: 15
+      timeoutSeconds: 5
+    livenessProbe:
+      initialDelaySeconds: 15
+      timeoutSeconds: 5
+    template:
+      pod:
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - zookeeper
+                topologyKey: "kubernetes.io/hostname"
   entityOperator:
     topicOperator: {}
     userOperator: {}
