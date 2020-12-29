@@ -41,7 +41,7 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=/home/ubuntu/projects/go
 export GOBIN=$GOPATH/bin
 export GOPROXY=https://goproxy.cn
-export KUBECONFIG=/home/ubuntu/kube/config.tke
+export KUBECONFIG=/home/ubuntu/kube/config
 
 wget https://studygolang.com/dl/golang/go1.13.12.linux-amd64.tar.gz
 apt install openjdk-14-jre-headless

@@ -1,0 +1,1 @@
+docker run --name mysql-dst -d --rm -e "MYSQL_ROOT_PASSWORD=123456" -p 3310:3306 -v ./conf/dst:/etc/mysql/mysql.conf.d/ mysql:5.7

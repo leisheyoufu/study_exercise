@@ -16,6 +16,7 @@ spec:
         type: internal
       external:
         type: nodeport
+        # type: loadbalancer
         port: 9094
         tls: false
         authentication:
@@ -23,20 +24,45 @@ spec:
         overrides:
           brokers:
           - broker: 0
-            advertisedHost: nj.kafka-broker-0.domain.com
+            advertisedHost: nj.kafka-broker-0.tencentyun.com
           - broker: 1
-            advertisedHost: nj.kafka-broker-1.domain.com
+            advertisedHost: nj.kafka-broker-1.tencentyun.com
           - broker: 2
-            advertisedHost: nj.kafka-broker-2.domain.com
+            advertisedHost: nj.kafka-broker-2.tencentyun.com
     authorization:
       type: simple
       superUsers:
         - admin
     config:
-      offsets.topic.replication.factor: 3
       transaction.state.log.replication.factor: 3
       transaction.state.log.min.isr: 2
       log.message.format.version: "2.6"
+      
+      replica.fetch.max.bytes: 1048576
+      replica.fetch.wait.max.ms: 500
+      replica.high.watermark.checkpoint.interval.ms: 5000
+      replica.socket.timeout.ms: 30000
+      replica.socket.receive.buffer.bytes: 65536
+      replica.lag.time.max.ms: 10000
+      replica.lag.max.messages: 4000
+      auto.create.topics.enable: false
+      unclean.leader.election.enable: false
+      auto.leader.rebalance.enable: false
+      log.retention.hours: 24
+      log.retention.bytes: 536870912000
+      message.max.bytes: 4194304
+      num.recovery.threads.per.data.dir: 2
+      num.replica.fetchers: 2
+      log.cleaner.threads: 2
+      default.replication.factor: 3
+      min.insync.replicas: 2
+
+    logging:
+      # external with configmap
+      type: inline
+      loggers:
+        kafka.root.logger.level: "INFO"
+
     storage:
       type: jbod
       volumes:
@@ -44,7 +70,7 @@ spec:
         type: persistent-claim
         size: 20Gi
         deleteClaim: false
-        # class:
+        class: rbd
     resources:
       reqeusts:
         cpu: 0.3
@@ -70,6 +96,131 @@ spec:
                       values:
                         - kafka
                 topologyKey: "kubernetes.io/hostname"
+    metrics:
+      # Inspired by config from Kafka 2.0.0 example rules:
+      # https://github.com/prometheus/jmx_exporter/blob/master/example_configs/kafka-2_0_0.yml
+      lowercaseOutputName: true
+      rules:
+      # Special cases and very specific rules
+      - pattern: kafka.server<type=(.+), name=(.+), clientId=(.+), topic=(.+), partition=(.*)><>Value
+        name: kafka_server_$1_$2
+        type: GAUGE
+        labels:
+          clientId: "$3"
+          topic: "$4"
+          partition: "$5"
+      - pattern: kafka.server<type=(.+), name=(.+), clientId=(.+), brokerHost=(.+), brokerPort=(.+)><>Value
+        name: kafka_server_$1_$2
+        type: GAUGE
+        labels:
+          clientId: "$3"
+          broker: "$4:$5"
+      - pattern: kafka.server<type=(.+), cipher=(.+), protocol=(.+), listener=(.+), networkProcessor=(.+)><>connections
+        name: kafka_server_$1_connections_tls_info
+        type: GAUGE
+        labels:
+          listener: "$2"
+          networkProcessor: "$3"
+          protocol: "$4"
+          cipher: "$5"
+      - pattern: kafka.server<type=(.+), clientSoftwareName=(.+), clientSoftwareVersion=(.+), listener=(.+), networkProcessor=(.+)><>connections
+        name: kafka_server_$1_connections_software
+        type: GAUGE
+        labels:
+          clientSoftwareName: "$2"
+          clientSoftwareVersion: "$3"
+          listener: "$4"
+          networkProcessor: "$5"
+      - pattern: "kafka.server<type=(.+), listener=(.+), networkProcessor=(.+)><>(.+):"
+        name: kafka_server_$1_$4
+        type: GAUGE
+        labels:
+          listener: "$2"
+          networkProcessor: "$3"
+      - pattern: kafka.server<type=(.+), listener=(.+), networkProcessor=(.+)><>(.+)
+        name: kafka_server_$1_$4
+        type: GAUGE
+        labels:
+          listener: "$2"
+          networkProcessor: "$3"
+      # Some percent metrics use MeanRate attribute
+      # Ex) kafka.server<type=(KafkaRequestHandlerPool), name=(RequestHandlerAvgIdlePercent)><>MeanRate
+      - pattern: kafka.(\w+)<type=(.+), name=(.+)Percent\w*><>MeanRate
+        name: kafka_$1_$2_$3_percent
+        type: GAUGE
+      # Generic gauges for percents
+      - pattern: kafka.(\w+)<type=(.+), name=(.+)Percent\w*><>Value
+        name: kafka_$1_$2_$3_percent
+        type: GAUGE
+      - pattern: kafka.(\w+)<type=(.+), name=(.+)Percent\w*, (.+)=(.+)><>Value
+        name: kafka_$1_$2_$3_percent
+        type: GAUGE
+        labels:
+          "$4": "$5"
+      # Generic per-second counters with 0-2 key/value pairs
+      - pattern: kafka.(\w+)<type=(.+), name=(.+)PerSec\w*, (.+)=(.+), (.+)=(.+)><>Count
+        name: kafka_$1_$2_$3_total
+        type: COUNTER
+        labels:
+          "$4": "$5"
+          "$6": "$7"
+      - pattern: kafka.(\w+)<type=(.+), name=(.+)PerSec\w*, (.+)=(.+)><>Count
+        name: kafka_$1_$2_$3_total
+        type: COUNTER
+        labels:
+          "$4": "$5"
+      - pattern: kafka.(\w+)<type=(.+), name=(.+)PerSec\w*><>Count
+        name: kafka_$1_$2_$3_total
+        type: COUNTER
+      # Generic gauges with 0-2 key/value pairs
+      - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.+), (.+)=(.+)><>Value
+        name: kafka_$1_$2_$3
+        type: GAUGE
+        labels:
+          "$4": "$5"
+          "$6": "$7"
+      - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.+)><>Value
+        name: kafka_$1_$2_$3
+        type: GAUGE
+        labels:
+          "$4": "$5"
+      - pattern: kafka.(\w+)<type=(.+), name=(.+)><>Value
+        name: kafka_$1_$2_$3
+        type: GAUGE
+      # Emulate Prometheus 'Summary' metrics for the exported 'Histogram's.
+      # Note that these are missing the '_sum' metric!
+      - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.+), (.+)=(.+)><>Count
+        name: kafka_$1_$2_$3_count
+        type: COUNTER
+        labels:
+          "$4": "$5"
+          "$6": "$7"
+      - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.*), (.+)=(.+)><>(\d+)thPercentile
+        name: kafka_$1_$2_$3
+        type: GAUGE
+        labels:
+          "$4": "$5"
+          "$6": "$7"
+          quantile: "0.$8"
+      - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.+)><>Count
+        name: kafka_$1_$2_$3_count
+        type: COUNTER
+        labels:
+          "$4": "$5"
+      - pattern: kafka.(\w+)<type=(.+), name=(.+), (.+)=(.*)><>(\d+)thPercentile
+        name: kafka_$1_$2_$3
+        type: GAUGE
+        labels:
+          "$4": "$5"
+          quantile: "0.$6"
+      - pattern: kafka.(\w+)<type=(.+), name=(.+)><>Count
+        name: kafka_$1_$2_$3_count
+        type: COUNTER
+      - pattern: kafka.(\w+)<type=(.+), name=(.+)><>(\d+)thPercentile
+        name: kafka_$1_$2_$3
+        type: GAUGE
+        labels:
+          quantile: "0.$4"
   zookeeper:
     replicas: 3
     storage:
@@ -104,7 +255,37 @@ spec:
                       values:
                         - zookeeper
                 topologyKey: "kubernetes.io/hostname"
-  entityOperator:
-    topicOperator: {}
-    userOperator: {}
+    metrics:
+      # Inspired by Zookeeper rules
+      # https://github.com/prometheus/jmx_exporter/blob/master/example_configs/zookeeper.yaml
+      lowercaseOutputName: true
+      rules:
+      # replicated Zookeeper
+      - pattern: "org.apache.ZooKeeperService<name0=ReplicatedServer_id(\\d+)><>(\\w+)"
+        name: "zookeeper_$2"
+        type: GAUGE
+      - pattern: "org.apache.ZooKeeperService<name0=ReplicatedServer_id(\\d+), name1=replica.(\\d+)><>(\\w+)"
+        name: "zookeeper_$3"
+        type: GAUGE
+        labels:
+          replicaId: "$2"
+      - pattern: "org.apache.ZooKeeperService<name0=ReplicatedServer_id(\\d+), name1=replica.(\\d+), name2=(\\w+)><>(Packets\\w+)"
+        name: "zookeeper_$4"
+        type: COUNTER
+        labels:
+          replicaId: "$2"
+          memberType: "$3"
+      - pattern: "org.apache.ZooKeeperService<name0=ReplicatedServer_id(\\d+), name1=replica.(\\d+), name2=(\\w+)><>(\\w+)"
+        name: "zookeeper_$4"
+        type: GAUGE
+        labels:
+          replicaId: "$2"
+          memberType: "$3"
+      - pattern: "org.apache.ZooKeeperService<name0=ReplicatedServer_id(\\d+), name1=replica.(\\d+), name2=(\\w+), name3=(\\w+)><>(\\w+)"
+        name: "zookeeper_$4_$5"
+        type: GAUGE
+        labels:
+          replicaId: "$2"
+          memberType: "$3"
+
 

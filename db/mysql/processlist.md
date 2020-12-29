@@ -54,8 +54,8 @@ MySQL [sbtest]> show variables like '%connect%';
 
 +-----------------------------------------------+-----------------+
 
- show full processlist;
- 
+show full processlist; 
+select version() AS TITLE;
 
 ## Reference
 [如何查找MySQL中查询慢的SQL语句](https://www.cnblogs.com/zhuyalong/p/11335857.html)

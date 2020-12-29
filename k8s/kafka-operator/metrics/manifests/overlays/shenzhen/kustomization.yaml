@@ -1,0 +1,118 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- ../../base
+
+patches:
+- target:
+    group: monitoring.coreos.com
+    version: v1
+    kind: ServiceMonitor
+    name: alertmanager
+  patch: |-
+    - op: replace
+      path: /spec/endpoints/0/relabelings/0/replacement
+      value: shenzhen
+
+- target:
+    group: monitoring.coreos.com
+    version: v1
+    kind: ServiceMonitor
+    name: kube-state-metrics
+  patch: |-
+    - op: replace
+      path: /spec/endpoints/0/relabelings/1/replacement
+      value: shenzhen
+    - op: replace
+      path: /spec/endpoints/1/relabelings/0/replacement
+      value: shenzhen
+
+- target:
+    group: monitoring.coreos.com
+    version: v1
+    kind: ServiceMonitor
+    name: node-exporter
+  patch: |-
+    - op: replace
+      path: /spec/endpoints/0/relabelings/1/replacement
+      value: shenzhen
+
+- target:
+    group: monitoring.coreos.com
+    version: v1
+    kind: ServiceMonitor
+    name: prometheus-adapter
+  patch: |-
+    - op: replace
+      path: /spec/endpoints/0/relabelings/0/replacement
+      value: shenzhen
+
+- target:
+    group: monitoring.coreos.com
+    version: v1
+    kind: ServiceMonitor
+    name: prometheus-operator
+  patch: |-
+    - op: replace
+      path: /spec/endpoints/0/relabelings/0/replacement
+      value: shenzhen
+
+- target:
+    group: monitoring.coreos.com
+    version: v1
+    kind: ServiceMonitor
+    name: prometheus
+  patch: |-
+    - op: replace
+      path: /spec/endpoints/0/relabelings/0/replacement
+      value: shenzhen
+
+- target:
+    group: monitoring.coreos.com
+    version: v1
+    kind: ServiceMonitor
+    name: kube-apiserver
+  patch: |-
+    - op: replace
+      path: /spec/endpoints/0/relabelings/0/replacement
+      value: shenzhen
+
+- target:
+    group: monitoring.coreos.com
+    version: v1
+    kind: ServiceMonitor
+    name: kube-controller-manager
+  patch: |-
+    - op: replace
+      path: /spec/endpoints/0/relabelings/0/replacement
+      value: shenzhen
+
+- target:
+    group: monitoring.coreos.com
+    version: v1
+    kind: ServiceMonitor
+    name: kube-scheduler
+  patch: |-
+    - op: replace
+      path: /spec/endpoints/0/relabelings/0/replacement
+      value: shenzhen
+
+- target:
+    group: monitoring.coreos.com
+    version: v1
+    kind: ServiceMonitor
+    name: kubelet
+  patch: |-
+    - op: replace
+      path: /spec/endpoints/0/relabelings/1/replacement
+      value: shenzhen
+    - op: replace
+      path: /spec/endpoints/1/relabelings/1/replacement
+      value: shenzhen
+    - op: replace
+      path: /spec/endpoints/2/relabelings/1/replacement
+      value: shenzhen
+
+patchesStrategicMerge:
+  - patch.yaml

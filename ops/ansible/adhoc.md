@@ -1,5 +1,5 @@
 ## Setup ansible
-pip3 insetall ansible
+pip3 install ansible
 
 ## Run command with ansible adhoc 
 ansible all -m ping

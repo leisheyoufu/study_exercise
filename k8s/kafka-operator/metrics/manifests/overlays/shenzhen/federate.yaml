@@ -1,0 +1,17 @@
+- job_name: 'federate'
+  scrape_interval: 30s
+
+  honor_labels: true
+  metrics_path: '/federate'
+
+  params:
+    'match[]':
+      - '{job=~"prometheus.*"}'
+      - '{job=~"kube.*"}'
+      - '{job=~"node.*"}'
+      - '{job=~".*operator.*"}'
+      - '{job=~".*kafka.*"}'
+
+  static_configs:
+    - targets:
+      - '<ip>:<node port>'

@@ -87,6 +87,28 @@ kubectl delete --ignore-not-found=true -f manifests/ -f manifests/setup
 
 Prometheus可以采集其它各种指标，但是prometheus采集到的metrics并不能直接给k8s用，因为两者数据格式不兼容，因此还需要另外一个组件(kube-state-metrics)，将prometheus的metrics数据格式转换成k8s API接口能识别的格式，转换以后，因为是自定义API，所以还需要用Kubernetes aggregator在主API服务器中注册，以便直接通过/apis/来访问。
 
+
+## prometheus adapter
+promethues adapter把prometheus的metrics转换为k8s能识别的资源类型， 就能通过api server的接口访问 deployment的资源
+···
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1beta1.metrics.k8s.io
+spec:
+  group: metrics.k8s.io
+  groupPriorityMinimum: 100
+  insecureSkipTLSVerify: true
+  service:
+    name: prometheus-adapter
+    namespace: monitoring
+  version: v1beta1
+  versionPriority: 100
+···
+kubectl proxy --address='0.0.0.0'
+curl localhost:8001/apis/metrics.k8s.io/v1beta1/pods
+kubectl get --raw /apis/metrics.k8s.io/v1beta1/pods
+
 ## Reference
 [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus#quickstart)
 [github configmap-reload](https://github.com/jimmidyson/configmap-reload)
@@ -101,3 +123,4 @@ Prometheus可以采集其它各种指标，但是prometheus采集到的metrics�
 [filter consul service based on tag](https://docs.d2iq.com/mesosphere/dcos/services/prometheus/0.1.1-2.3.2/configuration/service-discovery/)
 [Monitoring Kafka on Kubernetes with Prometheus](https://medium.com/@agrajm/monitoring-kafka-on-kubernetes-with-prometheus-5b1d1518102)
 [kfaka-minion - new kafka exporter](https://github.com/cloudworkz/kafka-minion)
+[Kubernetes Apiserver和Extension apiserver的介绍](https://www.yisu.com/zixun/9840.html)

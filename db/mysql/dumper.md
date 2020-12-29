@@ -42,8 +42,10 @@ MySQL [sbtest]> show open tables from sbtest;
 +----------+---------+--------+-------------+
 MySQL [sbtest]> insert sbtest2(id,k,c,pad) values(11898, 33, "ddd","aaa");   // 无法写入
 ```
+show variables like "%gtid%";
 
 
+mysql_get_server_version
 ## Reference
 [为什么要使用FTWRL](https://www.cnblogs.com/conanwang/p/6925108.html)
 [MySQL LOCK TABLES 与UNLOCK TABLES]https://blog.csdn.net/zyz511919766/article/details/16342003

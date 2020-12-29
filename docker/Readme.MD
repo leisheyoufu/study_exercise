@@ -8,3 +8,11 @@ docker image prune -a --force --filter "label=type=appimage" --filter "until=240
 https://stackoverflow.com/questions/31909979/docker-machine-no-space-left-on-device
 docker rmi $(docker images -q -f "dangling=true")
 docker volume rm $(docker volume ls -qf dangling=true)
+
+## Change password in Dockerfile
+RUN echo "123456" | chpasswd
+
+## Save and load a docker image
+docker tag <image> <target_image>
+docker save <target_image> -o /tmp/<target_image>.tar
+docker load -i /tmp/<target_image>.tar

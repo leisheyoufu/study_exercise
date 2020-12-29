@@ -1,0 +1,22 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  labels:
+    prometheus: k8s
+  name: k8s
+  namespace: monitoring
+spec:
+  additionalScrapeConfigs:
+    name: additional-federate-configs
+    key: federate.yaml
+  resources:
+    requests:
+      memory: 2048Mi
+  storage:
+    volumeClaimTemplate:
+      spec:
+        resources:
+          requests:
+            storage: 200Gi
+        storageClassName: strimzi
+  

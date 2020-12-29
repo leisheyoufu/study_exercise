@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: cleanpv
+spec:
+  replicas: 18
+  podManagementPolicy: Parallel
+  selector:
+    matchLabels:
+      app: cleanpv
+  serviceName: cleanpv
+  template:
+    metadata:
+      labels:
+        app: cleanpv
+    spec:
+      containers:
+      - name: format
+        image: busybox:1.28
+        command: ["sh", "-c", "rm -rf /var/lib/data/* && sleep 3600"]
+        volumeMounts:
+        - mountPath: /var/lib/data
+          name: data
+
+      securityContext:
+        runAsUser: 0
+      restartPolicy: Always
+  volumeClaimTemplates:
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      creationTimestamp: null
+      name: data
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 20Gi
+      storageClassName: rbd
+      volumeMode: Filesystem
+  updateStrategy:
+    type: OnDelete

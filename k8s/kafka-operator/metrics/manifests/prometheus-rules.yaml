@@ -1,0 +1,43 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: prometheus-k8s-rules
+  namespace: monitoring
+spec:
+  groups:
+  - name: strimze-Kafka-Disk-Extention
+    rules:
+    - alert: Kafka disk usage above 70%, need extension
+      annotations:
+        message: Kafka disk {{ $labels.persistentvolumeclaim }} usage is above 70% in namespace {{ $labels.namespace }} region {{ $labels.region }}. Need extension.
+      expr: |
+        avg by(region, cluster, namespace, job, persistentvolumeclaim) ((kubelet_volume_stats_capacity_bytes - kubelet_volume_stats_available_bytes) / kubelet_volume_stats_capacity_bytes) > 0.5
+      for: 1m
+      labels:
+        currentValue: '{{ $value }}'
+        owner: leisheyoufu
+  - name: strimze-Kafka-Disk-Rebalance
+    rules:
+    - alert: Kafka cluster need rebalance
+      annotations:
+        message: Disk usage is not balance in namespace {{ $labels.namespace }} region {{ $labels.region }}. Need rebalance.
+      expr: |
+        (count by (region) (sum by(region, cluster, namespace, job, persistentvolumeclaim) ((kubelet_volume_stats_capacity_bytes - kubelet_volume_stats_available_bytes)) / sum by(region, cluster, namespace, job, persistentvolumeclaim)(kubelet_volume_stats_capacity_bytes) > 0.5) / count by (region) (sum by(region, cluster, namespace, job, persistentvolumeclaim) ((kubelet_volume_stats_capacity_bytes - kubelet_volume_stats_available_bytes)) / sum by(region, cluster, namespace, job, persistentvolumeclaim)(kubelet_volume_stats_capacity_bytes) < 0.5)) < 0.7
+      for: 1m
+      labels:
+        currentValue: '{{ $value }}'
+        owner: leisheyoufu
+  - name: strimze-Kafka-Broker
+    rules:
+    - alert: Kafka broker down
+      annotations:
+        message: Kafka broker is down in namespace {{ $labels.namespace }} region {{ $labels.region }}.
+      expr: |
+        avg by(region) (kafka_brokers offset 1m / kafka_brokers offset 60m) < 1
+      for: 1m
+      labels:
+        currentValue: '{{ $value }}'
+        owner: leisheyoufu

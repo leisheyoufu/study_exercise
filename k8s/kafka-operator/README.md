@@ -3,6 +3,23 @@
 kubectl create ns kafka
 kubectl apply -f cluster-operator -n kafka
 kubectl apply -f deploy-cluster/kafka-persistent.yaml -n kafka2
+
+
+kubectl delete -f deploy-cluster/kafka-persistent.yaml -n kafka2
+
+### prometheus
+kubectl apply -f deploy-cluster/metrics/manifests/setup
+kubectl apply -f deploy-cluster/metrics/manifests
+
+kubectl apply -f deploy-cluster/metrics/prometheus-install
+
+
+kubectl delete -f deploy-cluster/metrics/manifests/setup
+kubectl delete -f deploy-cluster/metrics/manifests
+kubectl delete -f deploy-cluster/metrics/prometheus-install
+
+### User control
+
 kubectl apply -f deploy-cluster/kafka-user-tls.yaml -n kafka2
 kubectl apply -f deploy-cluster/kafka-super.yaml -n kafka2
 kubectl apply -f deploy-cluster/kafka-external-service.yaml -n kafka2
@@ -27,6 +44,7 @@ kubectl get pods -n kube-system -oname |grep coredns |xargs kubectl delete -n ku
 kubectl exec -it my-cluster-kafka-0 -n kafka2 -- /opt/kafka/bin/kafka-topics.sh --bootstrap-server <ip:port> --create --topic test --partitions 2 --replication-factor 2
 
 kubectl exec -it my-cluster-zookeeper-0 -n kafka2 -- /opt/kafka/bin/zookeeper-shell.sh 127.0.0.1:12181 get /brokers/ids/1
+kubectl exec -it kafka-cluster-zookeeper-0 -n ephemeral-kafka-cluster -- /opt/kafka/bin/zookeeper-shell.sh 127.0.0.1:12181 ls /config/users
 
 kubectl get sts my-cluster-kafka -n kafka2 -o jsonpath='{.spec.template.metadata.labels}'
 
@@ -38,6 +56,14 @@ mvn package -DskipTests
 mvn install -DskipTests  // setup package into maven local repository
 cd cluster-operator && make docker_build && cd -
 cd docker-images && make docker_build && cd -
+
+user-operator, cluster-operator, topic-operator 都打在strimzi/operator:latest 这个image 里，根据k8s指定的arg脚本去指定执行cluster-operator还是user-operator, 比如 /opt/strimzi/bin/topic_operator_run.sh， /opt/strimzi/bin/user_operator_run.sh，
+/opt/stunnel/entity_operator_stunnel_run.sh
+
+for pv in `kubectl get pv | grep Released | awk '{print $1}' | xargs`; do
+    kubectl patch pv $pv -p '{"spec":{"claimRef": null}}'
+done
+
 ## openssl
 openssl s_client -debug -connect <ip:port> -tls1_2 | grep subject
 /opt/kafka/bin/kafka-console-producer.sh --broker-list <ip:port> --topic test4 --producer.config /tmp/client.properties
@@ -45,31 +71,32 @@ openssl s_client -debug -connect <ip:port> -tls1_2 | grep subject
 /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
 
 openssl pkcs12 -export -in server.crt -inkey server.key -name myserver.internal.net > server.p12
-## Source code
-cluster-operator/src/main/java/io/strimzi/operator/cluster/operator/assembly/KafkaAssemblyOperator.java
 
+### BrokerId
+docker-images/kafka/scripts/kafka_run.sh
+```
+STRIMZI_BROKER_ID=$(hostname | awk -F'-' '{print $NF}')
+```
 
-
+### zookeeper 链接localhost:2181，sidecar stunnel
+/usr/bin/stunnel /tmp/stunnel.conf
 ```
-private final ZookeeperSetOperator zkSetOperations;
-    private final KafkaSetOperator kafkaSetOperations;
-    private final RouteOperator routeOperations;
-    private final PvcOperator pvcOperations;
-    private final DeploymentOperator deploymentOperations;
-    private final RoleBindingOperator roleBindingOperations;
-    private final PodOperator podOperations;
-    private final IngressOperator ingressOperations;
-    private final StorageClassOperator storageClassOperator;
-    private final NodeOperator nodeOperator;
-    private final CrdOperator<KubernetesClient, Kafka, KafkaList, DoneableKafka> crdOperator;
-    private final ZookeeperScalerProvider zkScalerProvider;
-    private final AdminClientProvider adminClientProvider
+pid = /usr/local/var/run/stunnel.pid
+foreground = yes
+debug = notice
+sslVersion = TLSv1.2
+[zookeeper-2181]
+client = yes
+CAfile = /tmp/cluster-ca.crt
+cert = /etc/tls-sidecar/eo-certs/entity-operator.crt
+key = /etc/tls-sidecar/eo-certs/entity-operator.key
+accept = 127.0.0.1:2181
+connect = my-cluster-zookeeper-client:2181
+delay = yes
+verify = 2
 ```
-operator location
-```
-operator-common/src/main/java/io/strimzi/operator/common/operator/resource/PvcOperator.java
-```
-api/src/main/java/io/strimzi/api/kafka/model/listener/arraylistener/ListenersConvertor.java
+## Kafka partition segment
+No a partition cannot reside on multiple machine in kafka ... Partitions cannot be split between multiple brokers and not even between multiple disks on the same broker .....In other words you can say that the size of the partition is limited by the space in the disk mount.
 
 ## Reference
 [quickstart](https://strimzi.io/quickstarts/)
@@ -88,3 +115,9 @@ api/src/main/java/io/strimzi/api/kafka/model/listener/arraylistener/ListenersCon
 [pkcs](https://smallstep.com/hello-mtls/doc/combined/kafka/kafka-cli)
 [Kafka SASL/SCRAM+ACL实现动态创建用户及权限控制](https://blog.csdn.net/ashic/article/details/86661599)
 [kafka add user dynamically](https://stackoverflow.com/questions/54147460/kafka-adding-sasl-users-dynamically-without-cluster-restart)
+[k8s can not support pod from statefulset to node](https://github.com/kubernetes/kubernetes/issues/65267)
+[prometheus service monitor federate](https://github.com/prometheus-operator/prometheus-operator/pull/1100)
+[kafka cruise-control](https://github.com/linkedin/cruise-control)
+[kafka strimzi cruise-control](https://strimzi.io/blog/2020/06/15/cruise-control/)
+[Kafka partition in relation to a broker](https://stackoverflow.com/questions/48431016/kafka-partition-in-relation-to-a-broker#:~:text=No%20a%20partition%20cannot%20reside,space%20in%20the%20disk%20mount.)
+[cruise-control-disk-capacity](https://github.com/linkedin/cruise-control/issues/1052)

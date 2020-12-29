@@ -13,6 +13,9 @@ MySQL [sys]> show variables like '%packet';
 | slave_max_allowed_packet | 1073741824 |
 +--------------------------+------------+
 
+show variables like '%version%'
+show global variables like '%tokudb%';
+
 ## 客户端
 mysql --max_allowed_packet=32M
 

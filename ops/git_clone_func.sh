@@ -3,7 +3,7 @@
 set -ex
 function git_clone {
     local git_remote=$1
-    local git_dest=/opt/dts/$2
+    local git_dest=/opt/leisheyoufu/$2
     local git_ref=$3
     local orig_dir
     orig_dir=$(pwd)

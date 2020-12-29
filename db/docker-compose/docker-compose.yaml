@@ -1,0 +1,22 @@
+version: '3'
+services:
+  mysql-src:
+    image: mysql:5.7
+    # image: bestmike007/percona-tokudb:5.7.21
+    container_name: mysql-src
+    hostname: mysql-src
+    domainname: cluster.local
+    networks:
+      net:    
+          aliases:
+            - mysql-src.cluster.local
+    environment:
+      - "MYSQL_ROOT_PASSWORD=123456"
+      - "INIT_TOKUDB=yes"
+    ports:
+      - 3307:3306
+    expose:
+      - 3306
+    volumes:
+      - ./conf:/etc/mysql/mysql.conf.d/ # # 5.7, 8.0
+      #- ./conf:/etc/mysql/  #5.6  #5.5 delete all volumes
