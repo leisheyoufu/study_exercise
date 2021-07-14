@@ -23,3 +23,5 @@ function git_clone {
     git show --oneline | head -1
     cd $orig_dir
 }
+
+git pull --unshallow # pull all after git pull --deptch=1 

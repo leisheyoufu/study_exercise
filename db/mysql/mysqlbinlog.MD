@@ -92,6 +92,12 @@ mysqlbinlog  --no-defaults --database=binlogdb  --base64-output=decode-rows -v -
 根据pos查询
 mysqlbinlog  --no-defaults --database=binlogdb  --base64-output=decode-rows -v --start-position=154 --stop-position=970 /var/lib/mysql/binlog.000004
 
+mysqlbinlog --no-defaults --read-from-remote-server --host=127.0.0.1 --user=root --password=xxxxx --port 3319 --skip-gtids --include-gtids 'a36fbe4c-a0d6-11eb-b2e5-0242ac1c0002:56127-56128' mysql-bin.00005
+
+mysqlbinlog --no-defaults --read-from-remote-server --host=127.0.0.1  --user=yuntest --password=xxxx --port 3306 --include-gtids 'c73deb70-75ba-11eb-8769-52540032c10b:9007-9040' --base64-output=AUTO --verbose  mysql-bin.000011
+
+mysqlbinlog --no-defaults --read-from-remote-server --host=127.0.0.1 --user=root --password=xxxx --port 3319 --include-gtids '2582e45b-de04-11eb-a671-0242ac100002:9329' --base64-output=AUTO --verbose  mysql-bin.000003
+
 The output is like:
 ```
 # at 8065298

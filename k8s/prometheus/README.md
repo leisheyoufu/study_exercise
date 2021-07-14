@@ -109,6 +109,13 @@ kubectl proxy --address='0.0.0.0'
 curl localhost:8001/apis/metrics.k8s.io/v1beta1/pods
 kubectl get --raw /apis/metrics.k8s.io/v1beta1/pods
 
+## metrics-server
+namespace terminating
+kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n
+
+metrics not available yet
+https://www.cnblogs.com/binghe001/p/12821804.html
+
 ## Reference
 [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus#quickstart)
 [github configmap-reload](https://github.com/jimmidyson/configmap-reload)
