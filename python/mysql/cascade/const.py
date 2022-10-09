@@ -1,0 +1,11 @@
+SRC_USER="root"
+SRC_PASSWORD="xxxx"
+SRC_PORT=3319
+SRC_HOST="127.0.0.1"
+SRC_DB="foreign_key"
+
+DST_USER="root"
+DST_PASSWORD="xxxx"
+DST_PORT=3320
+DST_HOST="127.0.0.1"
+DST_DB="foreign_key"
