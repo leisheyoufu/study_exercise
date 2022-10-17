@@ -10,9 +10,35 @@ from multiprocessing import Process
 from multiprocessing import queues
 
 
+CREATE_TEST_DDL = """
+CREATE TABLE test_ddl
+(
+  id INT(11) AUTO_INCREMENT PRIMARY KEY, 
+  name VARCHAR(24),
+  dept_id INT(11),
+  salary FLOAT
+) ENGINE=innodb;
+"""
+
+INSERT_TEST_DDL1 = """
+insert into test_ddl values(3, "red", 1001, 33347.8);
+"""
+
+ALERT_TEST_DDL = """
+ALTER TABLE test_ddl ADD COLUMN c2 INT, ADD COLUMN c3 INT;
+"""
+
+INSERT_TEST_DDL2 = """
+insert into test_ddl values(4, "blue", 1002, 53347.8, 500, 4000);
+"""
+
+DROP_TEST_DDL = """
+drop table test_ddl;
+"""
+
 def update_customer(cnx):
     cursor = cnx.cursor()
-    update = ("UPDATE customer SET id=id+100000 WHERE id>7000")
+    update = ("UPDATE customer SET id=id+100000 WHERE id>7000 AND id<7105")
     cursor.execute(update)
     cnx.commit()
     cursor.close()
@@ -26,7 +52,7 @@ def delete_customer(cnx):
 
 def insert_customer2(cnx):
     cursor = cnx.cursor()
-    count = 3000
+    count = 4
     desc = ("INSERT INTO customer (id) VALUES (%(id)s)")
     items = []
     for i in range(count):
@@ -81,7 +107,23 @@ def delete_insert_test_main(cnx):
     delete = ("delete from test_main;")
     cursor.execute(delete)
     cnx.commit()
-    cursor.close()    
+    cursor.close()
+
+def ddl_test_ddl(cnx):
+    cursor = cnx.cursor()
+    query = (CREATE_TEST_DDL)
+    cursor.execute(query)
+    query = (INSERT_TEST_DDL1)
+    cursor.execute(query)
+    cnx.commit()
+    query = (ALERT_TEST_DDL)
+    cursor.execute(query)
+    query = (INSERT_TEST_DDL2)
+    cursor.execute(query)
+    cnx.commit()
+    query = (DROP_TEST_DDL)
+    cursor.execute(query)
+
 
 def customer_task():
     cnx = mysql.connector.connect(user=const.SRC_USER, password=const.SRC_PASSWORD, port=const.SRC_PORT, database=const.SRC_DB,host=const.SRC_HOST)
@@ -116,10 +158,20 @@ def test_main_task():
         time.sleep(5)
         print("update test_main task is running %d" % count)
         count+=1
-    cnx.close()    
+    cnx.close() 
+
+def test_ddl_task():
+    cnx = mysql.connector.connect(user=const.SRC_USER, password=const.SRC_PASSWORD, port=const.SRC_PORT, database=const.SRC_DB,host=const.SRC_HOST)
+    count = 1
+    while(1):
+        ddl_test_ddl(cnx)
+        time.sleep(1)
+        print("ddl test_ddl task is running %d" % count)
+        count+=1
+    cnx.close() 
 
 if __name__ == "__main__":
-    funcs = [customer_task, product_order_task, test_main_task]
+    funcs = [customer_task, product_order_task, test_main_task, test_ddl_task]
     for func in funcs:
         p = Process(target=func)
         p.start()
