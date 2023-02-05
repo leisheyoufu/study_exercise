@@ -1,0 +1,1 @@
+g++ -fexec-charset=GBK -o main std_function.cpp
