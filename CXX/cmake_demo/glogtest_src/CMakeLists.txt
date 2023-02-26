@@ -1,0 +1,7 @@
+project(glogtest_src)
+cmake_minimum_required(VERSION 3.0)
+list(APPEND CMAKE_PREFIX_PATH "${PROJECT_SOURCE_DIR}/glog")
+find_package(gflags REQUIRED)
+add_subdirectory("${PROJECT_SOURCE_DIR}/glog")
+add_executable(glogtest_src glogtest.cc)
+target_link_libraries(glogtest_src PRIVATE glog::glog)

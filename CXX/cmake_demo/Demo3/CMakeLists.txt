@@ -3,6 +3,7 @@ cmake_minimum_required (VERSION 2.8)
 
 # 项目信息
 project (Demo3)
+set(CMAKE_CXX_STANDARD 14)
 
 # 查找目录下的所有源文件
 # 并将名称保存到 DIR_SRCS 变量
