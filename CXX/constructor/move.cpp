@@ -37,6 +37,7 @@ Integer getNum()
     return a;
 }
 int main(int argc, char const* argv[]) {
+    // CL: 编译器优化了，让a 和getNum返回的为同一个地址
     Integer a(getNum()); 
     cout << "a=" << a.GetValue() << " addr: " << &a << endl;
     cout << "-----------------" << endl;

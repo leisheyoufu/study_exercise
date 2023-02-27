@@ -17,6 +17,7 @@ public:
 	void* operator new(size_t size, string str)
  
 	{
+		// cl size 是X 需要的对象的大小，这里试有int num, 所以是4
 		cout << "operator new size " << size << " with string " << str << endl;
 		return ::operator new(size);
 	}
@@ -37,3 +38,10 @@ int main()
 	system("pause");
 	return 0;
 }
+
+/*
+operator new size 4 with string A new class
+X's constructor
+X's destructor
+operator delete
+*/
