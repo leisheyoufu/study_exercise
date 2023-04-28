@@ -8,7 +8,7 @@ public:
     {
         cout << "Constructor " << str << endl;
     }
-    Object(const Object * obj) : str(str)
+    Object(const Object * obj) : str(obj->str)
     {
         cout << "Constructor obj "<< str << endl;
     }
@@ -33,13 +33,14 @@ public:
     Test();
     explicit Test(int a);
     ~Test();
+    int a;    
 };
 
 Test::Test() {
          cout << "Test: Constructor called"<< endl;
     }
-Test::Test(int a) {
-         cout << "Test: Destructor called"<< endl;
+Test::Test(int a) : a(a) {
+         cout << "Test: Constructor a called"<< endl;
     }       
 Test::~Test() {
          cout << "Test: Destructor called"<< endl;
@@ -54,7 +55,7 @@ int main()
     cout << "Create smart_ptr using new: done, count: " << ptr_res2.use_count() << endl;
 
     cout << "Create shared ptr" << endl;
-    auto p1 = new Test;
+    auto p1 = new Test(3);
     shared_ptr<Test> sp(p1);
      std::cout << sp.use_count() << std::endl; // 打印引用计数
     {
@@ -62,4 +63,7 @@ int main()
         std::cout << sp.use_count() << std::endl; // 打印引用计数
     } // sp2生命周期结束，sp引用计数减1
     std::cout << sp.use_count() << std::endl; // 打印引用计数
+    cout << "p1.a=" << p1->a << endl;
+    cout << "sp.a=" << sp->a << endl;
+    // p1 was desconstructed after sp.use_count() == 0
 }

@@ -98,6 +98,28 @@ verify = 2
 ## Kafka partition segment
 No a partition cannot reside on multiple machine in kafka ... Partitions cannot be split between multiple brokers and not even between multiple disks on the same broker .....In other words you can say that the size of the partition is limited by the space in the disk mount.
 
+## kafka reassignment 
+https://wzktravel.github.io/2015/12/31/kafka-reassign/
+```
+cat topic.json
+{
+    "topics": [
+        {"topic": "topic-subs-6qob55eqg0-tdsqlshard-2wmdg9qd"}
+    ],
+    "version": 1
+}
+```
+cat client.properties
+```
+bootstrap.servers=127.0.0.1:9092
+security.protocol=SASL_PLAINTEXT
+sasl.mechanism=SCRAM-SHA-512
+sasl.jaas.config=org.apache.kafka.common.security.scram.ScramLoginModule required username="xxx" password="xxx";
+```
+./bin/kafka-reassign-partitions.sh --bootstrap-server <ip>:<port> --command-config client.properties --topics-to-move-json-file topic.json --broker-list "2,3,4,5" --generate
+会生成topic的分区分配文件
+
+
 ## Reference
 [quickstart](https://strimzi.io/quickstarts/)
 [github source](https://github.com/strimzi/strimzi-kafka-operator)

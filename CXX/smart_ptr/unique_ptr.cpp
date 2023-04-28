@@ -59,3 +59,33 @@ int main()
     }
     return 0;
 }
+
+/*
+unique_ptr 指向对象的所有权的测试---->
+Derived::Constructor
+Derived::bar()
+unique_ptr
+Derived::Descontructor
+
+多态运行时测试----->
+Derived::Constructor
+Derived::bar()
+Derived::Constructor
+Derived::Constructor
+Derived::bar()
+Derived::bar()
+Derived::bar()
+Derived::Descontructor
+Derived::Descontructor
+Derived::Descontructor
+
+数组形式的unique_str对象测试--->
+Derived::Constructor
+Derived::Constructor
+Derived::Constructor
+Derived::Constructor
+Derived::Descontructor
+Derived::Descontructor
+Derived::Descontructor
+Derived::Descontructor
+*/
