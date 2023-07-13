@@ -19,3 +19,18 @@ ninja install
 https://blog.csdn.net/Zhanglin_Wu/article/details/124963173
 
 
+## chapter 3
+### build llvm 
+mkdir llvm_build
+cd llvm_build
+cmake -G Ninja -DLLVM_EXTERNAL_PROJECTS=calc -DLLVM_EXTERNAL_TINYLANG_SOURCE_DIR=../calc -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=../llvm-12 /Users/franckcheng/Projects/c/llvm-project/llvm
+
+ninja
+ninja insetall
+cd -
+
+### build calc
+mkdir calc_build
+cd calc_build
+cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_DIR=../llvm-12/lib/cmake/llvm -DCMAKE_INSTALL_PREFIX=../llvm-12 ../
+

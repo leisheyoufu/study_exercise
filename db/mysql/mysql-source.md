@@ -12,5 +12,10 @@ mysql -uroot -P3334 --binary-as-hex=False
 ## gdb 调试mysql
 https://www.modb.pro/db/216318
 
+gdb --args ./bin/mysqld --debug=d,info --port 3334 --gdb
+
 ## sql 字典表调用
 https://baijiahao.baidu.com/s?id=1746342784983756518&wfr=spider&for=pc
+
+select 源码查询过程
+https://www.freesion.com/article/9937404283/

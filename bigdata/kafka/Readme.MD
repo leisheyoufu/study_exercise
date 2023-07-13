@@ -21,6 +21,10 @@ docker run --name zktest -it --rm wurstmeister/zookeeper /bin/bash
 ## Spark bulk api
 Set max.poll.records in consumer properties
 
+
+## kafka 关键参数
+Kafka参数图鉴——unclean.leader.election.enable https://blog.csdn.net/u013256816/article/details/80790185
+
 ## Reference
 https://www.cnblogs.com/yxlblogs/p/10115672.html
 https://studygolang.com/articles/17912

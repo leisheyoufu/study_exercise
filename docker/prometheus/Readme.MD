@@ -21,7 +21,10 @@ docker run --name mysql -v /home/ubuntu/mysql/:/var/lib/mysql -e MYSQL_ROOT_PASS
 docker run -d --name mysql-exporter -p 9104:9104 -e DATA_SOURCE_NAME="root:123456.@(192.168.126.160:8888)/mysql" prom/mysqld-exporter
 docker restart prometheus
 
+## prometheus federate
+curl -g '<ip>:<port>/federate?match[]={__name__=~"..*"}'
 
 ## Reference
 https://testerhome.com/topics/21807
 https://www.cnblogs.com/bigberg/p/10118137.html
+[Federate endpoint returns empty response for query](https://github.com/prometheus/prometheus/issues/1811)
