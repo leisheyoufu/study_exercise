@@ -40,3 +40,7 @@ mkdir -p /var/lib/mysql
 innobackupex --defaults-file=/etc/mysql/mysql.cnf --copy-back --rsync /root/backup/full/<data dir>
 chown -hR mysql:mysql /var/lib/mysql
 systemctl start mysql
+
+
+## xtrabackup 原理，包含复制文件和redo处理
+https://blog.csdn.net/nightelve/article/details/17397245
