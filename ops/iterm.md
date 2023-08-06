@@ -1,5 +1,5 @@
 # iterm profile
-~/login.exp <ip> loch '<password>'
+~/login.exp <ip> <user> '<password>'
 
 # login exp
 ```
