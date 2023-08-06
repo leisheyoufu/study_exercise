@@ -67,3 +67,23 @@ int main()
     cout << "sp.a=" << sp->a << endl;
     // p1 was desconstructed after sp.use_count() == 0
 }
+
+/*
+Create smart_ptr using make_shared...
+Constructor make_shared
+Create smart_ptr using make_shared: done, count: 1
+Create smart_ptr using new...
+Constructor new
+Create smart_ptr using new: done, count: 1
+Create shared ptr
+Test: Constructor a called
+1
+2
+1
+p1.a=3
+sp.a=3
+Test: Destructor called
+Destructor
+Destructor
+
+*/
