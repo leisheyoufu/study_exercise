@@ -16,3 +16,9 @@ RUN echo "123456" | chpasswd
 docker tag <image> <target_image>
 docker save <target_image> -o /tmp/<target_image>.tar
 docker load -i /tmp/<target_image>.tar
+
+
+## check what container use the docker volume
+docker system df -v
+docker inspect 805478a1451327de453e2f71c60087079d5d3b9fd1999e47c8cdf77324f8950a
+docker ps -a --filter volume=805478a1451327de453e2f71c60087079d5d3b9fd1999e47c8cdf77324f8950a
