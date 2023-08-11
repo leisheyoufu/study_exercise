@@ -4,3 +4,5 @@ grep -A 10 "xxxx" #显示grep 到行的前后10行
 
 带.gz文件
 gzip -dc ./*.gz | grep "iotop"
+
+grep -C 3 "xxx"  // 查询上下3行
