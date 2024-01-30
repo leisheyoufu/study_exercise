@@ -4,12 +4,17 @@ import mysql.connector
 import random
 import time
 import const
+import string
 
 import multiprocessing
 from multiprocessing import Process
 from multiprocessing import queues
 
 
+def random_str(n):
+    alphabet = string.ascii_letters + string.digits
+    password = ''.join(random.choice(alphabet) for i in range(n))
+    return password
 
 def insert_customer():
     cnx = mysql.connector.connect(user=const.SRC_USER, password=const.SRC_PASSWORD, port=const.SRC_PORT, database=const.SRC_DB,host=const.SRC_HOST)
@@ -54,7 +59,7 @@ def insert_customer2(cnx):
 def insert_product():
     cnx = mysql.connector.connect(user=const.SRC_USER, password=const.SRC_PASSWORD, port=const.SRC_PORT, database=const.SRC_DB,host=const.SRC_HOST)
     cursor = cnx.cursor()
-    count = 10000
+    count = 200000
     desc = ("INSERT INTO product (category, id, price) VALUES (%(category)s, %(id)s, %(price)s)")
     items = []
     for i in range(count):
@@ -129,11 +134,11 @@ def task(func):
 
 if __name__ == "__main__":
     cnx = mysql.connector.connect(user=const.SRC_USER, password=const.SRC_PASSWORD, port=const.SRC_PORT, database=const.SRC_DB,host=const.SRC_HOST)
-    insert_customer()
+    #insert_customer()
     insert_product()
-    insert_product_order()
-    insert_sub_product_order()
-    insert_partial_product_order()
+    #insert_product_order()
+    #insert_sub_product_order()
+    #insert_partial_product_order()
     #update_customer(cnx)
 
     # funcs = [insert_customer, insert_product, insert_product_order, insert_sub_product_order, insert_partial_product_order]
