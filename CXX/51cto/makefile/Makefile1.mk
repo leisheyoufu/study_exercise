@@ -147,3 +147,5 @@ veryclean:
     rm -f candles.c
     rm -f tiamalgamation.c
     rm -f -r docs
+
+	## reference: https://blog.51cto.com/u_9527606/6094249
