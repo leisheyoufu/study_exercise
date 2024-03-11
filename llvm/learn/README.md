@@ -1,19 +1,37 @@
-## build llvm
-首先编译llvm 作为库
-mkdir llvm_build
-cd llvm_build
-cmake -G Ninja -DLLVM_EXTERNAL_PROJECTS=tinylang -DLLVM_EXTERNAL_TINYLANG_SOURCE_DIR=../tinylang -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=../llvm-12 /Users/leisheyoufu/Projects/c/llvm-project/llvm  (最后的参数是llvm的目录)
+## clone and build llvm
+cd /opt/projects
+git clone https://github.com/llvm/llvm-project.git
+cd llvm-project/
+mkdir build
+cd build/
+cmake -G Ninja -DLLVM_ENABLE_PROJECTS=clang ../llvm
 
-ninja
-ninja install
+## chapter 2
+build llvm lib
+```
+mkdir build
+cd build
 
-## build tinylang
+cmake -G Ninja -DCMAKE_BUILD_TYPE=Release \
+-DLLVM_EXTERNAL_PROJECTS=tinylang \
+-DLLVM_EXTERNAL_TINYLANG_SOURCE_DIR=../tinylang \
+-DCMAKE_INSTALL_PREFIX=../llvm-12 \
+/opt/projects/llvm-project/llvm
+
+ninja -j8
+```
+build tinylang
+```
 mkdir tinylang_build
-cd tinylang_build
-cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_DIR=../llvm-12/lib/cmake/llvm -DCMAKE_INSTALL_PREFIX=../llvm-12 ../
-ninja
+cd tynylang_build
+cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_STANDARD=17 -DLLVM_DIR=../llvm-12/lib/cmake/llvm -DCMAKE_INSTALL_PREFIX=../llvm-12 ../
+ninja -j8
 ninja install
-./tinylang
+cd ../llvm-12
+./bin/tinylang
+Hello, I am Tinylang 0.1
+```
+
 
 ## Reference
 https://blog.csdn.net/Zhanglin_Wu/article/details/124963173
@@ -24,6 +42,8 @@ https://blog.csdn.net/Zhanglin_Wu/article/details/124963173
 mkdir calc_build
 cd calc_build
 cmake -G Ninja -DLLVM_EXTERNAL_PROJECTS=calc -DLLVM_EXTERNAL_TINYLANG_SOURCE_DIR=../calc -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=../llvm-12 /Users/leisheyoufu/Projects/c/llvm-project/llvm
+
+cmake -G Ninja -DLLVM_EXTERNAL_PROJECTS=calc -DLLVM_EXTERNAL_TINYLANG_SOURCE_DIR=../calc -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/projects//llvm-12 /opt/projects/llvm-project/llvm
 
 ninja
 ninja install
@@ -36,6 +56,9 @@ mkdir calc_build
 cd calc_build
 cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_DIR=../llvm-12/lib/cmake/llvm -DCMAKE_INSTALL_PREFIX=../llvm-12 ../
 
+
+-G Ninja -DCMAKE_BUILD_TYPE=Debug -DLLVM_DIR=/Users/leisheyoufu/Projects/c/llvm-12/lib/cmake/llvm
+
 因为没有定义install target , 手动拷贝到
 cp src/calc ../llvm-12/bin/
 
@@ -44,7 +67,37 @@ cp src/calc ../llvm-12/bin/
 install(TARGETS calc
   RUNTIME DESTINATION bin
   COMPONENT calc)  
-```  
+``` 
+
+### chapter 5
+#### build llvm
+mkdir build && cd build
+
+
+cmake -G Ninja -DLLVM_EXTERNAL_PROJECTS=tinylang -DLLVM_EXTERNAL_TINYLANG_SOURCE_DIR=../tinylang -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/projects/llvm-12 /opt/projects/llvm-project/llvm
+
+ninja -j8
+ninja install
+
+#### build tinylang
+mkdir tinylang_build && cd tinylang_build
+
+cmake -G Ninja -DLLVM_EXTERNAL_PROJECTS=tinylang -DCMAKE_CXX_STANDARD=17 -DLLVM_EXTERNAL_TINYLANG_SOURCE_DIR=../tinylang -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/projects/llvm-12 /opt/projects/llvm-project/llvm
+
+```
+clang -v --version | grep Target | cut -d' ' -f2-
+arm64-apple-darwin21.5.0
+
+clang --target=arm64-apple-darwin21.5.0 -S -emit-llvm gcd.c  // generate gcd.ll
+/opt/projects/llvm-project/build/bin/clang --target=arm64-apple-darwin21.5.0 -S -emit-llvm gcd.c // generate gcd.ll from llvm12
+/opt/projects/llvm-project/build/bin/clang -O1 --target=arm64-apple-darwin21.5.0 -S -emit-llvm gcd.c // 带phi 优化
+```
+
+## Chapter 8 
+bin/opt --disable-output --passes="countir" --stats  // 运行某一个pass
+
+## Chapter 9
+llc -mtriple=mips-linux-gnu -debug-pass=Structure < sum.ll
 
 ### Run
 $ ninja insetall # 拷贝到llvm-12
