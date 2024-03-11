@@ -1,0 +1,1 @@
+g++ -std=c++11  -o main friend_member.cpp A.cpp B.cpp B.h A.h
