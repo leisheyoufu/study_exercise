@@ -1,0 +1,1 @@
+g++  -I./ person.cpp -o main  // clang
