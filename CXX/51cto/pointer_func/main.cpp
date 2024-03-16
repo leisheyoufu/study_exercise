@@ -8,7 +8,7 @@
 
 using namespace std;
 
-#include "Function.h"
+#include "function.h"
 using namespace funcinfo;
 
 
