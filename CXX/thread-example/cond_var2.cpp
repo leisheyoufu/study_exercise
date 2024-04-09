@@ -31,6 +31,8 @@ void function_2() {
 
         cond.wait(locker, [](){ return !q.empty();});   //如果条件变量被唤醒，检查队列非空条件是否为真，为真则直接返回，为假则继续等待
 
+        // CL: wait 等待是会解locker的锁，当被notify后，wait会重新拿到locker的锁然后访问临界资源
+
         data = q.back();
         q.pop_back();			//数据出队锁保护
         locker.unlock();
