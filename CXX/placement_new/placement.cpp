@@ -35,3 +35,11 @@ int main()
 	system("pause");
 	return 0;
 }
+
+/*
+0x61fcd0
+A's constructor
+0x61fcd0
+num:65
+A's destructor
+*/
